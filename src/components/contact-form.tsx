@@ -174,7 +174,7 @@ export function ContactForm({
           : "Har du dokumentasjon? Beskriv den her, eller si at du kan sende den. FLO starter med det vi allerede vet."}
       </p>
       </fieldset>
-      {configured ? <p className="text-sm text-[#6b645c]">Opplysningene sendes til FLO via EmailJS for å besvare forespørselen. Ikke legg sensitive opplysninger i meldingen.</p> : null}
+      {configured ? <p className="text-sm text-[#6b645c]">FLO bruker opplysningene til å besvare forespørselen. Ikke legg sensitive opplysninger i meldingen.</p> : null}
       <div className="border-t border-flo-ink/15 pt-5">
         <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed" htmlFor="privacy">
           <input id="privacy" name="privacy" type="checkbox" value="yes" required checked={!!privacyAcceptedAt} onChange={e => setPrivacyAcceptedAt(e.target.checked ? new Date().toISOString() : null)} className="mt-1 h-5 w-5 shrink-0 accent-[#a82d34]" />
