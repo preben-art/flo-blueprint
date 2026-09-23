@@ -1,8 +1,3 @@
-/**
- * FLO customer-facing knowledge projection.
- * Framework / Answer Method structure: VCTRA-owned.
- * Do not treat this folder as a second source of truth or a generic customer clone.
- */
 export { sourceAuthority, sources, sourceById, sourcesByIds, type SourceId } from "./sources";
 export {
   roles,

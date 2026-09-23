@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { JsonLd } from "@/components/json-ld";
+import { PageSemantics } from "@/components/page-semantics";
 import { PageStill } from "@/components/page-still";
 import { PlanSplit } from "@/components/plan-field";
 import { SectionCta } from "@/components/section-cta";
 import { Button } from "@/components/ui/button";
 import { deliveryTracks } from "@/content/explain";
 import { company, photoAlt, stills } from "@/content/site";
-import { faqPageJsonLd, pageMeta } from "@/lib/seo";
+import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta(
   "Dette kan gjøres digitalt",
@@ -36,7 +36,15 @@ const faqs = [
 export default function DigitaltPage() {
   return (
     <>
-      <JsonLd data={faqPageJsonLd(faqs)} />
+      <PageSemantics
+        path="/digitalt"
+        title="Dette kan gjøres digitalt"
+        description="Dokumentgjennomgang, brannkonsept, ansvar og kurs kan leses først, uansett hvor i landet bygget ligger. Befaring kommer når papirene ikke kan svare."
+        topic="Digital brannvurdering"
+        area="Hele Norge"
+        audience="Eiere, brukere og byggherrer som kan sende dokumentasjon"
+        faqs={faqs}
+      />
       <PageStill
         src={stills.skjerm}
         alt={photoAlt[stills.skjerm]}

@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
-import { JsonLd } from "@/components/json-ld";
 import { MotionLayer } from "@/components/motion-layer";
 import { PlanCursor } from "@/components/plan-cursor";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SitePlan } from "@/components/site-plan";
 import { company } from "@/content/site";
-import { defaultDescription, organizationJsonLd, siteUrl } from "@/lib/seo";
+import { canonicalOrigin, defaultDescription, isIndexableDeployment } from "@/lib/seo";
 import "./globals.css";
 
 const ibmSans = IBM_Plex_Sans({
@@ -23,38 +22,30 @@ const ibmMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(canonicalOrigin),
   title: {
     default: "Brannsikring ved avvik, ombygging og brannkrav | Flo Brannsikring",
     template: `%s | ${company.brandName}`,
   },
   description: defaultDescription,
   applicationName: company.brandName,
-  keywords: [
-    "brannsikring",
-    "brannkonsept",
-    "RIBr",
-    "brannvernrådgivning",
-    "Stryn",
-    "sentral godkjenning",
-    "utleiedel",
-    "brannsikkerhet bolig",
-    "digital brannvurdering",
-  ],
-  authors: [{ name: company.legalName }],
+  authors: [{ name: company.legalName, url: canonicalOrigin }],
+  creator: company.legalName,
+  publisher: company.legalName,
   openGraph: {
     siteName: company.brandName,
     locale: "nb_NO",
     type: "website",
   },
-  robots: { index: true, follow: true },
+  robots: isIndexableDeployment()
+    ? { index: true, follow: true }
+    : { index: false, follow: false },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="nb" className={`${ibmSans.variable} ${ibmMono.variable} h-full antialiased`}>
       <body className="sheet flex min-h-full flex-col font-sans">
-        <JsonLd data={organizationJsonLd()} />
         <a className="skip-link" href="#innhold">
           Hopp til innhold
         </a>

@@ -2,6 +2,7 @@ import { EditorialList } from "@/components/editorial-list";
 import { PageStill } from "@/components/page-still";
 import { photoAlt, stills } from "@/content/site";
 import { listDeskPosts } from "@/lib/desk";
+import { PageSemantics } from "@/components/page-semantics";
 import { pageMeta } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
@@ -16,6 +17,12 @@ export default async function NyheterPage() {
   const posts = await listDeskPosts({ kind: "nyhet" });
   return (
     <>
+      <PageSemantics
+        path="/nyheter"
+        title="Nyheter"
+        description="Faglige oppdateringer fra FLO. Kunder kan legge inn innhold og ta det ned igjen i redaksjonen."
+        kind="CollectionPage"
+      />
       <PageStill
         src={stills.befaring}
         alt={photoAlt[stills.befaring]}

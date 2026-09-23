@@ -5,6 +5,7 @@ import { CoverageBand } from "@/components/coverage-band";
 import { PageStill } from "@/components/page-still";
 import { PlanSplit } from "@/components/plan-field";
 import { company, photoAlt, stills } from "@/content/site";
+import { PageSemantics } from "@/components/page-semantics";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta(
@@ -29,6 +30,13 @@ export default async function KontaktPage({
 
   return (
     <>
+      <PageSemantics
+        path="/kontakt"
+        title="Kontakt"
+        description="Send avviket, tegningene eller det som ble sagt. Vi svarer innen én til to virkedager."
+        kind="ContactPage"
+        area="Digitalt i hele Norge. Befaring fra Stryn og Nordfjordeid."
+      />
       <PageStill
         src={isPrivate ? stills.detektor : stills.avklaring}
         alt={photoAlt[isPrivate ? stills.detektor : stills.avklaring]}

@@ -3,14 +3,14 @@ import type { ReactNode } from "react";
 import { AnswerBlock } from "@/components/answer-block";
 import { AnswerNav } from "@/components/answer-nav";
 import { ClarifyPath } from "@/components/clarify-path";
-import { JsonLd } from "@/components/json-ld";
+import { PageSemantics } from "@/components/page-semantics";
 import { PageStill } from "@/components/page-still";
 import { PlanSplit } from "@/components/plan-field";
 import { PlanPlate } from "@/components/plan-plate";
 import { SectionCta } from "@/components/section-cta";
-import { answersAsFaq, type AnswerId, type AnswerPage } from "@/content/answers";
+import { answersAsFaq, firstSentence, type AnswerId, type AnswerPage } from "@/content/answers";
 import { photoAlt, stills } from "@/content/site";
-import { faqPageJsonLd } from "@/lib/seo";
+import type { PageFacts } from "@/lib/semantic/graph";
 
 export function AnswerStack({
   page,
@@ -21,6 +21,28 @@ export function AnswerStack({
   insertAfter?: Partial<Record<AnswerId, ReactNode>>;
   afterKrav?: ReactNode;
 }) {
+  const path =
+    page.kind === "situation"
+      ? `/situasjon/${page.slug}`
+      : page.kind === "service"
+        ? `/losninger/${page.slug}`
+        : page.kind === "customer"
+          ? page.slug === "privat"
+            ? "/privat"
+            : `/hvem-er-du/${page.slug}`
+          : page.kind === "claim"
+            ? "/fag-og-kunnskap/pastand-eller-krav"
+            : `/fag-og-kunnskap/${page.slug}`;
+  const facts: PageFacts = {
+    path,
+    title: page.title,
+    description: firstSentence(page.answers.a1.answer),
+    kind: page.kind === "service" ? "WebPage" : "WebPage",
+    serviceSlug: page.kind === "service" ? page.slug : undefined,
+    audience: page.answers.a2.answer,
+    topic: page.kicker,
+    faqs: answersAsFaq(page),
+  };
   const practice = page.answers.a3.photo;
   const splitStill =
     practice?.src && practice.src !== page.hero.src
@@ -32,7 +54,7 @@ export function AnswerStack({
 
   return (
     <>
-      <JsonLd data={faqPageJsonLd(answersAsFaq(page))} />
+      <PageSemantics {...facts} />
       <PageStill
         src={page.hero.src}
         alt={page.hero.alt}

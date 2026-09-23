@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { FaqBlock } from "@/components/faq-block";
-import { JsonLd } from "@/components/json-ld";
+import { PageSemantics } from "@/components/page-semantics";
 import { PageStill } from "@/components/page-still";
 import { PlanSplit } from "@/components/plan-field";
 import { SectionCta } from "@/components/section-cta";
 import { Button } from "@/components/ui/button";
 import { customerExplain } from "@/content/explain";
 import { company, faqs, photoAlt, stills } from "@/content/site";
-import { faqPageJsonLd, pageMeta } from "@/lib/seo";
+import { pageMeta } from "@/lib/seo";
 
 const privatFaqs = [
   faqs.find((item) => item.id === "faq.utleiedel")!,
@@ -43,7 +43,15 @@ export default function PrivatPage() {
   const expl = customerExplain.privat;
   return (
     <>
-      <JsonLd data={faqPageJsonLd(privatFaqs)} />
+      <PageSemantics
+        path="/privat"
+        title="Brannsikkerhet i bolig og utleiedel"
+        description="Kan kjeller, loft eller del av boligen leies ut? FLO leser tegninger og bilder digitalt og sier hva som må avklares før rommet tas i bruk. Bolig er et eget spor."
+        topic="Bolig og utleiedel"
+        audience="Private eiere og utleiere"
+        area="Digitalt i hele Norge. Befaring i Nordvestlandet når bygget må ses."
+        faqs={privatFaqs}
+      />
       <PageStill
         src={stills.detektor}
         alt={photoAlt[stills.detektor]}

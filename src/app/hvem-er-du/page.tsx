@@ -3,6 +3,7 @@ import { PageStill } from "@/components/page-still";
 import { PlanPlate } from "@/components/plan-plate";
 import { customerExplain, icpLinks } from "@/content/explain";
 import { customers, customerStill, photoAlt, stills } from "@/content/site";
+import { PageSemantics } from "@/components/page-semantics";
 import { pageMeta } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 
@@ -18,6 +19,13 @@ export const metadata = pageMeta(
 export default function HvemErDuPage() {
   return (
     <>
+      <PageSemantics
+        path="/hvem-er-du"
+        title="Eier eller bruker?"
+        description="Eier, forvalter, virksomhet, byggherre eller privat bolig. Pliktene er ulike. Bolig er et eget spor."
+        kind="CollectionPage"
+        audience="Eier, bruker, byggherre og privat bolig"
+      />
       <PageStill
         src={stills.slokkerHaand}
         alt={photoAlt[stills.slokkerHaand]}

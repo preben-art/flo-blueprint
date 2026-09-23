@@ -19,38 +19,36 @@ export function knowledgeContractFaq(node: KnowledgeNode) {
   ];
 }
 
+const evidenceLabel = {
+  SOURCE_CONFIRMED: "Knyttet til kildene under.",
+  INFERRED: "Faglig vurdering. Ikke et registerfunn for ett bygg.",
+  EVIDENCE_REQUIRED: "Krever dokumentasjon fra det aktuelle bygget.",
+} as const;
+
 export function knowledgeAtom(node: KnowledgeNode) {
   const cited = sourcesByIds(node.sourceIds);
   return {
-    entity: knowledgeEntity,
-    legalName: company.legalName,
+    entity: company.legalName,
+    brand: company.brandName,
     question: node.question,
-    icp: node.icp,
-    role: node.icp,
-    building: "CUSTOMER_INPUT_REQUIRED",
-    use: "CUSTOMER_INPUT_REQUIRED",
-    change: node.situation.includes("endres") ? "CHANGE_POSSIBLE" : "NOT_THE_PRIMARY_TRIGGER",
+    audience: node.icp,
     situation: node.situation,
-    risk: "CUSTOMER_INPUT_REQUIRED",
-    responsibility: node.domain === "ansvar" || node.slug === "eier-eller-bruker" ? "OWNER_AND_USER_SEPARATE" : "SEE_CONTRACT",
-    documentation: node.contract.documents,
+    services: node.service,
+    answer: node.contract.direct,
+    appliesTo: node.contract.appliesTo,
+    dependsOn: node.contract.dependsOn,
     requirement: node.contract.requirement,
-    alternative: node.contract.alternatives,
-    service: node.service,
-    deliveryMode: node.contract.next.mode,
-    evidence: node.evidence,
-    source: cited.map((s) => ({
-      id: s.id,
-      level: s.level,
-      label: s.label,
-      href: s.href,
+    assessment: node.contract.assessment,
+    alternatives: node.contract.alternatives,
+    documents: node.contract.documents,
+    evidence: evidenceLabel[node.evidence],
+    sources: cited.map((source) => ({
+      label: source.label,
+      href: source.href,
     })),
     limitation: node.contract.limitation,
-    nextAction: node.contract.next,
+    next: node.contract.next,
     canonical: `/fag-og-kunnskap/${node.slug}`,
-    distribution: node.distribution,
-    structuredBy: "VCTRA",
-    knowledgeArchitecture: "VCTRA Answer Method / approved implementation",
   };
 }
 

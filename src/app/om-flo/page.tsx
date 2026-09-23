@@ -4,6 +4,7 @@ import { PageStill } from "@/components/page-still";
 import { PersonCard } from "@/components/person-card";
 import { PlanSplit } from "@/components/plan-field";
 import { company, people, photoAlt, stills } from "@/content/site";
+import { PageSemantics } from "@/components/page-semantics";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta(
@@ -15,6 +16,14 @@ export const metadata = pageMeta(
 export default function OmFloPage() {
   return (
     <>
+      <PageSemantics
+        path="/om-flo"
+        title="Om FLO"
+        description="FLO Brannsikring AS, org.nr 979 582 064. Stryn og Nordfjordeid. Sentral godkjenning TK3."
+        kind="AboutPage"
+        people
+        area="Stryn og Nordfjordeid"
+      />
       <PageStill
         src={stills.team}
         alt={photoAlt[stills.team]}

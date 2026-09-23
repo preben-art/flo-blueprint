@@ -2,7 +2,8 @@ import Link from "next/link";
 import { EdKicker, EdLead, EdSection, EdTitle } from "@/components/ed";
 import { Button } from "@/components/ui/button";
 import { company } from "@/content/site";
-import { pageMeta } from "@/lib/seo";
+import { PageSemantics } from "@/components/page-semantics";
+import { canonicalOrigin, pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta(
   "Leveransefilm",
@@ -28,6 +29,19 @@ const chapters = [
 export default function FilmPage() {
   return (
     <>
+      <PageSemantics
+        path="/film"
+        title="Leveransefilm"
+        description="FLO Brannsikring, leveransefilm. Nettstedet filmet slik det faktisk er, med originalmusikk."
+        topic="Leveransefilm"
+        video={{
+          name: "FLO Brannsikring, leveransefilm",
+          description: "Nettstedet filmet slik det er, med originalmusikk.",
+          contentUrl: `${canonicalOrigin}${FILM}`,
+          thumbnailUrl: `${canonicalOrigin}${POSTER}`,
+          uploadDate: "2026-09-19",
+        }}
+      />
       <EdSection id="film" tone="ink" className="film-intro pt-20 sm:pt-28">
         <div className="plan-read-ink plan-float max-w-3xl">
           <EdKicker>Leveransefilm</EdKicker>

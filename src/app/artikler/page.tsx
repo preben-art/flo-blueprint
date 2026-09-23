@@ -2,6 +2,7 @@ import { EditorialList } from "@/components/editorial-list";
 import { PageStill } from "@/components/page-still";
 import { photoAlt, stills } from "@/content/site";
 import { listDeskPosts } from "@/lib/desk";
+import { PageSemantics } from "@/components/page-semantics";
 import { pageMeta } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
@@ -16,6 +17,12 @@ export default async function ArtiklerPage() {
   const posts = await listDeskPosts({ kind: "artikkel" });
   return (
     <>
+      <PageSemantics
+        path="/artikler"
+        title="Artikler"
+        description="Fagartikler om brannkonsept, bruksendring, tilsyn og det som kan avklares digitalt."
+        kind="CollectionPage"
+      />
       <PageStill
         src={stills.utgang}
         alt={photoAlt[stills.utgang]}

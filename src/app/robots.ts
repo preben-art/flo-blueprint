@@ -1,10 +1,12 @@
 import type { MetadataRoute } from "next";
-import { siteUrl } from "@/lib/seo";
+import { canonicalOrigin, isIndexableDeployment } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: "*", allow: "/", disallow: ["/redaksjon", "/api/desk"] },
-    sitemap: `${siteUrl}/sitemap.xml`,
-    host: siteUrl,
+    rules: isIndexableDeployment()
+      ? { userAgent: "*", allow: "/", disallow: ["/redaksjon", "/api/desk"] }
+      : { userAgent: "*", disallow: "/" },
+    sitemap: `${canonicalOrigin}/sitemap.xml`,
+    host: canonicalOrigin,
   };
 }

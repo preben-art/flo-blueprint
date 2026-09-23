@@ -1,128 +1,76 @@
 import type { Metadata } from "next";
 import { company } from "@/content/site";
+import { pageGraph, type FaqItem, type PageFacts } from "@/lib/semantic/graph";
+import { canonicalOrigin, canonicalUrl, isIndexableDeployment, siteUrl } from "@/lib/semantic/identity";
 
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://127.0.0.1:4731";
-export const organizationUrl = "https://flo-brannsikring.no";
+export { canonicalOrigin, canonicalUrl, siteUrl, isIndexableDeployment };
+export { pageGraph, machineSummary } from "@/lib/semantic/graph";
+export type { PageFacts, FaqItem };
+
+export const organizationUrl = canonicalOrigin;
 
 export const defaultDescription =
   "FLO Brannsikring leser avvik, ombygging og uklare brannkrav mot bygget. Brannkonsept, RIBr og digital brannvurdering fra Stryn og Nordfjordeid.";
 
-export function pageMeta(title: string, description: string, path = "/"): Metadata {
+const ogImage = {
+  url: "/og.jpg",
+  width: 1200,
+  height: 630,
+  alt: `${company.brandName}. Nødutgang i en korridor.`,
+};
+
+export function pageMeta(
+  title: string,
+  description: string,
+  path = "/",
+  options?: { index?: boolean; article?: boolean; image?: string },
+): Metadata {
+  const index = options?.index ?? (isIndexableDeployment() && !path.startsWith("/redaksjon"));
+  const canonical = canonicalUrl(path);
+  const image = options?.image ?? ogImage.url;
   return {
-    title,
+    title: path === "/" ? { absolute: title } : title,
     description,
-    alternates: { canonical: path },
+    alternates: { canonical },
+    robots: index ? { index: true, follow: true } : { index: false, follow: false },
+    authors: [{ name: company.legalName, url: canonicalOrigin }],
+    creator: company.legalName,
+    publisher: company.legalName,
     openGraph: {
       title,
       description,
-      url: path,
+      url: canonical,
       locale: "nb_NO",
-      type: "website",
+      type: options?.article ? "article" : "website",
       siteName: company.brandName,
+      images: [{ ...ogImage, url: image }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
     },
   };
 }
 
+/** @deprecated Prefer pageGraph(), which keeps FAQ inside the page @graph. */
 export function faqPageJsonLd(items: readonly { question: string; answer: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: items.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: { "@type": "Answer", text: item.answer },
-    })),
-  };
+  return pageGraph({
+    path: "/",
+    title: company.brandName,
+    description: defaultDescription,
+    faqs: items,
+  });
 }
 
 export function organizationJsonLd() {
-  const offices = company.locations.map((loc) => ({
-    "@type": "Place",
-    name: loc.name,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: loc.address,
-      postalCode: loc.postalCode,
-      addressLocality: loc.locality,
-      addressRegion: "Vestland",
-      addressCountry: "NO",
-    },
-    geo: { "@type": "GeoCoordinates", latitude: loc.geo.lat, longitude: loc.geo.lng },
-  }));
-
-  const norway = { "@type": "Country", name: "Norge", identifier: "NO" };
-  const nordvestlandet = [
-    { "@type": "AdministrativeArea", name: "Nordvestlandet" },
-    { "@type": "AdministrativeArea", name: "Vestland" },
-    { "@type": "AdministrativeArea", name: "Møre og Romsdal" },
-    ...company.coverage.physicalPlaces.map((name) => ({ "@type": "City", name })),
-  ];
-
-  const digitalServices = [
-    "Digital gjennomgang av brannteknisk dokumentasjon",
-    "Vurdering av brannkonsept og tegninger",
-    "Påstand eller krav: avklaring av hva som faktisk gjelder",
-    "Second opinion på tilsyn og avvik",
-    "Digital brannvernopplæring og kurs",
-  ];
-  const physicalServices = [
-    "Brannteknisk befaring og kontroll",
-    "Brannteknisk utførelse og utbedring",
-    "Kartlegging og 3D-skanning av eksisterende bygg",
-    "Uavhengig kontroll brannsikkerhet",
-  ];
-
   return {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "@id": `${organizationUrl}#flo`,
-    name: company.brandName,
-    legalName: company.legalName,
-    url: organizationUrl,
-    telephone: company.switchboard,
-    email: company.email,
-    vatID: company.orgnr.replace(/\s/g, ""),
-    address: offices[0].address,
-    geo: offices[0].geo,
-    location: offices,
-    areaServed: [norway, ...nordvestlandet],
-    knowsAbout: [
-      "brannsikring",
-      "brannkonsept",
-      "RIBr",
-      "brannvernrådgivning",
-      "uavhengig kontroll brannsikkerhet",
-      "3D-skanning av bygg",
-      "internkontroll brann",
-      "bruksendring og rømning",
-    ],
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "FLO Brannsikring, tjenester",
-      itemListElement: [
-        ...digitalServices.map((name) => ({
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name,
-            serviceType: "Digital brannteknisk vurdering",
-            areaServed: norway,
-            availableChannel: { "@type": "ServiceChannel", serviceUrl: `${organizationUrl}/digitalt`, name: "Digitalt" },
-          },
-        })),
-        ...physicalServices.map((name) => ({
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name,
-            serviceType: "Befaring, kontroll og utførelse",
-            areaServed: nordvestlandet,
-            availableChannel: { "@type": "ServiceChannel", serviceUrl: `${organizationUrl}/kontakt?spor=fysisk`, name: "Fysisk" },
-          },
-        })),
-      ],
-    },
-    hasCredential: company.approvals.map((a) => `${a.function}, ${a.area} ${a.class}`),
-    sameAs: company.social.map((s) => s.url),
+    "@graph": pageGraph({
+      path: "/",
+      title: company.brandName,
+      description: defaultDescription,
+    })["@graph"],
   };
 }

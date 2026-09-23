@@ -1,29 +1,33 @@
-import { JsonLd } from "@/components/json-ld";
+import { PageSemantics } from "@/components/page-semantics";
 import { PageStill } from "@/components/page-still";
 import { SectionCta } from "@/components/section-cta";
 import { photoAlt, stills } from "@/content/site";
 import type { DeskPost } from "@/lib/desk-types";
+import { articleBySlug } from "@/content/site";
 import { pageMeta } from "@/lib/seo";
 
+export function editorialPath(post: DeskPost) {
+  if (post.kind === "nyhet") return `/nyheter/${post.slug}`;
+  if (articleBySlug(post.slug)) return `/fag-og-kunnskap/${post.slug}`;
+  return `/artikler/${post.slug}`;
+}
+
 export function editorialMeta(post: DeskPost) {
-  const path = post.kind === "nyhet" ? `/nyheter/${post.slug}` : `/artikler/${post.slug}`;
-  return pageMeta(post.title, post.excerpt, path);
+  return pageMeta(post.title, post.excerpt, editorialPath(post), { article: true });
 }
 
 export function EditorialArticle({ post }: { post: DeskPost }) {
   const src = post.still ?? stills.skjerm;
   return (
     <>
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": post.kind === "nyhet" ? "NewsArticle" : "Article",
-          headline: post.title,
-          datePublished: post.createdAt,
-          dateModified: post.updatedAt,
-          description: post.excerpt,
-          author: { "@type": "Organization", name: "FLO Brannsikring" },
-        }}
+      <PageSemantics
+        path={editorialPath(post)}
+        title={post.title}
+        description={post.excerpt}
+        article={post.kind !== "nyhet"}
+        news={post.kind === "nyhet"}
+        datePublished={post.createdAt}
+        dateModified={post.updatedAt}
       />
       <PageStill
         src={src}

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { RailStep } from "@/components/ed";
-import { JsonLd } from "@/components/json-ld";
+import { PageSemantics } from "@/components/page-semantics";
 import { PageStill } from "@/components/page-still";
 import { PlanSplit } from "@/components/plan-field";
 import { PlanPlate } from "@/components/plan-plate";
@@ -8,7 +8,7 @@ import { SectionCta } from "@/components/section-cta";
 import { type KnowledgeNode } from "@/content/knowledge/nodes";
 import { sourcesByIds } from "@/content/knowledge/sources";
 import { photoAlt, stills } from "@/content/site";
-import { knowledgeAtom, knowledgeFaqJsonLd } from "@/lib/knowledge";
+import { knowledgeContractFaq } from "@/lib/knowledge";
 
 const evidenceLabel = {
   SOURCE_CONFIRMED: "Kildebekreftet",
@@ -41,8 +41,15 @@ export function KnowledgeAnswer({ node }: { node: KnowledgeNode }) {
 
   return (
     <>
-      <JsonLd data={knowledgeFaqJsonLd(node)} />
-      <JsonLd data={knowledgeAtom(node)} />
+      <PageSemantics
+        path={`/fag-og-kunnskap/${node.slug}`}
+        title={node.question}
+        description={c.direct}
+        topic={node.kicker}
+        audience={c.appliesTo}
+        area="Digitalt i hele Norge. Befaring fra Stryn og Nordfjordeid når bygget må ses."
+        faqs={knowledgeContractFaq(node)}
+      />
       <PageStill
         src={node.still}
         alt={photoAlt[node.still] ?? node.question}

@@ -5,6 +5,7 @@ import { PageStill } from "@/components/page-still";
 import { PartnerMark } from "@/components/partner-mark";
 import { PlanSplit } from "@/components/plan-field";
 import { photoAlt, projects, stills } from "@/content/site";
+import { PageSemantics } from "@/components/page-semantics";
 import { pageMeta } from "@/lib/seo";
 
 const projectImage: Record<string, string> = {
@@ -22,6 +23,13 @@ export const metadata = pageMeta(
 export default function ProsjekterPage() {
   return (
     <>
+      <PageSemantics
+        path="/prosjekter"
+        title="Hvem har dere jobbet for?"
+        description="Coop, Classic Norway Hotels og Wenaas er navngitt. Der brannresultatet mangler, står det."
+        kind="CollectionPage"
+        topic="Navngitte oppdrag"
+      />
       <PageStill
         src={stills.utgang}
         alt={photoAlt[stills.utgang]}

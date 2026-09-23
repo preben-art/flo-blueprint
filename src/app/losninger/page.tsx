@@ -5,6 +5,7 @@ import { PlanPlate } from "@/components/plan-plate";
 import { SectionCta } from "@/components/section-cta";
 import { serviceExplain } from "@/content/explain";
 import { photoAlt, serviceStill, services, stills } from "@/content/site";
+import { PageSemantics } from "@/components/page-semantics";
 import { pageMeta } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 
@@ -17,6 +18,13 @@ export const metadata = pageMeta(
 export default function LosningerPage() {
   return (
     <>
+      <PageSemantics
+        path="/losninger"
+        title="Rådgivning og RIBr"
+        description="Brannvernrådgivning, brannkonsept eller utførelse. Hva dere trenger, avhenger av om det er avvik, ombygging eller usikkerhet om krav."
+        kind="CollectionPage"
+        topic="Brannvernrådgivning, RIBr og utførelse"
+      />
       <PageStill
         src={stills.anlegg}
         alt={photoAlt[stills.anlegg]}

@@ -10,6 +10,10 @@ Foto er studiostills uten rødt utstyrlys: næringsbygg, fagmiljø, skjermarbeid
 
 Merkevare: FLO-rød `#c62e32`, kull `#161210`, papir `#f4f1ea`. Ikke VCTRA-oransje. Ikke BFN-gul. Teknisk løsning og kunnskapsstruktur er levert av VCTRA, synlig som én linje i bunnen.
 
+## Maskinlesbart
+
+Samme fakta brukes i sidetittel, Open Graph, JSON-LD, `/llms.txt`, `/ai.txt` og `/api/site`. Canonical vert er `https://flo-brannsikring.no`. Forhåndsvisning uten `NEXT_PUBLIC_SITE_URL` satt til den verten er `noindex`.
+
 ## Kjør lokalt
 
 ```bash

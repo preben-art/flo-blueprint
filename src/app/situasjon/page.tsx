@@ -3,6 +3,7 @@ import { PlanSplit } from "@/components/plan-field";
 import { SearchAsks } from "@/components/search-asks";
 import { SituationCards } from "@/components/situation-cards";
 import { photoAlt, stills } from "@/content/site";
+import { PageSemantics } from "@/components/page-semantics";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta(
@@ -14,6 +15,13 @@ export const metadata = pageMeta(
 export default function SituasjonIndexPage() {
   return (
     <>
+      <PageSemantics
+        path="/situasjon"
+        title="Avvik og ombygging"
+        description="Har dere fått tilsyn, skal dere bygge om, eller er det uklart hva som kreves? Send avviket eller tegningene."
+        kind="CollectionPage"
+        topic="Avvik, ombygging og uklare krav"
+      />
       <PageStill
         src={stills.internkontroll}
         alt={photoAlt[stills.internkontroll]}

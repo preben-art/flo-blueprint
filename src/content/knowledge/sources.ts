@@ -3,7 +3,7 @@ export const sourceAuthority = [
   { level: 2, label: "Offentlig veileder og standard", meaning: "Tolker eller utfyller. Ikke automatisk eneste lovlige løsning." },
   { level: 3, label: "FLO-bevis", meaning: "DiBK-godkjenning, navngitt oppdrag, dokumentert leveranse. Mangler bevis = sies ikke." },
   { level: 4, label: "Kundens kontekst", meaning: "Bygg, bruk, dokumentasjon og det som er sagt i saken." },
-  { level: 5, label: "Strukturert inferens", meaning: "VCTRA-struktur. Publiseres ikke som faktum uten godkjenning." },
+  { level: 5, label: "Arbeidsnotat", meaning: "Publiseres ikke som faktum før det er kontrollert mot en kilde." },
 ] as const;
 
 export const sources = [

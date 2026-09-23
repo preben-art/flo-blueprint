@@ -2,8 +2,8 @@ import Link from "next/link";
 import { ClaimSignature } from "@/components/claim-signature";
 import { RailStep } from "@/components/ed";
 import { FaqBlock } from "@/components/faq-block";
-import { JsonLd } from "@/components/json-ld";
 import { KravCluster } from "@/components/krav-cluster";
+import { PageSemantics } from "@/components/page-semantics";
 import { PageStill } from "@/components/page-still";
 import { PlanSplit } from "@/components/plan-field";
 import { SectionCta } from "@/components/section-cta";
@@ -13,11 +13,11 @@ import { articles, faqs, photoAlt, stills } from "@/content/site";
 import { sourceAuthority, sources } from "@/content/knowledge/sources";
 import { pageMeta } from "@/lib/seo";
 
-export const metadata = pageMeta(
-  "Spørsmål om brannsikkerhet",
-  "Hvem har ansvaret? Er dette påbudt? Må vi oppdatere brannkonseptet? Svar med kilde, ikke bare praksis.",
-  "/fag-og-kunnskap",
-);
+const title = "Spørsmål om brannsikkerhet";
+const description =
+  "Hvem har ansvaret? Er dette påbudt? Må vi oppdatere brannkonseptet? Svar med kilde, ikke bare praksis.";
+
+export const metadata = pageMeta(title, description, "/fag-og-kunnskap");
 
 const commercialNodes = knowledgeNodes.filter((n) => n.domain !== "privat");
 const privateNodes = knowledgeNodes.filter((n) => n.domain === "privat");
@@ -25,6 +25,14 @@ const privateNodes = knowledgeNodes.filter((n) => n.domain === "privat");
 export default function KnowledgePage() {
   return (
     <>
+      <PageSemantics
+        path="/fag-og-kunnskap"
+        title={title}
+        description={description}
+        kind="CollectionPage"
+        topic="Brannsikkerhet, ansvar og krav"
+        faqs={faqs.map((item) => ({ question: item.question, answer: item.answer }))}
+      />
       <PageStill
         src={stills.slokke}
         alt={photoAlt[stills.slokke]}
@@ -183,17 +191,6 @@ export default function KnowledgePage() {
       </PlanSplit>
 
       <section className="ed-paper">
-        <JsonLd
-          data={{
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: faqs.map((f) => ({
-              "@type": "Question",
-              name: f.question,
-              acceptedAnswer: { "@type": "Answer", text: f.answer },
-            })),
-          }}
-        />
         <div className="ed-wrap">
           <div className="plan-read plan-float max-w-3xl">
             <p className="ed-kicker">Ofte stilte spørsmål</p>

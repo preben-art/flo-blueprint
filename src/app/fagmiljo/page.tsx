@@ -5,6 +5,7 @@ import { SectionCta } from "@/components/section-cta";
 import { StillFrame } from "@/components/still-frame";
 import { Button } from "@/components/ui/button";
 import { people, photoAlt, stills } from "@/content/site";
+import { PageSemantics } from "@/components/page-semantics";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta(
@@ -18,6 +19,13 @@ const visible = people.filter((p) => p.role);
 export default function FagmiljoPage() {
   return (
     <>
+      <PageSemantics
+        path="/fagmiljo"
+        title="Fagmiljø"
+        description="Rådgivning, RIBr og utførelse i ett fagmiljø i Stryn og Nordfjordeid. Nyheter og artikler ligger her."
+        area="Stryn og Nordfjordeid"
+        people
+      />
       <PageStill
         src={stills.drawings}
         alt={photoAlt[stills.drawings]}
