@@ -1,0 +1,80 @@
+{
+  "extracted_at": "2026-09-16T16:20:00Z",
+  "location": "Homepage accordion only. No /faq route. No FAQPage schema.",
+  "items": [
+    {
+      "id": "faq.ansvar",
+      "question": "Hvem har ansvaret for brannsikkerheten i bygget vårt?",
+      "answer_excerpt": "Det er eier av bygget som har det overordnede ansvaret for at brannsikkerheten er ivaretatt, mens bruker/virksomhet har ansvar for den daglige driften — rutiner, opplæring, øvelser og bruk av bygget. Ansvarsfordelingen avtales ofte i leiekontrakt mellom eier og leietaker, men det offentligrettslige ansvaret kan ikke avtales bort.",
+      "class": "SOURCE_CONFIRMED",
+      "maps_to_situation": "NOE_ER_UKLART / ansvar",
+      "legal_status": "General guidance citing common Norwegian split; not a legal opinion. Sources not cited on page (brann- og eksplosjonsvernloven / forskrift om brannforebygging implied later)."
+    },
+    {
+      "id": "faq.loven",
+      "question": "Hva sier loven om brannsikkerhet i næringsbygg?",
+      "answer_excerpt": "Hovedregelverket består av brann- og eksplosjonsvernloven, forskrift om brannforebygging og byggteknisk forskrift (TEK17). For virksomheter gjelder også internkontrollforskriften.",
+      "class": "SOURCE_CONFIRMED",
+      "maps_to_situation": "NOE_ER_UKLART / regelverk"
+    },
+    {
+      "id": "faq.konsept-vs-prosjektering",
+      "question": "Hva er forskjellen på brannkonsept og brannteknisk prosjektering?",
+      "answer_excerpt": "Brannkonseptet er det overordnede dokumentet som beskriver hvordan bygget skal sikres mot brann. Brannteknisk prosjektering er den konkrete planleggingen som omsetter konseptet i detaljerte løsninger. Konseptet sier hva som skal til. Prosjekteringen sier hvordan det skal gjøres.",
+      "class": "SOURCE_CONFIRMED",
+      "maps_to_service": "svc.ribr"
+    },
+    {
+      "id": "faq.oppdatert-konsept",
+      "question": "Når må vi ha et oppdatert brannkonsept?",
+      "answer_excerpt": "Ved nybygg, bruksendring, større ombygging eller tilbygg, endringer i branntekniske installasjoner, og ved vesentlige endringer i virksomheten. Bør også revideres jevnlig.",
+      "class": "SOURCE_CONFIRMED",
+      "maps_to_situation": "NOE_SKAL_ENDRES"
+    },
+    {
+      "id": "faq.tek17",
+      "question": "Hva er TEK17, og hvordan påvirker det oss?",
+      "answer_excerpt": "TEK17 er byggteknisk forskrift, kapittel 11 om brannsikkerhet. Gjelder i hovedsak nybygg, ombygging, tilbygg og bruksendring. Eksisterende bygg styres normalt av reglene som gjaldt på byggetidspunktet.",
+      "class": "SOURCE_CONFIRMED"
+    },
+    {
+      "id": "faq.dokumentasjon-internkontroll",
+      "question": "Hvorfor er dokumentasjon viktig når internkontrollen utføres?",
+      "answer_excerpt": "Internkontrollforskriften § 5 stiller krav til skriftlig dokumentasjon. Uten dokumentasjon kan forsikringsdekningen bortfalle ved en hendelse.",
+      "class": "SOURCE_CONFIRMED",
+      "maps_to_situation": "NOE_ER_PAPEKT",
+      "claim_risk": "Insurance lapse is stated as fact without insurer source — keep as general risk statement, not guarantee."
+    },
+    {
+      "id": "faq.dsb",
+      "question": "Hva er DSB sine krav til virksomheter?",
+      "answer_excerpt": "DSB forvalter brann- og eksplosjonsvernloven. Krav om dokumentasjon, risikovurdering, instrukser, opplæring, øvelser, tilrettelegging for tilsyn. Særskilte brannobjekter har strengere krav.",
+      "class": "SOURCE_CONFIRMED"
+    },
+    {
+      "id": "faq.konsekvenser",
+      "question": "Hva skjer hvis vi ikke oppfyller kravene?",
+      "answer_excerpt": "Pålegg, tvangsmulkt, forelegg/bøter, stenging, bortfall av forsikring, personlig straffeansvar ved grov uaktsomhet.",
+      "class": "SOURCE_CONFIRMED",
+      "maps_to_situation": "NOE_ER_PAPEKT"
+    },
+    {
+      "id": "faq.ovelse-frekvens",
+      "question": "Hvor ofte må vi gjennomføre brannøvelse?",
+      "answer_excerpt": "For de fleste virksomheter anbefales minst én brannøvelse i året. For særskilte brannobjekter er årlig øvelse normalt et minstekrav.",
+      "class": "SOURCE_CONFIRMED",
+      "notes": "Page mixes anbefaling and minstekrav. Classification of claim vs requirement is exactly the FLO concept that is NOT modelled on the site."
+    },
+    {
+      "id": "faq.ovelse-innhold",
+      "question": "Hva må en brannøvelse inneholde?",
+      "answer_excerpt": "Live page repeats the frequency answer, then adds evakueringsplan (rømningsveier, oppmøteplass, ansvar, personer som trenger bistand) and TEK17 requirement for evakueringsplan in risk class 5 and 6 / public / workplace buildings before use.",
+      "class": "CONFLICTING",
+      "notes": "Question and answer are misaligned. First paragraph duplicates previous FAQ. Content gap: actual drill contents (varsling, slokking, rømning, evaluering) not described."
+    }
+  ],
+  "cta_questions_not_answered": [
+    "Usikker på hvor du skal starte?",
+    "Noe du lurer på?"
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "extracted_at": "2026-09-16T16:20:00Z",
+  "original_html": "data/source/html/",
+  "raw_registers": "data/source/raw/",
+  "pages": [
+    {
+      "path": "/",
+      "html": "data/source/html/index.html",
+      "h1": "Vi bidrar til brannsikkerhet for eiere og brukere",
+      "modules": [
+        "hero",
+        "service_cards_3",
+        "process_3_steps",
+        "audience_2",
+        "cases_2",
+        "3d_scanning",
+        "contact_form",
+        "faq_10"
+      ],
+      "contamination": [
+        "meta guarantee + energiledelse",
+        "BFN case quotes",
+        "mailto leftover post@bfnorge.no"
+      ]
+    },
+    {
+      "path": "/tjenester",
+      "html": "data/source/html/tjenester.html",
+      "h1": "Brannsikkerhet. Skreddersydd.",
+      "contamination": [
+        "title Byggforvaltning",
+        "lorem meta"
+      ]
+    },
+    {
+      "path": "/tjenester/teknisk-forvaltning",
+      "h1": "Meir enn brannsikring – vi skapar tryggleik",
+      "language": "nynorsk heading, bokmål body"
+    },
+    {
+      "path": "/tjenester/brannforebygging",
+      "h1": "Optimalisér sikkerhet og kostnader med skreddersydde løsninger for ditt byggverk",
+      "contamination": [
+        "BFN service chip repeater 6x"
+      ]
+    },
+    {
+      "path": "/tjenester/brannteknisk-utforelse",
+      "h1": "Vi tar ansvar for hele prosessen – fra kontroll til utførelse"
+    },
+    {
+      "path": "/om-oss",
+      "h1": "Om oss",
+      "contamination": [
+        "BFN ownership timeline mixed with FLO founding",
+        "meta description is BFN copy: 'Byggforvaltning bistår eiendomsbesittere...'"
+      ]
+    },
+    {
+      "path": "/kontakt",
+      "h1": "Kontakt oss"
+    },
+    {
+      "path": "/partnere",
+      "h1": "Vi samarbeider med ledende fagmiljø",
+      "partners": [
+        "Byggforvaltning",
+        "Eld365"
+      ],
+      "contamination": [
+        "entire page is BFN/ELD energy partnership plus BFN case quotes"
+      ]
+    },
+    {
+      "path": "/nyheter",
+      "h1": "Siste nytt og oppdateringer"
+    },
+    {
+      "path": "/kundegrupper/eiendomsselskaper-og-byggeiere",
+      "h1": "Vi forvalter verdien i eiendommene dine",
+      "contamination": [
+        "Teknisk eiendomsdrift, prediktivt vedlikehold, digital FDV — BFN"
+      ]
+    },
+    {
+      "path": "/kundegrupper/storre-leietakere",
+      "h1": "Vi bistår med brannsikkerheten i virksomheten",
+      "contamination": [
+        "Byggforvaltning håndterer daglig drift og vedlikehold"
+      ]
+    }
+  ],
+  "homepage_process": {
+    "class": "SOURCE_CONFIRMED",
+    "steps": [
+      "Vi gir deg kontroll på lovpålagte krav.",
+      "Du får oversikt over nødvendige tiltak. Du velger selv hva som skal utføres.",
+      "Vi følger opp som avtalt. Du beholder styringen."
+    ],
+    "notes": "This is a commercial process, not the full FLO decision journey in the startordre (bygg→bruk→dokumentasjon→ansvar→risiko→regelverk→faktisk krav→alternativer→prioritering)."
+  },
+  "ticker_services": [
+    "Brannrådgivning",
+    "Brannteknisk utførelse",
+    "Branningeniør",
+    "Industrivern"
+  ],
+  "ticker_building_types": [
+    "Prosjekter",
+    "Kjøpesenter",
+    "Kombinerte bygg",
+    "Industribygg",
+    "Butikker",
+    "Overnatting",
+    "Hotell",
+    "Kraftverk"
+  ],
+  "form_promise": "Send noen ord under om situasjonen din, så hører du fra oss innen én til to virkedager. Ingen forpliktelser, bare en hyggelig samtale.",
+  "independent_verify_2026_09_16b": {
+    "homepage_cases_section": {
+      "class": "SOURCE_CONFIRMED",
+      "observation": "The 'Resultater skapt i samarbeid' / kundehistorier grid on the homepage sits inside <div class=\"container hide\">. The 404 /kundehistorier CTA is therefore in a hidden block on home, but the same CTA is visible on service pages (section padding-top-140px hide vs container hide — service pages use section.hide)."
+    },
+    "hero_ticker_includes_industrivern": true,
+    "mapbox_title_pollution": {
+      "pages": ["/om-oss", "/kontakt"],
+      "title_suffix": "Mapbox_Logo_08",
+      "class": "SOURCE_CONFIRMED"
+    },
+    "privacy_cookie_href": "#",
+    "instagram_href": "#"
+  }
+}

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FLO Brannsikring — Kommersielt beslutningskart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #10243d;
+      --navy-2: #1a3558;
+      --orange: #e35b1c;
+      --orange-deep: #b43c0c;
+      --paper: #f6f3ec;
+      --sheet: #fffcf7;
+      --line: rgba(16, 36, 61, 0.16);
+      --muted: #5c6570;
+      --ink: #10243d;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+    }
+    body {
+      background-image:
+        linear-gradient(rgba(16,36,61,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16,36,61,0.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .sheet {
+      position: relative;
+      max-width: 1680px;
+      margin: 0 auto;
+      padding: 28px 32px 48px;
+    }
+    .sheet::before, .sheet::after {
+      content: "";
+      position: absolute;
+      top: 16px;
+      bottom: 16px;
+      width: 1px;
+      background: var(--line);
+    }
+    .sheet::before { left: 14px; }
+    .sheet::after { right: 14px; }
+    .kicker {
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+    header.top {
+      display: grid;
+      grid-template-columns: 220px 1fr auto;
+      gap: 24px;
+      align-items: end;
+      padding-bottom: 18px;
+      border-bottom: 2px solid var(--navy);
+    }
+    header.top img.logo { height: 52px; width: auto; display: block; }
+    .title-block h1 {
+      margin: 0;
+      font-size: 34px;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    .title-block p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .rule-box {
+      border: 1px solid var(--orange);
+      padding: 10px 14px;
+      max-width: 320px;
+      background: var(--sheet);
+    }
+    .rule-box .kicker { color: var(--orange); }
+    .rule-box strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .layer {
+      margin-top: 22px;
+    }
+    .layer-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+    .layer-head h2 {
+      margin: 0;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .layer-head span { color: var(--muted); font-size: 13px; }
+    .sit {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .card {
+      background: var(--sheet);
+      border: 1px solid var(--line);
+      padding: 16px 16px 14px;
+      min-height: 100%;
+    }
+    .card h3 {
+      margin: 8px 0 10px;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+    .card ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .card li {
+      padding: 5px 0;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+      line-height: 1.35;
+    }
+    .method {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      border: 1px solid var(--navy);
+      background: var(--sheet);
+    }
+    .method li {
+      list-style: none;
+      padding: 12px 10px;
+      border-right: 1px solid var(--line);
+      min-height: 92px;
+    }
+    .method li:last-child { border-right: 0; }
+    .method .n {
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+    .method .l {
+      margin-top: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+    .method .is-krav {
+      background: var(--navy);
+      color: #fff;
+      border-right-color: var(--navy);
+    }
+    .method .is-krav .n { color: var(--orange); }
+    .icp {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .icp article {
+      background: var(--sheet);
+      border: 1px solid var(--line);
+      padding: 14px 14px 12px;
+    }
+    .icp h3 { margin: 4px 0 2px; font-size: 16px; }
+    .who { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+    .meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .meta b {
+      display: block;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+    .flo-role {
+      grid-column: 1 / -1;
+      margin-top: 4px;
+      padding-top: 8px;
+      border-top: 1px solid var(--line);
+    }
+    .tracks {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr 1fr;
+      gap: 12px;
+    }
+    .track { background: var(--sheet); border: 1px solid var(--line); padding: 16px; }
+    .track.claim {
+      border-color: var(--navy);
+      box-shadow: inset 0 0 0 1px var(--navy);
+    }
+    .track h3 { margin: 6px 0 4px; font-size: 18px; }
+    .track .sub { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .chip {
+      border: 1px solid var(--navy);
+      padding: 5px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .chip.or { background: var(--orange); color: #fff; border-color: var(--orange); }
+    .chip.nv { background: var(--navy); color: #fff; }
+    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 13px; }
+    .cols b { display: block; font-size: 11px; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .qs {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+    .qs a, .qs span {
+      display: block;
+      background: var(--navy);
+      color: #fff;
+      padding: 14px 10px;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.3;
+      text-decoration: none;
+      min-height: 72px;
+    }
+    .end {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      background: var(--navy);
+      color: #fff;
+    }
+    .end div {
+      padding: 16px 12px;
+      border-right: 1px solid rgba(255,255,255,0.14);
+    }
+    .end div:last-child { border-right: 0; }
+    .end .n { color: var(--orange); font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10px; letter-spacing: 0.14em; }
+    .end .l { margin-top: 6px; font-size: 13px; font-weight: 600; }
+    footer.bottom {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      color: var(--muted);
+    }
+    footer.bottom .stamp {
+      background: var(--navy);
+      padding: 10px 12px;
+    }
+    footer.bottom img { height: 48px; width: auto; display: block; }
+    .photos {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .photos figure {
+      margin: 0;
+      position: relative;
+      min-height: 120px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .photos img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      display: block;
+    }
+    .photos figcaption {
+      position: absolute;
+      left: 8px;
+      bottom: 6px;
+      color: #fff;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-shadow: 0 1px 8px #000;
+    }
+    @media (max-width: 1100px) {
+      header.top, .sit, .icp, .tracks, .qs, .end, .method { grid-template-columns: 1fr; }
+      .method li, .end div { border-right: 0; border-bottom: 1px solid var(--line); }
+      .qs { grid-template-columns: 1fr 1fr; }
+      header.top { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { background: #fff; }
+      .sheet { max-width: none; padding: 12mm; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <header class="top">
+      <img class="logo" src="assets/flo-wordmark.png" alt="Flo Brannsikring" />
+      <div class="title-block">
+        <p class="kicker">FLO BRANNSIKRING</p>
+        <h1>Fra risiko til trygghet</h1>
+        <p>Kommersielt beslutningskart for bygg, prosjekt og drift</p>
+      </div>
+      <div class="rule-box">
+        <div class="kicker">FLO-regelen</div>
+        <strong>Kom inn før løsning, prosjekt og kostnad er låst.</strong>
+      </div>
+    </header>
+
+    <section class="layer">
+      <div class="layer-head">
+        <h2>01 · Situasjon</h2>
+        <span>Tre kjøpsinnganger. Samme avklaring etterpå.</span>
+      </div>
+      <div class="sit">
+        <article class="card">
+          <div class="kicker">A</div>
+          <h3>Noe er påpekt</h3>
+          <ul>
+            <li>Tilsyn / avvik / pålegg</li>
+            <li>Kontrollfunn</li>
+            <li>Krav fra rådgiver eller entreprenør</li>
+            <li>Kostbart tiltak / uenighet om løsning</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="kicker">B</div>
+          <h3>Noe skal endres</h3>
+          <ul>
+            <li>Nybygg / ombygging</li>
+            <li>Rehabilitering / bruksendring</li>
+            <li>Ny leietaker / nytt prosjekt</li>
+            <li>Nytt utstyr / endret drift</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="kicker">C</div>
+          <h3>Noe er uklart</h3>
+          <ul>
+            <li>Hva gjelder – og hvem har ansvaret?</li>
+            <li>Er dette faktisk et krav?</li>
+            <li>Holder dokumentasjonen?</li>
+            <li>Kan vi gjøre det selv / finnes det en annen løsning?</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="layer">
+      <div class="layer-head">
+        <h2>02 · FLO avklarer</h2>
+        <span>Faglig metode. Ikke en generisk prosesslinje.</span>
+      </div>
+      <ol class="method">
+        <li><div class="n">01</div><div class="l">Bygg</div></li>
+        <li><div class="n">02</div><div class="l">Bruk</div></li>
+        <li><div class="n">03</div><div class="l">Dokumentasjon</div></li>
+        <li><div class="n">04</div><div class="l">Ansvar</div></li>
+        <li><div class="n">05</div><div class="l">Risiko</div></li>
+        <li><div class="n">06</div><div class="l">Regelverk</div></li>
+        <li class="is-krav"><div class="n">07 · kjerne</div><div class="l">Faktisk krav</div></li>
+        <li><div class="n">08</div><div class="l">Alternativer</div></li>
+        <li><div class="n">09</div><div class="l">Prioritering</div></li>
+      </ol>
+    </section>
+
+    <section class="layer">
+      <div class="layer-head">
+        <h2>03 · Hvem er kunden / ICP</h2>
+        <span>Ulike verdener. Samme mål: tryggere bygg, dokumentert neste steg.</span>
+      </div>
+      <div class="icp">
+        <article>
+          <div class="kicker">01</div>
+          <h3>Privat</h3>
+          <p class="who">Boligeier, privat byggherre og utleier</p>
+          <div class="meta">
+            <div><b>Hva skjer</b>Eldre bolig, rømningsforhold, kjeller / loft / utleiedel, bruksendring, nytt hus / rehabilitering</div>
+            <div><b>Risiko</b>Endring uten avklart krav og sporbar dokumentasjon</div>
+            <div class="flo-role"><b>Hva de trenger av FLO</b>Digital vurdering → befaring ved behov → tiltak / videre avklaring</div>
+          </div>
+        </article>
+        <article>
+          <div class="kicker">02</div>
+          <h3>Kommune / offentlig</h3>
+          <p class="who">Eiendom, dokumentasjon og opplæring</p>
+          <div class="meta">
+            <div><b>Hva skjer</b>Skoler, helsebygg, rådhus, boliger, idrettsbygg. Tilsyn, avvik, internkontroll, risiko, opplæring, øvelser</div>
+            <div><b>Risiko</b>Tilsyn og internkontroll uten sporbar oversikt</div>
+            <div class="flo-role"><b>Hva de trenger av FLO</b>Kartlegging → prioritering → tiltak → oppfølging</div>
+          </div>
+        </article>
+        <article>
+          <div class="kicker">03 · kjerne</div>
+          <h3>Eiendom / forvaltning</h3>
+          <p class="who">Kontroll på bygg og portefølje</p>
+          <div class="meta">
+            <div><b>Hva skjer</b>Overtatt bygg, ny leietaker, gammel dokumentasjon, bruksendring, tilsyn, avvik, rehabilitering, mange bygg</div>
+            <div><b>Risiko</b>Avvik og dokumentasjon som ikke overlever skifte av bygg eller leietaker</div>
+            <div class="flo-role"><b>Hva de trenger av FLO</b>Status → prioriter bygg → fysisk kontroll der nødvendig → dokumentert oppfølging</div>
+          </div>
+        </article>
+        <article>
+          <div class="kicker">04</div>
+          <h3>Arkitekt / byggherre</h3>
+          <p class="who">FLO inn i tidligfase</p>
+          <div class="meta">
+            <div><b>Hva skjer</b>Før planløsning, bruk, rømningsstrategi, tekniske løsninger og anbud låses</div>
+            <div><b>Risiko</b>Løsning og kostnad låses før brannfaglige premisser</div>
+            <div class="flo-role"><b>Hva de trenger av FLO</b>Premisser → arkitektur → brannkonsept / RIBr → prosjektering → anbud / videre prosjekt</div>
+          </div>
+        </article>
+        <article>
+          <div class="kicker">05</div>
+          <h3>Industri / kraft</h3>
+          <p class="who">Endringer i drift endrer risiko</p>
+          <div class="meta">
+            <div><b>Hva skjer</b>Nytt utstyr, ny prosess, ny aktivitet, driftsendring, beredskap, dokumentasjon, opplæring</div>
+            <div><b>Risiko</b>Driftsendring uten oppdatert vurdering av krav</div>
+            <div class="flo-role"><b>Hva de trenger av FLO</b>Risikovurdering → krav → dokumentasjon → tiltak → kontroll / oppfølging</div>
+          </div>
+        </article>
+        <article>
+          <div class="kicker">06</div>
+          <h3>Entreprenør</h3>
+          <p class="who">Avklar før endring utføres</p>
+          <div class="meta">
+            <div><b>Hva skjer</b>Hva er prosjektert? Stemmer bygg med dokumentasjon? Påvirker endringen brannsikkerheten? Hva må dokumenteres? Når må RIBr inn?</div>
+            <div><b>Risiko</b>Utførelse før det er avklart hva som faktisk gjelder</div>
+            <div class="flo-role"><b>Hva de trenger av FLO</b>Avklar → dokumenter → prosjekter → utfør riktig</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="layer">
+      <div class="layer-head">
+        <h2>04 · Produkt- og beslutningsspor</h2>
+        <span>Riktig spor etter avklaring. Ikke en produktkatalog først.</span>
+      </div>
+      <div class="tracks">
+        <article class="track">
+          <div class="kicker">A · Opplæring</div>
+          <h3>Ikke start med «hvilket kurs?»</h3>
+          <p class="sub">Start med rolle, ansvar og risiko.</p>
+          <div class="flow">
+            <span class="chip">Virksomhet</span>
+            <span class="chip">Bygg</span>
+            <span class="chip">Risiko</span>
+            <span class="chip">Roller</span>
+            <span class="chip">Eksisterende kompetanse</span>
+            <span class="chip nv">Nødvendig kompetanse</span>
+          </div>
+          <div class="cols">
+            <div><b>Digitalt</b>Teori · onboarding · repetisjon · fagmoduler</div>
+            <div><b>Fysisk</b>Slokking · evakuering · scenario · øvelse</div>
+          </div>
+          <p class="sub" style="margin:12px 0 0">Resultat: opplæringsplan + videre oppfølging</p>
+        </article>
+
+        <article class="track claim">
+          <div class="kicker">B · Beslutningsmotor</div>
+          <h3>Påstand eller krav?</h3>
+          <p class="sub">FLO skiller det som blir sagt fra det som faktisk kan dokumenteres.</p>
+          <div class="flow">
+            <span class="chip">Påstand</span>
+            <span class="chip">Fakta</span>
+            <span class="chip">Lov / forskrift / standard / fagkilde</span>
+            <span class="chip nv">Klassifisering</span>
+            <span class="chip">Konsekvens</span>
+            <span class="chip">Alternativer</span>
+            <span class="chip or">Anbefaling</span>
+          </div>
+          <div class="flow">
+            <span class="chip nv">Krav</span>
+            <span class="chip">Anbefaling</span>
+            <span class="chip">Faglig vurdering</span>
+          </div>
+        </article>
+
+        <article class="track">
+          <div class="kicker">C · Leveranseform</div>
+          <h3>Riktig form for riktig sak</h3>
+          <p class="sub">Geografi og dekning avklares per oppdrag. Ikke låst i kartet.</p>
+          <div class="cols">
+            <div><b>Digitalt</b>Dokumentgjennomgang · faglig vurdering · RIBr / rådgivning der egnet · avvik / krav · second opinion · opplæring</div>
+            <div><b>Hybrid</b>Digital vurdering først · avklar fysisk behov · konkret tilbud</div>
+          </div>
+          <p class="sub" style="margin:12px 0 0"><b style="color:var(--ink)">Fysisk</b> Befaring · kontroll · byggkartlegging · utførelse · vedlikehold · praktisk opplæring · øvelser</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="layer">
+      <div class="layer-head">
+        <h2>05 · Markedsspørsmål</h2>
+        <span>Slik kunden kommer inn. Inngang til avklaring, ikke til en ferdig pakke.</span>
+      </div>
+      <div class="qs">
+        <span>Hva gjelder?</span>
+        <span>Har vi kontroll?</span>
+        <span>Vi har fått et avvik</span>
+        <span>Vi skal bygge om</span>
+        <span>Kan vi gjøre dette selv?</span>
+        <span>Er tiltaket faktisk nødvendig?</span>
+        <span>Trenger alle samme opplæring?</span>
+      </div>
+    </section>
+
+    <section class="layer">
+      <div class="layer-head">
+        <h2>06 · Beslutningsflyt</h2>
+        <span>Kartets kommersielle hovedlogikk, ende til ende.</span>
+      </div>
+      <div class="end">
+        <div><div class="n">01</div><div class="l">Situasjon</div></div>
+        <div><div class="n">02</div><div class="l">Kunde</div></div>
+        <div><div class="n">03</div><div class="l">Faglig avklaring</div></div>
+        <div><div class="n">04</div><div class="l">Digitalt / hybrid / fysisk</div></div>
+        <div><div class="n">05</div><div class="l">Riktig FLO-fag</div></div>
+        <div><div class="n">06</div><div class="l">Konkret leveranse</div></div>
+        <div><div class="n">07</div><div class="l">Oppfølging</div></div>
+      </div>
+    </section>
+
+    <div class="photos">
+      <figure>
+        <img src="assets/naeringsbygg.jpg" alt="Næringsbygg fra FLO sitt materiale" />
+        <figcaption>Bygg</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/fagmiljo.jpg" alt="FLO-fagmiljø i arbeid" />
+        <figcaption>Avklaring</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/sikkerhetsvegg.jpg" alt="Branninstruks og slokkeutstyr" />
+        <figcaption>Dokumentasjon</figcaption>
+      </figure>
+    </div>
+
+    <footer class="bottom">
+      <div>
+        FLO BRANNSIKRING AS · org.nr 979 582 064 · Stryn og Nordfjordeid<br />
+        DiBK sentral godkjenning: brannkonsept TK3 · uavhengig kontroll brannsikkerhet TK3 · ansvarlig søker TK1 · godkjent opplæringsbedrift<br />
+        Internt kommersielt styringskart. Ingen uverifisert dekning, kundetall eller VCTRA-avsender.
+      </div>
+      <div class="stamp">
+        <img src="assets/dibk.png" alt="Sentral godkjenning DiBK" />
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+{
+  "extracted_at": "2026-09-16T16:20:00Z",
+  "policy": "Never promote INFERRED to fact. Commercial claims without person/certificate/project/approval evidence stay EVIDENCE_REQUIRED.",
+  "items": [
+    {
+      "id": "claim.garanti-kontroll",
+      "text": "Vi garanterer* deg full kontroll på alle lovpålagte krav i dine eiendommer.",
+      "where": "meta description homepage",
+      "class": "CONFLICTING",
+      "evidence": "Asterisk unused on page. Mixes FLO with BFN services (teknisk forvaltning, energiledelse). Do not republish as FLO fact.",
+      "status": "DO_NOT_PUBLISH_AS_FACT"
+    },
+    {
+      "id": "claim.totalleverandor",
+      "text": "Flo Brannsikring er i dag en fagsterk totalleverandør av branntekniske tjenester.",
+      "where": "/om-oss",
+      "class": "SOURCE_CONFIRMED",
+      "evidence": "Service breadth + 15 staff + DiBK TK3. 'Totalleverandør' is marketing; evidence is partial.",
+      "status": "OK_WITH_QUALIFICATION"
+    },
+    {
+      "id": "claim.uk3",
+      "text": "Flo Brannsikring har sentral godkjenning for uavhengig kontroll av brannprosjektering i tiltaksklasse 3.",
+      "where": "/tjenester/brannforebygging",
+      "class": "SOURCE_CONFIRMED",
+      "evidence": "sgregister.dibk.no Uavhengig kontrollerende / Brannsikkerhet / 3",
+      "status": "OK"
+    },
+    {
+      "id": "claim.prosjekterende-tk3",
+      "text": "Implied RIBr / brannkonsept at high complexity",
+      "where": "service page + DiBK",
+      "class": "SOURCE_CONFIRMED",
+      "evidence": "Prosjekterende / Brannkonsept / 3",
+      "status": "OK"
+    },
+    {
+      "id": "claim.del-av-bfn",
+      "text": "Som en del av Byggforvaltning Norge har vi tilgang til et bredt fagmiljø...",
+      "where": "/om-oss",
+      "class": "SOURCE_CONFIRMED",
+      "evidence": "Website + secondary ownership sources",
+      "status": "OK_OWNERSHIP_TO_CONFIRM_IN_AKSJEEIERBOK"
+    },
+    {
+      "id": "claim.heleid-2022",
+      "text": "i 2022 ble [BFN] eier av hele selskapet",
+      "where": "/om-oss",
+      "class": "INFERRED",
+      "evidence": "Website narrative. Brreg erIKonsern=false. Secondary databases say 100%.",
+      "status": "EVIDENCE_REQUIRED"
+    },
+    {
+      "id": "claim.eierstruktur-coop",
+      "text": "Dagens eierskap består av Coop Nordvest 42,5% ... daglig leder 5%.",
+      "where": "/om-oss timeline",
+      "class": "CONFLICTING",
+      "evidence": "This is BFN ownership, not FLO ownership.",
+      "status": "DO_NOT_PUBLISH_AS_FLO_OWNERSHIP"
+    },
+    {
+      "id": "claim.3d",
+      "text": "Med 3D-scanning kan man raskt og kostnadseffektivt få frem presise byggtegninger.",
+      "where": "homepage",
+      "class": "SOURCE_CONFIRMED",
+      "evidence": "Marketing claim, no case, no method, no operator named.",
+      "status": "EVIDENCE_REQUIRED"
+    },
+    {
+      "id": "claim.passiv-alle-omrader",
+      "text": "Vi har kompetansepå alle områder innen passiv brannsikring.",
+      "where": "/tjenester/brannteknisk-utforelse",
+      "class": "EVIDENCE_REQUIRED",
+      "evidence": "None listed (tetting, branndører, gjennomføringer, maling, etc.)",
+      "status": "EVIDENCE_REQUIRED"
+    },
+    {
+      "id": "claim.vr-lov",
+      "text": "Er din virksomhet klar for årets lovpålagte brannøvelse? ... VR-brannøvelser",
+      "where": "/nyheter/vr-brannovelse",
+      "class": "EVIDENCE_REQUIRED",
+      "evidence": "No citation that VR slokkeøvelse satisfies forskrift om brannforebygging drill requirements.",
+      "status": "DO_NOT_STATE_AS_LEGAL_REQUIREMENT"
+    },
+    {
+      "id": "claim.forsikring-bortfall",
+      "text": "Uten dokumentasjon kan også forsikringsdekningen bortfalle ved en hendelse.",
+      "where": "homepage FAQ",
+      "class": "INFERRED",
+      "evidence": "Common industry warning, no insurer/source cited.",
+      "status": "OK_AS_RISK_NOT_AS_RULE"
+    },
+    {
+      "id": "claim.titles-bfn",
+      "text": "Document titles '| Byggforvaltning'",
+      "where": "almost all pages",
+      "class": "SOURCE_CONFIRMED",
+      "evidence": "HTML <title>",
+      "status": "BRAND_ERROR"
+    },
+    {
+      "id": "claim.linkedin",
+      "text": "FLO site represents itself via BFN LinkedIn",
+      "where": "footer",
+      "class": "CONFLICTING",
+      "evidence": "href company/byggforvaltning-norge-as",
+      "status": "BRAND_ERROR"
+    },
+    {
+      "id": "claim.hidden-bfn-svg",
+      "text": "Header/footer contain a hidden Byggforvaltning SVG wordmark with yellow square #FFC563, overlaid by FLO PNG.",
+      "where": "all pages, class brand_logo is-navbar hide",
+      "class": "SOURCE_CONFIRMED",
+      "evidence": "data/source/assets/brand/bfn-wordmark-leftover-hidden-navbar.svg",
+      "status": "BRAND_ERROR_DO_NOT_SHIP"
+    },
+    {
+      "id": "claim.faq-schema-runtime",
+      "text": "FAQPage JSON-LD is injected by client JS on homepage, not present as static script in first HTML.",
+      "where": "/",
+      "class": "SOURCE_CONFIRMED",
+      "evidence": "inline script building schema.org FAQPage from [faq=question]/[faq=answer]",
+      "status": "PARTIAL_MACHINE_READABILITY — crawlers that execute JS may see it; no Organization/Service schema"
+    }
+  ]
+}

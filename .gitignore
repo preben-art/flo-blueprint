@@ -1,0 +1,12 @@
+.DS_Store
+Thumbs.db
+*.pyc
+__pycache__/
+.venv/
+node_modules/
+agent-tools/
+tmp-scaffold/
+.next/
+
+out/
+*.tsbuildinfo

@@ -1,0 +1,487 @@
+{
+  "meta": {
+    "extracted_at": "2026-09-16T16:20:00Z",
+    "primary_source": "https://flo-brannsikring.no/",
+    "platform": "Webflow",
+    "webflow_site_id": "68e37c76e21b707b895670f5",
+    "cf_last_modified_observed": "2026-09-12T05:06:41Z",
+    "method": "HTTP crawl of live site + Brønnøysund API + DiBK sentral godkjenning + Wayback CDX + search index comparison"
+  },
+  "classification_note": "Live HTTP status is SOURCE_CONFIRMED. Wayback and Google snippets are OUTDATED_POSSIBLE unless re-fetched.",
+  "seo": {
+    "sitemap": {
+      "url": "https://flo-brannsikring.no/sitemap.xml",
+      "status": 404,
+      "class": "SOURCE_CONFIRMED"
+    },
+    "robots_txt": {
+      "url": "https://flo-brannsikring.no/robots.txt",
+      "status": 200,
+      "body": "",
+      "class": "SOURCE_CONFIRMED",
+      "notes": "Empty file. No Disallow, no Sitemap."
+    },
+    "canonical_tags": "NONE on any crawled page",
+    "json_ld": "NONE on homepage",
+    "title_pattern_issue": "Almost all titles suffix '| Byggforvaltning' instead of FLO.",
+    "lorem_meta_description": "Velit laboris enim irure magna irure cupidatat elit sunt. Esse amet ad — used on /tjenester, /nyheter, /partnere and paginated views."
+  },
+  "live_200": [
+    {
+      "path": "/",
+      "title": "Flo Brannsikring | Brannteknisk forvaltning",
+      "nav": true,
+      "role": "home"
+    },
+    {
+      "path": "/tjenester",
+      "title": "Tjenester og kompetanse | Byggforvaltning",
+      "nav": true,
+      "role": "service_index"
+    },
+    {
+      "path": "/tjenester/teknisk-forvaltning",
+      "title": "Brannvernrådgivning | Byggforvaltning",
+      "nav": false,
+      "role": "service",
+      "label_on_page": "Brannvernrådgivning",
+      "slug_mismatch": true
+    },
+    {
+      "path": "/tjenester/brannforebygging",
+      "title": "Branningeniører / RIBr | Byggforvaltning",
+      "nav": false,
+      "role": "service",
+      "label_on_page": "Branningeniører / RIBr",
+      "slug_mismatch": true
+    },
+    {
+      "path": "/tjenester/brannteknisk-utforelse",
+      "title": "Brannteknisk utførelse | Byggforvaltning",
+      "nav": false,
+      "role": "service",
+      "label_on_page": "Brannteknisk utførelse"
+    },
+    {
+      "path": "/om-oss",
+      "title": "Om oss | Byggforvaltning",
+      "nav": true,
+      "role": "about"
+    },
+    {
+      "path": "/kontakt",
+      "title": "Kontakt oss | Byggforvaltning",
+      "nav": true,
+      "role": "contact"
+    },
+    {
+      "path": "/partnere",
+      "title": "Partnere | Byggforvaltning",
+      "nav": true,
+      "role": "partners"
+    },
+    {
+      "path": "/nyheter",
+      "title": "Nyheter | Byggforvaltning",
+      "nav": true,
+      "role": "article_index"
+    },
+    {
+      "path": "/nyheter/vr-brannovelse",
+      "title": "🔥 VR-brannøvelse - moderne brannopplæring | Byggforvaltning",
+      "nav": false,
+      "role": "article"
+    },
+    {
+      "path": "/nyheter/brannsikkerhet-krever-kompetente-og-engasjerte-mennesker",
+      "title": "Brannsikkerhet krever kompetente og engasjerte mennesker | Byggforvaltning",
+      "nav": false,
+      "role": "article"
+    },
+    {
+      "path": "/nyheter/ny-brannstandard-gjor-hverdagen-enklere-for-forvaltningen",
+      "title": "Ny brannstandard gjør hverdagen enklere for forvaltningen | Byggforvaltning",
+      "nav": false,
+      "role": "article"
+    },
+    {
+      "path": "/kundehistorier/classic-norway-hotels",
+      "title": "Classic Norway Hotels | Byggforvaltning",
+      "nav": false,
+      "role": "project"
+    },
+    {
+      "path": "/kundehistorier/coop",
+      "title": "Coop | Byggforvaltning",
+      "nav": false,
+      "role": "project"
+    },
+    {
+      "path": "/kundehistorier/weenaas",
+      "title": "Weenaas | Byggforvaltning",
+      "nav": false,
+      "role": "project"
+    },
+    {
+      "path": "/kundegrupper/eiendomsselskaper-og-byggeiere",
+      "title": "Byggeiere, forvaltere og fagmiljø i byggeprosessen | Byggforvaltning",
+      "nav": false,
+      "role": "customer_type"
+    },
+    {
+      "path": "/kundegrupper/storre-leietakere",
+      "title": "Virksomheter og brukere av bygg | Byggforvaltning",
+      "nav": false,
+      "role": "customer_type"
+    },
+    {
+      "path": "/404",
+      "title": "Not Found",
+      "nav": false,
+      "role": "system"
+    }
+  ],
+  "redirects": [
+    {
+      "from": "/kurs",
+      "to": "/kontakt",
+      "status": 301,
+      "notes": "Live redirect. Search index still describes /kurs/ as a course listing (Varme arbeider, Brannforebygging, Industrivern). OUTDATED_POSSIBLE in Google."
+    },
+    {
+      "from": "/kurs/",
+      "to": "/kontakt",
+      "status": 301
+    },
+    {
+      "from": "/tenester-kontroll",
+      "to": "/tjenester/brannteknisk-utforelse",
+      "status": 301,
+      "notes": "Legacy nynorsk service URL."
+    },
+    {
+      "from": "/tenester-kontroll/",
+      "to": "/tjenester/brannteknisk-utforelse",
+      "status": 301
+    },
+    {
+      "from": "/tenester-radgjeving",
+      "to": "/tjenester/teknisk-forvaltning",
+      "status": 301,
+      "notes": "Legacy nynorsk service URL."
+    },
+    {
+      "from": "/tenester-radgjeving/",
+      "to": "/tjenester/teknisk-forvaltning",
+      "status": 301
+    }
+  ],
+  "broken_internal": [
+    {
+      "path": "/kundehistorier",
+      "status": 404,
+      "linked_from": [
+        "/",
+        "nav CTA 'Se alle kundehistorier'"
+      ],
+      "severity": "CRITICAL"
+    },
+    {
+      "path": "/kundegrupper",
+      "status": 404,
+      "linked_from": [
+        "internal collection parent"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "path": "/${detailLink}",
+      "status": 404,
+      "linked_from": [
+        "unresolved Webflow binding"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "path": "/provekjoring",
+      "status": 404,
+      "linked_from": [
+        "live HTML"
+      ],
+      "severity": "MEDIUM"
+    }
+  ],
+  "probed_404": [
+    {
+      "path": "/tenester-utforing",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/tenester-prosjektering",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/tenester-produktar",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/tenester-dokumentasjon",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/tjenester/tenester-radgjeving",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/industrivern",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/3d-scanning",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/3d-skanning",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/opplaring",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/opplaering",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/personvern",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/personvernerklaering",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/prosjekter",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/faq",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/blogg",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/artikler",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/ansatte",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    },
+    {
+      "path": "/karriere",
+      "status": 404,
+      "class": "legacy_or_guessed_not_live"
+    }
+  ],
+  "wayback_eras": [
+    {
+      "era": "ASP/static",
+      "approx": "2001-2005",
+      "examples": [
+        "/default.asp",
+        "/brann.htm",
+        "/html/products_2.asp",
+        "/gifs/logo1.gif"
+      ],
+      "notes": "Product/e-commerce era. Matches vedtektsfestet formål: produksjon og salg av brannvernutstyr."
+    },
+    {
+      "era": "CMS/WordPress-like",
+      "approx": "2013-2017",
+      "examples": [
+        "/forvaltning-drift-og-vedlikehold",
+        "/forvaltning-drift-og-vedlikehold/kurs",
+        "/forvaltning-drift-og-vedlikehold/kontroll-vedlikehold",
+        "/forvaltning-drift-og-vedlikehold/brannovelser",
+        "/forvaltning-drift-og-vedlikehold/representant-for-brannforebygging",
+        "/galleri",
+        "/contact"
+      ],
+      "notes": "Service tree closer to FLO fag than current Webflow clone."
+    },
+    {
+      "era": "WordPress/Elementor",
+      "approx": "2017-2025-06",
+      "examples": [
+        "/author/matsflo-brannsikring-no/",
+        "/author/torebfnorge-no/",
+        "/?elementor_library=default-kit",
+        "nynorsk /tenester-* indexed by Google"
+      ],
+      "notes": "Nynorsk site still in search snippets: Kontroll, Rådgjeving, Utføring, Prosjektering, Produktar, Dokumentasjon, Kurs."
+    },
+    {
+      "era": "Webflow BFN clone",
+      "approx": "2026-06+",
+      "examples": [
+        {
+          "path": "/",
+          "title": "Flo Brannsikring | Brannteknisk forvaltning",
+          "nav": true,
+          "role": "home"
+        },
+        {
+          "path": "/tjenester",
+          "title": "Tjenester og kompetanse | Byggforvaltning",
+          "nav": true,
+          "role": "service_index"
+        },
+        {
+          "path": "/tjenester/teknisk-forvaltning",
+          "title": "Brannvernrådgivning | Byggforvaltning",
+          "nav": false,
+          "role": "service",
+          "label_on_page": "Brannvernrådgivning",
+          "slug_mismatch": true
+        },
+        {
+          "path": "/tjenester/brannforebygging",
+          "title": "Branningeniører / RIBr | Byggforvaltning",
+          "nav": false,
+          "role": "service",
+          "label_on_page": "Branningeniører / RIBr",
+          "slug_mismatch": true
+        },
+        {
+          "path": "/tjenester/brannteknisk-utforelse",
+          "title": "Brannteknisk utførelse | Byggforvaltning",
+          "nav": false,
+          "role": "service",
+          "label_on_page": "Brannteknisk utførelse"
+        },
+        {
+          "path": "/om-oss",
+          "title": "Om oss | Byggforvaltning",
+          "nav": true,
+          "role": "about"
+        },
+        {
+          "path": "/kontakt",
+          "title": "Kontakt oss | Byggforvaltning",
+          "nav": true,
+          "role": "contact"
+        },
+        {
+          "path": "/partnere",
+          "title": "Partnere | Byggforvaltning",
+          "nav": true,
+          "role": "partners"
+        },
+        {
+          "path": "/nyheter",
+          "title": "Nyheter | Byggforvaltning",
+          "nav": true,
+          "role": "article_index"
+        },
+        {
+          "path": "/nyheter/vr-brannovelse",
+          "title": "🔥 VR-brannøvelse - moderne brannopplæring | Byggforvaltning",
+          "nav": false,
+          "role": "article"
+        },
+        {
+          "path": "/nyheter/brannsikkerhet-krever-kompetente-og-engasjerte-mennesker",
+          "title": "Brannsikkerhet krever kompetente og engasjerte mennesker | Byggforvaltning",
+          "nav": false,
+          "role": "article"
+        },
+        {
+          "path": "/nyheter/ny-brannstandard-gjor-hverdagen-enklere-for-forvaltningen",
+          "title": "Ny brannstandard gjør hverdagen enklere for forvaltningen | Byggforvaltning",
+          "nav": false,
+          "role": "article"
+        },
+        {
+          "path": "/kundehistorier/classic-norway-hotels",
+          "title": "Classic Norway Hotels | Byggforvaltning",
+          "nav": false,
+          "role": "project"
+        },
+        {
+          "path": "/kundehistorier/coop",
+          "title": "Coop | Byggforvaltning",
+          "nav": false,
+          "role": "project"
+        },
+        {
+          "path": "/kundehistorier/weenaas",
+          "title": "Weenaas | Byggforvaltning",
+          "nav": false,
+          "role": "project"
+        },
+        {
+          "path": "/kundegrupper/eiendomsselskaper-og-byggeiere",
+          "title": "Byggeiere, forvaltere og fagmiljø i byggeprosessen | Byggforvaltning",
+          "nav": false,
+          "role": "customer_type"
+        },
+        {
+          "path": "/kundegrupper/storre-leietakere",
+          "title": "Virksomheter og brukere av bygg | Byggforvaltning",
+          "nav": false,
+          "role": "customer_type"
+        },
+        {
+          "path": "/404",
+          "title": "Not Found",
+          "nav": false,
+          "role": "system"
+        }
+      ],
+      "notes": "Current live. Titles/meta still say Byggforvaltning. Cloudflare last-modified 2026-09-12."
+    }
+  ],
+  "nav_actual": [
+    "Tjenester",
+    "Partnere",
+    "Nyheter",
+    "Om oss",
+    "Kontakt"
+  ],
+  "missing_vs_brief": [
+    "Løsninger IA",
+    "Hvem er du IA",
+    "Prosjekter index",
+    "Fag og kunnskap",
+    "Kurs live page",
+    "Industrivern page",
+    "3D-scanning page",
+    "Påstand eller krav",
+    "Personvern"
+  ]
+}

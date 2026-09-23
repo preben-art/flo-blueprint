@@ -1,0 +1,111 @@
+{
+  "extracted_at": "2026-09-16T16:20:00Z",
+  "index_page": {
+    "path": "/kundehistorier",
+    "status": 404,
+    "class": "SOURCE_CONFIRMED",
+    "severity": "CRITICAL"
+  },
+  "live_cases": [
+    {
+      "id": "project.coop",
+      "name": "Coop",
+      "path": "/kundehistorier/coop",
+      "class": "SOURCE_CONFIRMED",
+      "tagged_services": [
+        "Brannteknisk utførelse",
+        "Branningeniører / RIBr",
+        "Brannvernrådgivning"
+      ],
+      "quote_or_body": "Byggforvaltning har tilført Coop Nordvest og Coop Nordland kvalitet og kapasitet på leveranser i prosjekter og oversikt og eiendomsporteføljene. Som en komplett tilbyder av teknisk forvaltning, brannrelaterte tjenester og energiledelse har Coop oppnådd en god oversikt og forbedret lønnsomhet i en stor eiendomsportefølje.",
+      "voice": "Byggforvaltning, not FLO",
+      "proof_quality": "WEAK — no named building, no named FLO person, no before/after, no fire-specific outcome",
+      "also_named_on_om_oss": [
+        "Coop Orkla Møre (first contract)",
+        "Coop Norge Eiendom",
+        "Coop Vest",
+        "Coop Nordvest",
+        "Coop Nordland"
+      ]
+    },
+    {
+      "id": "project.classic-norway",
+      "name": "Classic Norway Hotels",
+      "path": "/kundehistorier/classic-norway-hotels",
+      "class": "SOURCE_CONFIRMED",
+      "tagged_services": [
+        "Brannvernrådgivning",
+        "Branningeniører / RIBr"
+      ],
+      "quote_or_body": "Strukturert tilnærming og oppfølging har gitt oss forutsigbare og planmessig oppfølging av våre eiendommer. God kompetanse og kapasitet er avgjørende for rasjonell drift av våre eiendommer.",
+      "homepage_attribution": "Byggforvaltning har god kompetanse og kapasitet...",
+      "voice": "Byggforvaltning",
+      "proof_quality": "WEAK"
+    },
+    {
+      "id": "project.weenaas",
+      "name": "Weenaas / Wenaas",
+      "path": "/kundehistorier/weenaas",
+      "class": "SOURCE_CONFIRMED",
+      "spelling": "CONFLICTING",
+      "notes": "URL/title Weenaas; body uses Wenaas. Partner logo file weenaas_forvaltning.avif.",
+      "tagged_services": [
+        "Brannvernrådgivning",
+        "Branningeniører / RIBr"
+      ],
+      "quote_or_body": "Samarbeidet startet i 2021 og har resultert i en betydelig forbedring i eiendomsforvaltningen. Gjennom strukturert dokumentasjonsarbeid og digitalisering av prosesser har Wenaas oppnådd bedre kontroll og en mer forutsigbar hverdag.",
+      "voice": "Byggforvaltning / eiendomsforvaltning, not fire-specific",
+      "proof_quality": "WEAK"
+    }
+  ],
+  "logo_ticker_alts_source_confirmed": [
+    {
+      "file": "ADA2-kopi.png",
+      "alt": "AHDA AS",
+      "class": "SOURCE_CONFIRMED",
+      "notes": "Name confirmed via img alt. Relationship to FLO fire work EVIDENCE_REQUIRED."
+    },
+    {
+      "file": "bremanger.png",
+      "alt": "Bremanger Kommune",
+      "class": "SOURCE_CONFIRMED",
+      "notes": "Name confirmed via img alt. Does NOT prove kommune is a core FLO ICP or that FLO delivered fire services there. Still EVIDENCE_REQUIRED as FLO fire customer."
+    },
+    {
+      "file": "agri 1.png",
+      "alt": "Agri Eiendom AS",
+      "class": "SOURCE_CONFIRMED",
+      "notes": "Previous guess 'Felleskjøpet Agri' was wrong. Alt says Agri Eiendom AS."
+    },
+    {
+      "file": "Artboard 2@4x.png",
+      "alt": "Byggforvaltning Norge",
+      "class": "SOURCE_CONFIRMED",
+      "notes": "Parent/group mark in FLO partner ticker."
+    },
+    {
+      "file": "MISF logo.png",
+      "alt": "MISF",
+      "class": "SOURCE_CONFIRMED",
+      "notes": "Acronym expansion still EVIDENCE_REQUIRED."
+    },
+    {
+      "file": "coop.svg",
+      "alt": "Coop",
+      "class": "SOURCE_CONFIRMED"
+    }
+  ],
+  "building_types_mentioned_on_home_ticker": {
+    "class": "SOURCE_CONFIRMED",
+    "items": [
+      "Kjøpesenter",
+      "Kombinerte bygg",
+      "Industribygg",
+      "Butikker",
+      "Overnatting",
+      "Hotell",
+      "Kraftverk"
+    ],
+    "notes": "Ticker only. No project pages bound to these types except hotel via Classic Norway."
+  }
+}

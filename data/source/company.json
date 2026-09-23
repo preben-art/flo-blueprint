@@ -1,0 +1,393 @@
+{
+  "extracted_at": "2026-09-16T16:20:00Z",
+  "legal": {
+    "legal_name": {
+      "value": "FLO BRANNSIKRING AS",
+      "class": "SOURCE_CONFIRMED",
+      "source": "Brønnøysund 979582064"
+    },
+    "orgnr": {
+      "value": "979582064",
+      "class": "SOURCE_CONFIRMED",
+      "sources": [
+        "flo-brannsikring.no/kontakt",
+        "data.brreg.no",
+        "sgregister.dibk.no"
+      ]
+    },
+    "underenhet_orgnr": {
+      "value": "972998648",
+      "class": "SOURCE_CONFIRMED",
+      "source": "Brønnøysund underenheter",
+      "notes": "BEDR underenhet, oppstartsdato 1994-01-01, historisk navn FLO BRANNSIKRING from 1995."
+    },
+    "org_form": {
+      "value": "AS",
+      "class": "SOURCE_CONFIRMED"
+    },
+    "founded_as": {
+      "value": "1998-01-21",
+      "class": "SOURCE_CONFIRMED",
+      "source": "Brønnøysund stiftelsesdato"
+    },
+    "founded_narrative": {
+      "value": "Familiebedrift i 1993 i Stryn / Gunvor Flo etablerer Flo Brannsikring heime på Hool",
+      "class": "CONFLICTING",
+      "conflict": "Website 1993 vs Brreg underenhet oppstart 1994-01-01 vs AS stiftet 1998-01-21. All three can be true at different legal layers; do not collapse to one year without customer confirmation."
+    },
+    "maalform": {
+      "value": "Nynorsk",
+      "class": "SOURCE_CONFIRMED",
+      "source": "Brønnøysund",
+      "notes": "Live website is mostly Bokmål. CONFLICTING language strategy."
+    },
+    "naeringskode": {
+      "value": "71.129 Annen teknisk konsulentvirksomhet",
+      "class": "SOURCE_CONFIRMED",
+      "source": "Brønnøysund API 2026-09-16",
+      "outdated_elsewhere": "Proff/regnskapstall still show 43.210 Elektrisk installasjonsarbeid — OUTDATED_POSSIBLE on those aggregators."
+    },
+    "vedtektsfestet_formaal": {
+      "value": "Produksjon og salg av brannvernutstyr, samt annen virksomhet som naturlig faller inn under dette.",
+      "class": "SOURCE_CONFIRMED",
+      "source": "Brønnøysund vedtektsdato 2021-02-10"
+    },
+    "aktivitet": {
+      "value": "Konsulenttjenester innen brannsikkerhet, samt utførelse relatert til brannsikring og tilhørende produkter til dette",
+      "class": "SOURCE_CONFIRMED"
+    },
+    "employees": {
+      "value": 15,
+      "class": "SOURCE_CONFIRMED",
+      "source": "Brønnøysund antallAnsatte, updated 2026-04"
+    },
+    "share_capital": {
+      "value_nok": 600000,
+      "shares": 600,
+      "class": "SOURCE_CONFIRMED"
+    },
+    "vat_registered": {
+      "value": true,
+      "class": "SOURCE_CONFIRMED"
+    },
+    "auditor": {
+      "value": "BDO AS",
+      "orgnr": "993606650",
+      "class": "SOURCE_CONFIRMED"
+    },
+    "accountant": {
+      "value": "ØKORÅD FJORD AS",
+      "orgnr": "920679919",
+      "class": "SOURCE_CONFIRMED"
+    },
+    "board": [
+      {
+        "name": "Bjarne Nedreklepp Dale",
+        "role": "Styrets leder",
+        "class": "SOURCE_CONFIRMED",
+        "notes": "Also daglig leder of Byggforvaltning Norge AS according to secondary sources."
+      },
+      {
+        "name": "Tore Alm-Ingebrigtsen",
+        "role": "Styremedlem",
+        "class": "SOURCE_CONFIRMED"
+      },
+      {
+        "name": "Kåre Gloppestad",
+        "role": "Styremedlem (ansattes representant)",
+        "class": "SOURCE_CONFIRMED"
+      }
+    ],
+    "managing_director": {
+      "name": "Mats Flo",
+      "class": "SOURCE_CONFIRMED"
+    },
+    "ownership": {
+      "website_claim": "I 2018 ble familiebedriften en del av Byggforvaltning Norge, som i 2022 ble eier av hele selskapet.",
+      "website_class": "SOURCE_CONFIRMED",
+      "secondary_claim": "Byggforvaltning Norge AS (992 986 417) owns 100% / 600 shares.",
+      "secondary_class": "INFERRED",
+      "secondary_sources": [
+        "Proff",
+        "Companybook",
+        "21st.ai"
+      ],
+      "brreg_erIKonsern": {
+        "value": false,
+        "class": "CONFLICTING",
+        "notes": "Public Brreg entity payload says erIKonsern=false. Does not disprove ownership; aksjeeierbok not in open API."
+      },
+      "parent_owners_on_om_oss": {
+        "text": "Dagens eierskap består av Coop Nordvest og Coop Nordland 42,5 % hver, Butikkeiendom Møre 6 %, Classic Norway Eiendom 2 %, Angvik Eiendom 2 %, og daglig leder 5 %.",
+        "class": "CONFLICTING",
+        "notes": "This ownership table is for Byggforvaltning Norge AS (matches regnskapstall.no for 992986417), pasted onto FLO om-oss as if it were FLO. Neddal Holding 5% on BFN vs 'daglig leder 5%' on FLO page — naming mismatch."
+      }
+    }
+  },
+  "brand_name": {
+    "value": "Flo Brannsikring",
+    "class": "SOURCE_CONFIRMED"
+  },
+  "tagline_live": {
+    "value": "Vi bidrar til brannsikkerhet for eiere og brukere",
+    "class": "SOURCE_CONFIRMED"
+  },
+  "locations": [
+    {
+      "id": "loc.stryn",
+      "name": "Hovedkontor Stryn",
+      "address": "Perhusvegen 1A, 6783 Stryn",
+      "postal": "Postboks 207, 6781 Stryn",
+      "class": "SOURCE_CONFIRMED"
+    },
+    {
+      "id": "loc.nordfjordeid",
+      "name": "Avdelingskontor Nordfjordeid",
+      "address": "Øyane 8, 6770 Norfjordeid",
+      "class": "SOURCE_CONFIRMED",
+      "notes": "Typo on live site: Norfjordeid instead of Nordfjordeid."
+    }
+  ],
+  "contact": {
+    "switchboard": {
+      "value": "+47 57 87 33 64",
+      "class": "SOURCE_CONFIRMED"
+    },
+    "switchboard_alt_displayed": {
+      "value": "+47 950 52 570",
+      "class": "SOURCE_CONFIRMED",
+      "notes": "Shown in parentheses next to switchboard on multiple pages. Role unclear (mobile vs old number)."
+    },
+    "email_primary": {
+      "value": "post@flo-brannsikring.no",
+      "class": "SOURCE_CONFIRMED"
+    },
+    "email_legacy_bfn": {
+      "value": "post@bfnorge.no",
+      "class": "CONFLICTING",
+      "notes": "Rendered in parentheses after FLO email across the site. Likely leftover from BFN Webflow clone."
+    },
+    "invoice": {
+      "value": "faktura@flo-brannsikring.no",
+      "class": "SOURCE_CONFIRMED",
+      "also_shown": "faktura@bfnorge.no"
+    },
+    "form": {
+      "id": "wf-form-Kontaktskjema",
+      "method": "get",
+      "fields": [
+        "Navn*",
+        "Bedrift*",
+        "E-post*",
+        "Telefon",
+        "Melding"
+      ],
+      "promise": "hører du fra oss innen én til to virkedager",
+      "class": "SOURCE_CONFIRMED"
+    },
+    "linkedin": {
+      "value": "https://no.linkedin.com/company/byggforvaltning-norge-as",
+      "class": "CONFLICTING",
+      "notes": "FLO site links to parent LinkedIn, not a FLO company page."
+    }
+  },
+  "approvals": {
+    "sentral_godkjenning": {
+      "class": "SOURCE_CONFIRMED",
+      "source": "https://sgregister.dibk.no/enterprises/979582064",
+      "period": "2024-09-12 – 2027-09-12",
+      "flags": [
+        "Yrkesskadeforsikring",
+        "Ansvarsforsikring",
+        "Godkjent opplæringsbedrift"
+      ],
+      "areas": [
+        {
+          "function": "Ansvarlig søker",
+          "fagomrade": "(for alle typer tiltak)",
+          "tiltaksklasse": 1
+        },
+        {
+          "function": "Prosjekterende",
+          "fagomrade": "Brannkonsept",
+          "tiltaksklasse": 3
+        },
+        {
+          "function": "Uavhengig kontrollerende",
+          "fagomrade": "Brannsikkerhet",
+          "tiltaksklasse": 3
+        }
+      ]
+    }
+  },
+  "people": [
+    {
+      "id": "person.mats-flo",
+      "name": "Mats Flo",
+      "role": "Daglig Leder / Branningeniør",
+      "location": "Stryn",
+      "email": "mats@flo-brannsikring.no",
+      "phone": "+47 411 42 338",
+      "photo": "data/source/assets/people/mats-flo.jpg",
+      "brreg_role": "Daglig leder (DAGL) since 2018-07-19",
+      "class": "SOURCE_CONFIRMED"
+    },
+    {
+      "id": "person.vegard-tonning",
+      "name": "Vegard Tonning",
+      "role": "Avd.leder Brannvernrådgivning",
+      "location": "Stryn",
+      "email": "vegard@flo-brannsikring.no",
+      "phone": "+47 482 31 616",
+      "photo": "data/source/assets/people/vegard-tonning.jpg",
+      "class": "SOURCE_CONFIRMED"
+    },
+    {
+      "id": "person.kare-gloppestad",
+      "name": "Kåre Gloppestad",
+      "role": "Avd.leder Branningeniører",
+      "location": "Stryn",
+      "email": "kare@flo-brannsikring.no",
+      "phone": "+47 482 36 548",
+      "photo": "data/source/assets/people/kare-gloppestad.jpg",
+      "brreg_role": "Styremedlem, ansattes representant",
+      "class": "SOURCE_CONFIRMED"
+    },
+    {
+      "id": "person.kristoffer-grodas",
+      "name": "Kristoffer Grodås",
+      "role": "Avd.leder Utførelse",
+      "location": "Stryn",
+      "email": "kristoffer@flo-brannsikring.no",
+      "phone": "+47 415 07 337",
+      "photo": "data/source/assets/people/kristoffer-grodas.jpg",
+      "class": "SOURCE_CONFIRMED"
+    },
+    {
+      "id": "person.kjell-rune-flo",
+      "name": "Kjell Rune Flo",
+      "role": "Brannvernrådgiver",
+      "location": "Stryn",
+      "email": "flo@flo-brannsikring.no",
+      "phone": "+47 907 98 968",
+      "photo": null,
+      "class": "SOURCE_CONFIRMED"
+    },
+    {
+      "id": "person.brynjar-flo",
+      "name": "Brynjar Flo",
+      "role": "Brannvernrådgiver",
+      "location": "Stryn",
+      "email": "brynjar@flo-brannsikring.no",
+      "phone": "+47 970 57 321",
+      "photo": null,
+      "class": "SOURCE_CONFIRMED"
+    },
+    {
+      "id": "person.yngve-hakonsen",
+      "name": "Yngve Håkonsen",
+      "role": "Brannvernrådgiver",
+      "location": "Nordfjordeid",
+      "email": "yngve@flo-brannsikring.no",
+      "phone": "+47 906 24 255",
+      "photo": null,
+      "class": "SOURCE_CONFIRMED"
+    },
+    {
+      "id": "person.rune-pedersen",
+      "name": "Rune Pedersen",
+      "role": "Branningeniør",
+      "location": "Stryn",
+      "email": "rune@flo-brannsikring.no",
+      "phone": "+47 402 89 222",
+      "photo": null,
+      "class": "SOURCE_CONFIRMED"
+    },
+    {
+      "id": "person.inger-langvik",
+      "name": "Inger Langvik",
+      "role": "Branningeniør",
+      "location": "Stryn",
+      "email": "inger@flo-brannsikring.no",
+      "phone": "+47 970 81 960",
+      "photo": null,
+      "class": "SOURCE_CONFIRMED"
+    },
+    {
+      "id": "person.sigrid-linnerud",
+      "name": "Sigrid Elida Linnerud",
+      "role": null,
+      "location": "Stryn",
+      "email": "sigrid@flo-brannsikring.no",
+      "phone": "+47 468 62 619",
+      "photo": null,
+      "class": "SOURCE_CONFIRMED",
+      "notes": "No job title on live site."
+    },
+    {
+      "id": "person.gunvor-flo",
+      "name": "Gunvor Flo",
+      "role": "Teknisk Tegning",
+      "location": "Stryn",
+      "email": "gunvor@flo-brannsikring.no",
+      "phone": "+47 900 51 257",
+      "photo": null,
+      "class": "SOURCE_CONFIRMED",
+      "notes": "Named as founder of Flo Brannsikring 'heime på Hool' in timeline."
+    },
+    {
+      "id": "person.roy-veahmyr",
+      "name": "Roy Veahmyr",
+      "role": null,
+      "location": "Stryn",
+      "email": "roy@flo-brannsikring.no",
+      "phone": "+47 911 28 772",
+      "photo": null,
+      "class": "SOURCE_CONFIRMED"
+    },
+    {
+      "id": "person.jan-risberget",
+      "name": "Jan Risberget",
+      "role": null,
+      "location": "Stryn",
+      "email": "jan@flo-brannsikring.no",
+      "phone": "+47 452 41 168",
+      "photo": null,
+      "class": "SOURCE_CONFIRMED"
+    },
+    {
+      "id": "person.thomas-raudi",
+      "name": "Thomas Hundvebakke Raudi",
+      "role": null,
+      "location": "Stryn",
+      "email": "thomas@flo-brannsikring.no",
+      "phone": null,
+      "photo": null,
+      "class": "SOURCE_CONFIRMED"
+    }
+  ],
+  "people_count_on_site": 14,
+  "people_vs_brreg_employees": {
+    "site": 14,
+    "brreg": 15,
+    "class": "CONFLICTING",
+    "notes": "One employee not listed, or contractor/board overlap. CUSTOMER_INPUT_REQUIRED to reconcile."
+  },
+  "parent_group": {
+    "name": "Byggforvaltning Norge AS",
+    "orgnr": "992986417",
+    "class": "INFERRED",
+    "partners_page_claim": "Våre viktigste partnere er Byggforvaltning og Eld365",
+    "eld365": {
+      "name": "ELD365 AS",
+      "orgnr": "920755984",
+      "relation": "BFN owns 50% according to secondary sources",
+      "class": "INFERRED"
+    }
+  },
+  "language": {
+    "brreg": "Nynorsk",
+    "live_site": "Bokmål (with nynorsk remnants on /tjenester/teknisk-forvaltning: 'Meir enn brannsikring – vi skapar tryggleik')",
+    "legacy_indexed": "Nynorsk service names (Rådgjeving, Utføring, Produktar)"
+  }
+}

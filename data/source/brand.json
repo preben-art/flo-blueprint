@@ -1,0 +1,104 @@
+{
+  "extracted_at": "2026-09-16T16:42:00Z",
+  "independent_verify": "2026-09-16T16:38:33Z",
+  "rule": "Further develop FLO brand. Do not restyle FLO into VCTRA. Do not keep BFN yellow as FLO identity.",
+  "live_wordmark": {
+    "class": "SOURCE_CONFIRMED",
+    "description": "Stacked lowercase 'flo' over 'brannsikring.' with a small square after the period.",
+    "variants": [
+      {
+        "id": "logo.wordmark-black-red-dot",
+        "file": "data/source/assets/brand/flo-wordmark-black-red-dot.png",
+        "cdn": "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/690c570972d7ed41a44168dc_flo_sort_rødprikk.png",
+        "usage": "footer / dark",
+        "colors": "white/black strokes + red square"
+      },
+      {
+        "id": "logo.wordmark-red-white-dot",
+        "file": "data/source/assets/brand/flo-wordmark-red-white-dot.png",
+        "cdn": "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/6a0ab6531209fe98c19d4b80_Rød + hvit.@4x.png",
+        "usage": "header / light",
+        "colors": "red wordmark + white square",
+        "notes": "Highest-res live logo: 3299px PNG."
+      }
+    ],
+    "physical_evidence": {
+      "class": "SOURCE_CONFIRMED",
+      "files": [
+        "data/source/assets/people/mats-flo.jpg",
+        "data/source/assets/people/vegard-tonning.jpg",
+        "data/source/assets/people/kare-gloppestad.jpg",
+        "data/source/assets/people/kristoffer-grodas.jpg"
+      ],
+      "observation": "Embroidered black stacked wordmark + red square on light-blue shirts. Stronger identity evidence than Webflow CSS."
+    }
+  },
+  "svg": {
+    "flo_master_svg": {
+      "found": false,
+      "class": "SOURCE_CONFIRMED",
+      "status": "CUSTOMER_INPUT_REQUIRED"
+    },
+    "hidden_in_html": {
+      "class": "SOURCE_CONFIRMED",
+      "what": "NOT FLO. Hidden Webflow SVG is Byggforvaltning wordmark. Navbar variant uses fill #FFC563 (BFN yellow) on the trailing square. Class: brand_logo is-navbar hide. Visible mark is PNG overlay.",
+      "files": [
+        "data/source/assets/brand/bfn-wordmark-leftover-hidden-navbar.svg",
+        "data/source/assets/brand/bfn-wordmark-leftover-hidden-footer.svg"
+      ],
+      "do_not_use_as_flo_logo": true
+    }
+  },
+  "favicons": {
+    "link_tags": [
+      "data/source/assets/brand/favicon-32.png",
+      "data/source/assets/brand/favicon-256.png"
+    ],
+    "favicon_ico_route": {
+      "url": "https://flo-brannsikring.no/favicon.ico",
+      "status": 404,
+      "class": "SOURCE_CONFIRMED"
+    }
+  },
+  "css_tokens": {
+    "class": "SOURCE_CONFIRMED",
+    "source": "cdn .../css/flobrannsikring.shared.826874137.min.css",
+    "font_primary": "Beausite Classic, Arial, sans-serif",
+    "font_status": "Webflow/BFN template font. Not evidenced as historical FLO type.",
+    "colors": {
+      "white_off": "#faf9f4",
+      "black": "#000000",
+      "brown": "#571115",
+      "light_brown": "#4e0e12",
+      "beige": "#e5bbbb",
+      "token_named_orange_actual_red": "#c62e32",
+      "light_beige": "#fbf2f3",
+      "deep_beige": "#e4b1b2",
+      "grey": "#e7e7e7",
+      "map_beige": "#ddd7c9"
+    },
+    "bfn_yellow_leftover_in_dom": {
+      "value": "#FFC563 / rgb(255,197,99)",
+      "where": "hidden SVG square; inline style on 'Les mer' buttons on service/case cards",
+      "class": "SOURCE_CONFIRMED",
+      "notes": "This is BFN accent, not FLO red square."
+    },
+    "webflow_default_blues_leftover": ["#3898ec", "#2d62ff", "#0082f3", "#4d65ff"]
+  },
+  "conflicts": [
+    {
+      "live": "red square + black/red wordmark",
+      "startordre": "orange / charcoal / off-white",
+      "vctra_map": "orange flame + navy FLO lockup + VCTRA mark",
+      "bfn_clone": "yellow #FFC563 buttons and hidden SVG",
+      "decision": "CUSTOMER_INPUT_REQUIRED. Preliminary recommendation: develop live FLO red/black/off-white, not VCTRA orange, not BFN yellow."
+    }
+  ],
+  "photography": {
+    "people_portraits": 4,
+    "people_listed": 14,
+    "hero": "Screenshot 2025-08-27 Mac screenshot of a building — not a commissioned FLO hero",
+    "ai_generated": "GEMINI_GENERATED_IMAGE used as article thumbnail",
+    "do_not_replace_with_ai": true
+  }
+}

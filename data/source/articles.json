@@ -1,0 +1,51 @@
+{
+  "extracted_at": "2026-09-16T16:20:00Z",
+  "index": "/nyheter",
+  "index_meta_description": {
+    "value": "Velit laboris enim irure magna irure cupidatat elit sunt. Esse amet ad",
+    "class": "SOURCE_CONFIRMED",
+    "notes": "Lorem ipsum leftover."
+  },
+  "items": [
+    {
+      "id": "article.vr-brannovelse",
+      "path": "/nyheter/vr-brannovelse",
+      "title": "🔥 VR-brannøvelse - moderne brannopplæring",
+      "date": "2026-06-04",
+      "author": null,
+      "class": "SOURCE_CONFIRMED",
+      "about": "Vobling VR Fire Trainer as alternative to live fire extinguisher drills.",
+      "flo_relevance": "HIGH — actual FLO training offer",
+      "claims_to_verify": [
+        "lovpålagte brannøvelse framed as if VR satisfies legal drill requirements — EVIDENCE_REQUIRED, do not publish as legal fact"
+      ]
+    },
+    {
+      "id": "article.kompetente-mennesker",
+      "path": "/nyheter/brannsikkerhet-krever-kompetente-og-engasjerte-mennesker",
+      "title": "Brannsikkerhet krever kompetente og engasjerte mennesker",
+      "date": "2026-06-23",
+      "author": "Trond F Fredriksen",
+      "class": "SOURCE_CONFIRMED",
+      "voice": "Byggforvaltning Norge AS",
+      "about": "FDV systems, PropTech, ELD365 EOS, energy, predictive maintenance. Title says brannsikkerhet; body is BFN property management.",
+      "flo_relevance": "LOW / MISATTRIBUTED",
+      "author_affiliation": {
+        "class": "EVIDENCE_REQUIRED",
+        "notes": "Author not listed on FLO om-oss. Likely BFN employee."
+      }
+    },
+    {
+      "id": "article.ns3924",
+      "path": "/nyheter/ny-brannstandard-gjor-hverdagen-enklere-for-forvaltningen",
+      "title": "Ny brannstandard gjør hverdagen enklere for forvaltningen",
+      "date": "2025-10-06",
+      "author": "Trond Folkestad Fredriksen",
+      "class": "SOURCE_CONFIRMED",
+      "about": "NS 3924:2025 as common language for fire drawings. Offers DWG, brannstrategier, FDV documentation.",
+      "voice": "Parent: 'Vårt datterselskap Flo Brannsikring tilbyr nå...'",
+      "flo_relevance": "HIGH content, WRONG speaker"
+    }
+  ],
+  "knowledge_hub": "Does not exist. No /fag-og-kunnskap, no guides, no regulation library, no claim-vs-requirement tool."
+}

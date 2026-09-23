@@ -1,0 +1,107 @@
+{
+  "status": "PRELIMINARY",
+  "not_approved_for_build": true,
+  "updated_at": "2026-09-16",
+  "source_of_truth_rule": "Entities below are proposed. Facts marked SOURCE_CONFIRMED may be used. INFERRED / CUSTOMER_INPUT_REQUIRED / EVIDENCE_REQUIRED must not be rendered as fact.",
+  "entities": {
+    "Company": {
+      "id": "company.flo-brannsikring",
+      "legal_name": "FLO BRANNSIKRING AS",
+      "orgnr": "979582064",
+      "brand_name": "Flo Brannsikring",
+      "parent_proposed": "Byggforvaltning Norge AS",
+      "parent_status": "CUSTOMER_INPUT_REQUIRED to confirm aksjeeierbok"
+    },
+    "Situation": [
+      {
+        "id": "sit.papekt",
+        "label": "Noe er påpekt",
+        "examples_from_brief": ["tilsyn", "avvik", "pålegg", "kontrollfunn", "krav fra rådgiver", "krav fra entreprenør"],
+        "live_support": "FAQ consequences + internkontroll documentation. No dedicated route.",
+        "status": "PROPOSED_FROM_BRIEF"
+      },
+      {
+        "id": "sit.endres",
+        "label": "Noe skal endres",
+        "examples_from_brief": ["nybygg", "ombygging", "rehabilitering", "bruksendring", "ny leietaker", "nytt lokale", "nytt utstyr", "endret drift"],
+        "live_support": "FAQ oppdatert brannkonsept. RIBr page. No dedicated route.",
+        "status": "PROPOSED_FROM_BRIEF"
+      },
+      {
+        "id": "sit.uklart",
+        "label": "Noe er uklart",
+        "examples_from_brief": ["ansvar", "faktisk krav", "dokumentasjon", "alternativer", "kan vi gjøre det enklere"],
+        "live_support": "FAQ ansvar + konsept vs prosjektering. No claim-vs-requirement tool.",
+        "status": "PROPOSED_FROM_BRIEF"
+      }
+    ],
+    "CustomerType_live": [
+      {
+        "id": "cust.eier-forvalter",
+        "label": "Byggeiere, forvaltere og fagmiljø i byggeprosessen",
+        "path": "/kundegrupper/eiendomsselskaper-og-byggeiere",
+        "includes_mentioned": ["eiere", "forvaltere", "arkitekter", "entreprenører"],
+        "status": "SOURCE_CONFIRMED_BUT_CONTAMINATED_WITH_BFN_COPY"
+      },
+      {
+        "id": "cust.virksomhet-bruker",
+        "label": "Virksomheter og brukere av bygg",
+        "path": "/kundegrupper/storre-leietakere",
+        "status": "SOURCE_CONFIRMED_BUT_CONTAMINATED_WITH_BFN_COPY"
+      }
+    ],
+    "CustomerType_brief_unverified": [
+      {"id": "cust.privat", "status": "EVIDENCE_REQUIRED", "notes": "Not a live customer group. Ticker does not mention bolig. Do not assume FLO sells to private homeowners."},
+      {"id": "cust.kommune", "status": "EVIDENCE_REQUIRED", "notes": "Homepage partner alt is 'Bremanger Kommune' (SOURCE_CONFIRMED name). That is logo presence, not a fire case or ICP proof."},
+      {"id": "cust.industri-kraft", "status": "INFERRED", "notes": "Homepage ticker lists Industribygg and Kraftverk. No case."},
+      {"id": "cust.hotell", "status": "SOURCE_CONFIRMED", "notes": "Classic Norway Hotels case exists, but written as BFN."},
+      {"id": "cust.entreprenor", "status": "INFERRED", "notes": "Named in live eier/forvalter copy. No case."},
+      {"id": "cust.arkitekt-byggherre", "status": "INFERRED", "notes": "Named in live eier/forvalter copy. No case."}
+    ],
+    "Service": [
+      {"id": "svc.brannvernradgivning", "label": "Brannvernrådgivning"},
+      {"id": "svc.ribr", "label": "Branningeniører / RIBr"},
+      {"id": "svc.utforelse", "label": "Brannteknisk utførelse"}
+    ],
+    "Capability_candidates": [
+      "brannkonsept",
+      "brannteknisk detaljprosjektering",
+      "uavhengig kontroll TK3",
+      "brannverndokumentasjon",
+      "risikoanalyse",
+      "branntegninger / orienteringsplaner / NS 3924",
+      "evakuerings- og beredskapsplaner",
+      "kurs og øvelser",
+      "VR-slokkeøvelse",
+      "kontroll av installasjoner",
+      "passiv brannsikring",
+      "montasje / utbedring / slokkeutstyr / frityrslokkeanlegg",
+      "3D-scanning",
+      "industrivern",
+      "varme arbeider-kurs"
+    ],
+    "relations_required_next": [
+      "Situation → CustomerType → BuildingType → Problem → Risk → Responsibility → Requirement → Service → Evidence → Project → Knowledge → CTA"
+    ]
+  },
+  "proposed_ia_not_final": {
+    "note": "URLs are directional only. Do not implement until Reality + Model is approved.",
+    "levels": [
+      "/",
+      "/situasjon/{papekt|endres|uklart}",
+      "/losninger/{service}",
+      "/hvem-er-du/{customerType}",
+      "/prosjekter/{project}",
+      "/fag-og-kunnskap/{article|guide|faq|krav}",
+      "/om-flo",
+      "/kontakt"
+    ],
+    "redirects_to_design_later": {
+      "/tjenester/teknisk-forvaltning": "REWRITE slug to match Brannvernrådgivning",
+      "/tjenester/brannforebygging": "REWRITE slug to match RIBr",
+      "/kundehistorier": "RESTORE index, currently 404",
+      "/kurs": "RESTORE or MERGE into knowledge/training",
+      "/tenester-*": "KEEP 301 where they already work; recreate missing 301s"
+    }
+  }
+}

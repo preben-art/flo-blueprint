@@ -1,0 +1,98 @@
+{
+  "id": "flo.kommersielt-beslutningskart",
+  "title": "Fra risiko til trygghet",
+  "subtitle": "Kommersielt beslutningskart for bygg, prosjekt og drift",
+  "sender": "FLO BRANNSIKRING",
+  "status": "FLO-only rebrand of existing working map. Not a public webpage.",
+  "based_on": [
+    "data/source/vctra-markedskart.json",
+    "docs/onboarding/VCTRA_ONBOARDING_FILL.md"
+  ],
+  "removed": [
+    "VCTRA logo",
+    "VCTRA name",
+    "Strategisk markedskart - VCTRA",
+    "National digital coverage claim",
+    "Unverified physical geography beyond Stryn and Nordfjordeid",
+    "Unverified customer counts"
+  ],
+  "rule": "FLO-REGELEN: KOM INN FØR LØSNING, PROSJEKT OG KOSTNAD ER LÅST",
+  "layers": [
+    {
+      "id": 1,
+      "title": "SITUASJON",
+      "entries": ["NOE ER PÅPEKT", "NOE SKAL ENDRES", "NOE ER UKLART"]
+    },
+    {
+      "id": 2,
+      "title": "FLO AVKLARER",
+      "path": [
+        "BYGG",
+        "BRUK",
+        "DOKUMENTASJON",
+        "ANSVAR",
+        "RISIKO",
+        "REGELVERK",
+        "FAKTISK KRAV",
+        "ALTERNATIVER",
+        "PRIORITERING"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "HVEM ER KUNDEN / ICP",
+      "icps": [
+        "PRIVAT",
+        "KOMMUNE / OFFENTLIG",
+        "EIENDOM / FORVALTNING",
+        "ARKITEKT / BYGGHERRE",
+        "INDUSTRI / KRAFT",
+        "ENTREPRENØR"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "PRODUKT- OG BESLUTNINGSSPOR",
+      "tracks": ["OPPLÆRING", "PÅSTAND ELLER KRAV?", "DIGITALT / HYBRID / FYSISK"]
+    },
+    {
+      "id": 5,
+      "title": "MARKEDSSPØRSMÅL",
+      "questions": [
+        "HVA GJELDER?",
+        "HAR VI KONTROLL?",
+        "VI HAR FÅTT ET AVVIK",
+        "VI SKAL BYGGE OM",
+        "KAN VI GJØRE DETTE SELV?",
+        "ER TILTAKET FAKTISK NØDVENDIG?",
+        "TRENGER ALLE SAMME OPPLÆRING?"
+      ]
+    }
+  ],
+  "footer_flow": [
+    "SITUASJON",
+    "KUNDE",
+    "FAGLIG AVKLARING",
+    "DIGITALT / HYBRID / FYSISK",
+    "RIKTIG FLO-FAG",
+    "KONKRET LEVERANSE",
+    "OPPFØLGING"
+  ],
+  "proof_on_map": {
+    "used": [
+      "DiBK sentral godkjenning: prosjekterende brannkonsept TK3",
+      "Uavhengig kontroll brannsikkerhet TK3",
+      "Ansvarlig søker TK1",
+      "Godkjent opplæringsbedrift",
+      "Org.nr 979 582 064",
+      "Stryn og Nordfjordeid"
+    ],
+    "not_used": [
+      "Customer counts",
+      "Classic Norway / Coop / Weenaas as proof blocks",
+      "Varme arbeider instructor (PDF missing)",
+      "Digitalt hele Norge",
+      "Fysisk Sogn / Nordvest / Innland"
+    ]
+  }
+}

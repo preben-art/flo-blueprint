@@ -1,0 +1,40 @@
+{
+    "dibk-sgdata": {
+        "enterprise": {
+            "organizational_number": "979582064",
+            "name": "FLO BRANNSIKRING AS",
+            "phone": null,
+            "email": null,
+            "www": null,
+            "businessaddress": {
+                "line_1": "Perhusvegen 1A",
+                "line_2": null,
+                "line_3": null,
+                "line_4": null,
+                "country": "NO",
+                "postal_code": "6783",
+                "postal_town": "STRYN"
+            },
+            "postaladdress": {
+                "line_1": "Postboks 207",
+                "line_2": null,
+                "line_3": null,
+                "line_4": null,
+                "country": "NO",
+                "postal_code": "6781",
+                "postal_town": "STRYN"
+            }
+        },
+        "status": {
+            "approved": true,
+            "approval_period_to": "2027-09-12",
+            "approval_certificate": "https://sgregister.dibk.no/enterprises/979582064/approval_certificate"
+        },
+        "additional_terms": {
+            "liability_insurance": true,
+            "industrial_injury_insurance": true,
+            "educational_enterprise_approved": true
+        },
+        "valid_approval_areas": [{"function":"Uavhengig kontrollerende","subject_area":"Brannsikkerhet","pbl":"PBL 2016","function_xml":"KTR","subject_area_xml":"KOBLBR","pbl_xml":"pbl2016","grade":"3"},{"function":"Prosjekterende","subject_area":"Brannkonsept","pbl":"PBL 2016","function_xml":"PRO","subject_area_xml":"PBRANN","pbl_xml":"pbl2016","grade":"3"},{"function":"Ansvarlig søker","subject_area":"(for alle typer tiltak)","pbl":"PBL 2016","function_xml":"SOK","subject_area_xml":"SANDRE","pbl_xml":"pbl2016","grade":"1"}]
+    }
+}

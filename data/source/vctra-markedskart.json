@@ -1,0 +1,223 @@
+{
+  "extracted_at": "2026-09-16T16:42:00Z",
+  "class": "CUSTOMER_INPUT_REQUIRED",
+  "source_type": "VCTRA working document attached to startordre — NOT published on flo-brannsikring.no",
+  "files": [
+    "data/source/reference/vctra-flo-markedskart.jpg",
+    "data/source/reference/vctra-flo-markedskart.png",
+    "data/source/reference/vctra-flo-markedskart-alt.png"
+  ],
+  "flo_owned_version": "data/source/flo-markedskart.json",
+  "flo_owned_visual": "docs/maps/FLO_KOMMERSIELT_BESLUTNINGSKART.html",
+  "brand_on_map": {
+    "note": "Map uses orange flame mark, navy wordmark, orange underline, VCTRA logo. This is NOT the live FLO wordmark (black/red square). CONFLICTING with live brand.",
+    "quote_on_map": "Gode planer redder verdier – og liv.",
+    "quote_attribution": "FLO BRANNSIKRING",
+    "quote_class": "CUSTOMER_INPUT_REQUIRED",
+    "tagline_on_map": "FRA RISIKO TIL TRYGGHET — KUNNSKAP · LØSNINGER · VERDIER",
+    "rule_on_map": "FLO-REGELEN: KOM INN FØR LØSNING, PROSJEKT OG KOSTNAD ER LÅST"
+  },
+  "layers": [
+    {
+      "id": 1,
+      "title": "SITUASJON",
+      "subtitle": "FORSTÅ BEHOVET – FINN RIKTIG VEI VIDERE",
+      "entries": [
+        {
+          "id": "sit.papekt",
+          "label": "NOE ER PÅPEKT",
+          "examples": [
+            "Tilsyn / avvik / pålegg",
+            "Kontrollfunn",
+            "Krav fra rådgiver eller entreprenør",
+            "Kostbar faktisk / uenighet om løsning"
+          ]
+        },
+        {
+          "id": "sit.endres",
+          "label": "NOE SKAL ENDRES",
+          "examples": [
+            "Nybygg / ombygging",
+            "Rehabilitering / bruksendring",
+            "Nye lokaler / nytt prosjekt",
+            "Nytt utstyr / endret drift"
+          ]
+        },
+        {
+          "id": "sit.uklart",
+          "label": "NOE ER UKLART",
+          "examples": [
+            "Hva gjelder – og hvem har ansvaret?",
+            "Er dette faktisk et krav?",
+            "Hvilke dokumentasjonskrav finnes?",
+            "Kan vi gjøre det selv / finnes annen løsning?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "FLO AVKLARER",
+      "subtitle": "FRA SITUASJON TIL KONKRET ANBEFALING",
+      "path": [
+        "BYGG",
+        "BRUK",
+        "DOKUMENTASJON",
+        "ANSVAR",
+        "RISIKO",
+        "REGELVERK",
+        "FAKTISK KRAV",
+        "ALTERNATIVER",
+        "PRIORITERING"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "HVEM ER KUNDEN? – ICP-KART",
+      "subtitle": "ULIKE BEHOV – SAMME MÅL: TRYGGERE BYGG",
+      "icps": [
+        {
+          "id": "cust.privat",
+          "label": "PRIVAT",
+          "who": "Boligeier, privat byggherre og utleier",
+          "signals": [
+            "Enebolig, fritidsbolig, utleie",
+            "Krav ved salg, utleie eller ombygging",
+            "Nytt hus / rehabilitering",
+            "Digital veiledning – befaring ved behov"
+          ],
+          "live_evidence": "NONE on flo-brannsikring.no. EVIDENCE_REQUIRED."
+        },
+        {
+          "id": "cust.kommune",
+          "label": "KOMMUNE / OFFENTLIG",
+          "who": "Eiendom + dokumentasjon + opplæring",
+          "signals": [
+            "Skoler, helseinstitusjoner, offentlige bygg",
+            "Tilsyn, avvik, internkontroll og risiko",
+            "Ansatte, kapasitet og rutiner",
+            "Digital kartlegging – prioritering – årlig program"
+          ],
+          "live_evidence": "Logo alt text 'Bremanger Kommune' on homepage ticker. Not a case. EVIDENCE_REQUIRED as FLO fire customer."
+        },
+        {
+          "id": "cust.eiendom",
+          "label": "EIENDOM / FORVALTNING",
+          "who": "Kontroll på bygg og portefølje",
+          "signals": [
+            "Oversikt bygg / ny eiendomsmasse",
+            "Garantier, dokumentasjon og avvikshåndtering",
+            "Tilsyn, drift, rehabilitering, mange bygg",
+            "Digital status – per bygg / portefølje – fysisk kontroll"
+          ],
+          "live_evidence": "SOURCE_CONFIRMED as live customer group + Coop/Weenaas names, but copy is BFN voice."
+        },
+        {
+          "id": "cust.arkitekt-byggherre",
+          "label": "ARKITEKT / BYGGHERRE",
+          "who": "FLO inn i tidligfase",
+          "signals": [
+            "Før planlegging og bruk fasses",
+            "Før rømningsstrategi og tekniske løsninger",
+            "Sikrer regelverk / dokumentasjon tidlig",
+            "Pre-tilsyn – avklaringer – prosjektering – anbud"
+          ],
+          "live_evidence": "Mentioned in live customer-group copy. No dedicated case. INFERRED."
+        },
+        {
+          "id": "cust.industri-kraft",
+          "label": "INDUSTRI / KRAFT",
+          "who": "Endringer i drift endrer risiko",
+          "signals": [
+            "Nytt utstyr / ny prosess / ny aktivitet",
+            "Risikovurdering og beredskap",
+            "Dokumentasjon og opplæring",
+            "Fysisk kontroll ved behov"
+          ],
+          "live_evidence": "Homepage ticker lists Industribygg and Kraftverk. No case. INFERRED."
+        },
+        {
+          "id": "cust.entreprenor",
+          "label": "ENTREPRENØR",
+          "who": "Avklar før endring utføres",
+          "signals": [
+            "Hva er prosjektet?",
+            "Samme krav og dokumentasjon?",
+            "Brukes anerkjente brannløsninger?",
+            "Hvem dokumenterer – og er mål klar inn?"
+          ],
+          "live_evidence": "Mentioned in live customer-group copy. No case. INFERRED."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "TVERRGÅENDE PRODUKT- OG BESLUTNINGSSPOR",
+      "subtitle": "FRA KOMPETANSE TIL DOKUMENTERT EFFEKT",
+      "tracks": [
+        {
+          "id": "track.opplaring",
+          "label": "OPPLÆRING",
+          "tagline": "Ikke bare «hva» – start med rolle, ansvar og risiko.",
+          "modes": [
+            "Virksomhet – bygg – risiko – roller – eksisterende kompetanse",
+            "Digitalt: teori, e-læring, repetisjon, kompetansebevis",
+            "Fysisk: skreddersydd kurs, øvelser, praktisk trening",
+            "Bransje- og rolleprogram – fra innføring til fordypning"
+          ]
+        },
+        {
+          "id": "track.pastand-krav",
+          "label": "PÅSTAND ELLER KRAV?",
+          "tagline": "FLO skiller det som blir sagt fra det som faktisk kan dokumenteres.",
+          "steps": [
+            "Påstand – fakta – lovverk/standarder/veiledere",
+            "Klassifiser: KRAV / ANBEFALING / FAGLIG VURDERING",
+            "Avklar: Hva betyr dette for – finnes flere løsninger?",
+            "Konklusjon: hva kan kunden gjøre?"
+          ]
+        },
+        {
+          "id": "track.leveranseform",
+          "label": "DIGITALT / HYBRID / FYSISK",
+          "tagline": "Alle saker routes til riktig leveranseform.",
+          "modes": [
+            "Digitalt: hele Norge – dokumenter, rådgivning, kurs, e-læring, oppfølging",
+            "Hybrid: digital vurdering først – fysisk befaring – kombinert tilbud",
+            "Fysisk: befaring, kontroll, byggnærvurdering, utbedring, praktisk opplæring",
+            "Fleksibel leveranse – riktig innsats, riktig tid"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "MARKEDSSPØRSMÅL FLO SKAL TREFFE",
+      "subtitle": "TYPISKE INNGANGER – STORE MULIGHETER",
+      "questions": [
+        "Hva gjelder?",
+        "Har vi kontroll?",
+        "Vi har fått et avvik",
+        "Vi skal bygge om",
+        "Kan vi gjøre dette selv?",
+        "Er tiltaket nødvendig?",
+        "Trenger alle samme opplæring?"
+      ]
+    }
+  ],
+  "geography_on_map": {
+    "digital": "HELE NORGE",
+    "physical": "SOGN / NORDVEST / INNLAND",
+    "class": "CUSTOMER_INPUT_REQUIRED",
+    "live": "Only Stryn HQ + Nordfjordeid branch are SOURCE_CONFIRMED."
+  },
+  "footer_journey_on_map": [
+    "SITUASJON",
+    "KUNDE",
+    "FAGLIG AVKLARING",
+    "DIGITALT / HYBRID / FYSISK",
+    "RIKTIG FLO-FAG",
+    "KONKRET PAKKE",
+    "OPPFØLGING"
+  ]
+}

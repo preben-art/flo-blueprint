@@ -1,0 +1,113 @@
+{
+  "extracted_at": "2026-09-16T16:20:00Z",
+  "svg_logo": {
+    "flo_master_svg_found": false,
+    "class": "SOURCE_CONFIRMED",
+    "notes": "No FLO SVG wordmark on live CDN. Visible logos are PNG. Hidden inline SVG in header/footer is the Byggforvaltning wordmark (trailing square #FFC563 on navbar). Extracted as data/source/assets/brand/bfn-wordmark-leftover-hidden-*.svg. Do not use as FLO logo. CUSTOMER_INPUT_REQUIRED for a real FLO master SVG."
+  },
+  "brand_tokens_from_css": {
+    "class": "SOURCE_CONFIRMED",
+    "source": "cdn .../css/flobrannsikring.shared.826874137.min.css",
+    "font_primary": "Beausite Classic, Arial, sans-serif",
+    "notes": "Beausite Classic is the BFN/Webflow template font, not evidenced as historical FLO type.",
+    "colors": {
+      "white": "#faf9f4",
+      "black": "#000000",
+      "brown": "#571115",
+      "light_brown": "#4e0e12",
+      "beige": "#e5bbbb",
+      "orange_token_name_but_red_value": "#c62e32",
+      "light_beige": "#fbf2f3",
+      "deep_beige": "#e4b1b2",
+      "grey": "#e7e7e7",
+      "map_beige": "#ddd7c9"
+    },
+    "leftover_webflow_blue": [
+      "#3898ec",
+      "#2d62ff",
+      "#0082f3"
+    ],
+    "conflict_with_vctra_brief": "Master startordre and markedskart use orange. Live FLO brand is red wordmark + red square/dot + charcoal/black + off-white. Shirt photo of Mats Flo confirms black wordmark + red dot. Do not restyle FLO into VCTRA orange without explicit brand decision."
+  },
+  "logos": [
+    {
+      "id": "logo.wordmark-black-red-dot",
+      "file": "data/source/assets/brand/flo-wordmark-black-red-dot.png",
+      "usage": "header/footer on dark",
+      "class": "SOURCE_CONFIRMED"
+    },
+    {
+      "id": "logo.wordmark-red-white-dot",
+      "file": "data/source/assets/brand/flo-wordmark-red-white-dot.png",
+      "usage": "alternate / light",
+      "class": "SOURCE_CONFIRMED"
+    },
+    {
+      "id": "logo.favicon",
+      "files": [
+        "data/source/assets/brand/favicon-32.png",
+        "data/source/assets/brand/favicon-256.png"
+      ],
+      "class": "SOURCE_CONFIRMED"
+    },
+    {
+      "id": "logo.dibk-godkjent",
+      "file": "data/source/assets/brand/dibk-sentralt-godkjent-invers.png",
+      "class": "SOURCE_CONFIRMED",
+      "notes": "Third-party mark, allowed with approval."
+    }
+  ],
+  "people_photos": [
+    {
+      "person": "Mats Flo",
+      "file": "data/source/assets/people/mats-flo.jpg",
+      "notes": "Also documents embroidered black wordmark + red dot on shirt."
+    },
+    {
+      "person": "Vegard Tonning",
+      "file": "data/source/assets/people/vegard-tonning.jpg"
+    },
+    {
+      "person": "Kåre Gloppestad",
+      "file": "data/source/assets/people/kare-gloppestad.jpg"
+    },
+    {
+      "person": "Kristoffer Grodås",
+      "file": "data/source/assets/people/kristoffer-grodas.jpg"
+    }
+  ],
+  "ai_generated_on_live_site": [
+    {
+      "file": "data/source/assets/originals/6a18080d241ea06a10e4cc5e_KONVERTERT AVIF GEMINI_GENERATED_IMAGE_ZHM7Y9ZHM7Y9ZHM7.webp",
+      "class": "SOURCE_CONFIRMED",
+      "notes": "Filename admits Gemini generation. Do not treat as FLO photography."
+    }
+  ],
+  "originals_dir": "data/source/assets/originals",
+  "originals_count": 51,
+  "pdfs_found_on_live": [],
+  "reference_not_flo_source": [
+    {
+      "file": "data/source/reference/vctra-flo-markedskart.jpg",
+      "class": "CUSTOMER_INPUT_REQUIRED",
+      "notes": "VCTRA commercial markedskart. Transcribed in data/source/vctra-markedskart.json. Not published on flo-brannsikring.no."
+    },
+    {
+      "file": "data/source/reference/vctra-flo-markedskart.png",
+      "class": "CUSTOMER_INPUT_REQUIRED"
+    },
+    {
+      "file": "data/source/reference/heronapp-plantegning-reference.png",
+      "class": "CUSTOMER_INPUT_REQUIRED",
+      "notes": "heronapp.com screenshot for plantegning navigation concept. Not FLO. Use as navigation-logic reference only, not as a gimmick to copy 1:1."
+    }
+  ],
+  "onboarding_pdf": {
+    "requested_path": "c:\\Users\\prebe\\Downloads\\FLO_Brannsikring_onboarding_utfylt.pdf",
+    "available_in_workspace": false,
+    "class": "CUSTOMER_INPUT_REQUIRED",
+    "notes": "Still not in workspace after independent pass 2026-09-16T16:38Z. Google Drive and Gmail MCP need auth. Do not invent PDF answers."
+  },
+  "brand_file": "data/source/brand.json",
+  "vctra_markedskart_file": "data/source/vctra-markedskart.json"
+}

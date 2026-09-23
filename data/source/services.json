@@ -1,0 +1,133 @@
+{
+  "extracted_at": "2026-09-16T16:20:00Z",
+  "warning": "Do not treat leftover Byggforvaltning service chips (energiledelse, FDV, prosjektledelse, teknisk eiendomsforvaltning) as FLO services. They appear on FLO service pages as cloned BFN modules.",
+  "live_service_tree": [
+    {
+      "id": "svc.brannvernradgivning",
+      "label": "Brannvernrådgivning",
+      "live_path": "/tjenester/teknisk-forvaltning",
+      "slug_means": "teknisk-forvaltning (BFN leftover slug)",
+      "class": "SOURCE_CONFIRMED",
+      "for_whom": [
+        "virksomheter og brukere av bygg",
+        "eiere som trenger internkontroll/dokumentasjon"
+      ],
+      "capabilities": [
+        "Brannverndokumentasjon",
+        "Risikoanalyser",
+        "Branntegninger og orienteringsplaner",
+        "Evakuerings- og beredskapsplaner",
+        "Kurs og øvelser",
+        "Oppfølging og rådgivning"
+      ],
+      "legacy_path": "/tenester-radgjeving",
+      "a11_coverage": "Partial — what/who/when weak; price/process/alternatives missing"
+    },
+    {
+      "id": "svc.ribr",
+      "label": "Branningeniører / RIBr",
+      "live_path": "/tjenester/brannforebygging",
+      "slug_means": "brannforebygging (mismatch with label)",
+      "class": "SOURCE_CONFIRMED",
+      "capabilities": [
+        "Brannteknisk prosjektering (brannstrategi, brannkonsept, branntekniske tegninger)",
+        "Rådgiving i planleggingsfasen",
+        "Detaljprosjektering (brannalarm, nødlys/ledesystem, røykventilasjon)",
+        "Uavhengig kontroll (sentral godkjenning tiltaksklasse 3)",
+        "Dokumentasjon for eksisterende byggverk",
+        "Detaljvurderinger / ekspertvurderinger / beregninger"
+      ],
+      "evidence": "DiBK Prosjekterende Brannkonsept TK3 + Uavhengig kontroll Brannsikkerhet TK3"
+    },
+    {
+      "id": "svc.utforelse",
+      "label": "Brannteknisk utførelse",
+      "live_path": "/tjenester/brannteknisk-utforelse",
+      "class": "SOURCE_CONFIRMED",
+      "capabilities": [
+        "Kontroll av branntekniske installasjoner",
+        "Passiv brannsikring",
+        "Detaljprosjektering av branntekniske installasjoner",
+        "Homepage also claims: frityrslokkeanlegg, slokkeutstyr, montasje og utbedring"
+      ],
+      "notes": "Passiv brannsikring page text is thin: 'Vi har kompetansepå alle områder' (typo, no evidence list).",
+      "legacy_path": "/tenester-kontroll"
+    }
+  ],
+  "mentioned_not_modelled_as_own_route": [
+    {
+      "id": "svc.3d-scanning",
+      "label": "3D-scanning",
+      "where": "homepage module",
+      "class": "SOURCE_CONFIRMED",
+      "notes": "Described as tool for missing drawings / detailing against existing structures. No dedicated URL."
+    },
+    {
+      "id": "svc.industrivern",
+      "label": "Industrivern",
+      "where": "homepage ticker + om-oss narrative + Google snippet for /kurs/",
+      "class": "CONFLICTING",
+      "notes": "Live /industrivern 404. /kurs redirects to /kontakt. Google still describes an Industrivern course."
+    },
+    {
+      "id": "svc.kurs",
+      "label": "Kurs (Varme arbeider, Brannforebygging, Industrivern)",
+      "where": "Google snippet https://flo-brannsikring.no/kurs/",
+      "class": "OUTDATED_POSSIBLE",
+      "live": "redirects to /kontakt"
+    },
+    {
+      "id": "svc.vr-ovelse",
+      "label": "VR-brannøvelse / Vobling VR Fire Trainer",
+      "where": "/nyheter/vr-brannovelse",
+      "class": "SOURCE_CONFIRMED",
+      "notes": "Sold as news, not as a service entity."
+    },
+    {
+      "id": "cap.ns3924",
+      "label": "NS 3924:2025 branntegninger / DWG / FDV",
+      "where": "/nyheter/ny-brannstandard-...",
+      "class": "SOURCE_CONFIRMED",
+      "voice": "Written as BFN ('Vårt datterselskap Flo Brannsikring')."
+    }
+  ],
+  "bfn_leftover_chips_do_not_treat_as_flo": [
+    "Byggfaglig kartlegging",
+    "Energiledelse og optimalisering",
+    "Oppfølging av drift og vedlikehold (FDV)",
+    "Prosjektledelse og administrasjon",
+    "Teknisk rådgivning og eiendomsforvaltning",
+    "Digital FDV / PropTech / ELD365 EOS",
+    "Enova-støtte (icon on BFN customer pages)"
+  ],
+  "legacy_nynorsk_tree_from_search_index": {
+    "class": "OUTDATED_POSSIBLE",
+    "items": [
+      "Kontroll",
+      "Rådgjeving",
+      "Utføring",
+      "Prosjektering",
+      "Produktar",
+      "Dokumentasjon"
+    ],
+    "indexed_urls": [
+      "/tenester-kontroll/",
+      "/tenester-radgjeving/",
+      "/tenester-utforing/",
+      "/tenester-prosjektering/",
+      "/tenester-produktar/",
+      "/tenester-dokumentasjon/"
+    ],
+    "live_status": "kontroll+radgjeving 301 to new slugs; utforing/prosjektering/produktar/dokumentasjon 404"
+  },
+  "wayback_2016_tree": {
+    "class": "OUTDATED_POSSIBLE",
+    "items": [
+      "/forvaltning-drift-og-vedlikehold",
+      "/forvaltning-drift-og-vedlikehold/brannovelser",
+      "/forvaltning-drift-og-vedlikehold/kontroll-vedlikehold",
+      "/forvaltning-drift-og-vedlikehold/kurs",
+      "/forvaltning-drift-og-vedlikehold/representant-for-brannforebygging"
+    ]
+  }
+}

@@ -1,0 +1,832 @@
+{
+  "visited": {
+    "/": {
+      "requested": "/",
+      "final_url": "https://flo-brannsikring.no/",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 109886
+    },
+    "/kontakt": {
+      "requested": "/kontakt",
+      "final_url": "https://flo-brannsikring.no/kontakt",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 81789
+    },
+    "/kundehistorier": {
+      "requested": "/kundehistorier",
+      "final_url": "https://flo-brannsikring.no/kundehistorier",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/nyheter": {
+      "requested": "/nyheter",
+      "final_url": "https://flo-brannsikring.no/nyheter",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 61006
+    },
+    "/om-oss": {
+      "requested": "/om-oss",
+      "final_url": "https://flo-brannsikring.no/om-oss",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 82808
+    },
+    "/partnere": {
+      "requested": "/partnere",
+      "final_url": "https://flo-brannsikring.no/partnere",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 61811
+    },
+    "/tjenester": {
+      "requested": "/tjenester",
+      "final_url": "https://flo-brannsikring.no/tjenester",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 71028
+    },
+    "/tjenester/brannforebygging": {
+      "requested": "/tjenester/brannforebygging",
+      "final_url": "https://flo-brannsikring.no/tjenester/brannforebygging",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 74814
+    },
+    "/tjenester/brannteknisk-utforelse": {
+      "requested": "/tjenester/brannteknisk-utforelse",
+      "final_url": "https://flo-brannsikring.no/tjenester/brannteknisk-utforelse",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 72971
+    },
+    "/tjenester/teknisk-forvaltning": {
+      "requested": "/tjenester/teknisk-forvaltning",
+      "final_url": "https://flo-brannsikring.no/tjenester/teknisk-forvaltning",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 74843
+    },
+    "/kundehistorier/classic-norway-hotels": {
+      "requested": "/kundehistorier/classic-norway-hotels",
+      "final_url": "https://flo-brannsikring.no/kundehistorier/classic-norway-hotels",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 58228
+    },
+    "/kundehistorier/coop": {
+      "requested": "/kundehistorier/coop",
+      "final_url": "https://flo-brannsikring.no/kundehistorier/coop",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 58543
+    },
+    "/kundehistorier/weenaas": {
+      "requested": "/kundehistorier/weenaas",
+      "final_url": "https://flo-brannsikring.no/kundehistorier/weenaas",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 57903
+    },
+    "/nyheter/brannsikkerhet-krever-kompetente-og-engasjerte-mennesker": {
+      "requested": "/nyheter/brannsikkerhet-krever-kompetente-og-engasjerte-mennesker",
+      "final_url": "https://flo-brannsikring.no/nyheter/brannsikkerhet-krever-kompetente-og-engasjerte-mennesker",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 62729
+    },
+    "/nyheter/ny-brannstandard-gjor-hverdagen-enklere-for-forvaltningen": {
+      "requested": "/nyheter/ny-brannstandard-gjor-hverdagen-enklere-for-forvaltningen",
+      "final_url": "https://flo-brannsikring.no/nyheter/ny-brannstandard-gjor-hverdagen-enklere-for-forvaltningen",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 59200
+    },
+    "/nyheter/vr-brannovelse": {
+      "requested": "/nyheter/vr-brannovelse",
+      "final_url": "https://flo-brannsikring.no/nyheter/vr-brannovelse",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 61125
+    },
+    "/nyheter?2e36e5f8_page=2": {
+      "requested": "/nyheter?2e36e5f8_page=2",
+      "final_url": "https://flo-brannsikring.no/nyheter?2e36e5f8_page=2",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 61006
+    },
+    "/brannvernradgivning": {
+      "requested": "/brannvernradgivning",
+      "final_url": "https://flo-brannsikring.no/brannvernradgivning",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/branningenior": {
+      "requested": "/branningenior",
+      "final_url": "https://flo-brannsikring.no/branningenior",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/brannteknisk-prosjektering": {
+      "requested": "/brannteknisk-prosjektering",
+      "final_url": "https://flo-brannsikring.no/brannteknisk-prosjektering",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/brannkonsept": {
+      "requested": "/brannkonsept",
+      "final_url": "https://flo-brannsikring.no/brannkonsept",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/dokumentasjon": {
+      "requested": "/dokumentasjon",
+      "final_url": "https://flo-brannsikring.no/dokumentasjon",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/internkontroll": {
+      "requested": "/internkontroll",
+      "final_url": "https://flo-brannsikring.no/internkontroll",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/kontroll": {
+      "requested": "/kontroll",
+      "final_url": "https://flo-brannsikring.no/kontroll",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/opplaring": {
+      "requested": "/opplaring",
+      "final_url": "https://flo-brannsikring.no/opplaring",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/opplaering": {
+      "requested": "/opplaering",
+      "final_url": "https://flo-brannsikring.no/opplaering",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/kurs": {
+      "requested": "/kurs",
+      "final_url": "https://flo-brannsikring.no/kontakt",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 81789
+    },
+    "/industrivern": {
+      "requested": "/industrivern",
+      "final_url": "https://flo-brannsikring.no/industrivern",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/3d-scanning": {
+      "requested": "/3d-scanning",
+      "final_url": "https://flo-brannsikring.no/3d-scanning",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/3d-skanning": {
+      "requested": "/3d-skanning",
+      "final_url": "https://flo-brannsikring.no/3d-skanning",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/scanning": {
+      "requested": "/scanning",
+      "final_url": "https://flo-brannsikring.no/scanning",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/personvern": {
+      "requested": "/personvern",
+      "final_url": "https://flo-brannsikring.no/personvern",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/personvernerklaering": {
+      "requested": "/personvernerklaering",
+      "final_url": "https://flo-brannsikring.no/personvernerklaering",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/privacy": {
+      "requested": "/privacy",
+      "final_url": "https://flo-brannsikring.no/privacy",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/cookies": {
+      "requested": "/cookies",
+      "final_url": "https://flo-brannsikring.no/cookies",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/404": {
+      "requested": "/404",
+      "final_url": "https://flo-brannsikring.no/404",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/blogg": {
+      "requested": "/blogg",
+      "final_url": "https://flo-brannsikring.no/blogg",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/artikler": {
+      "requested": "/artikler",
+      "final_url": "https://flo-brannsikring.no/artikler",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/prosjekter": {
+      "requested": "/prosjekter",
+      "final_url": "https://flo-brannsikring.no/prosjekter",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/referanser": {
+      "requested": "/referanser",
+      "final_url": "https://flo-brannsikring.no/referanser",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/ansatte": {
+      "requested": "/ansatte",
+      "final_url": "https://flo-brannsikring.no/ansatte",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/team": {
+      "requested": "/team",
+      "final_url": "https://flo-brannsikring.no/team",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/om": {
+      "requested": "/om",
+      "final_url": "https://flo-brannsikring.no/om",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/kontakt-oss": {
+      "requested": "/kontakt-oss",
+      "final_url": "https://flo-brannsikring.no/kontakt-oss",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/faq": {
+      "requested": "/faq",
+      "final_url": "https://flo-brannsikring.no/faq",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/sporsmal": {
+      "requested": "/sporsmal",
+      "final_url": "https://flo-brannsikring.no/sporsmal",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/karriere": {
+      "requested": "/karriere",
+      "final_url": "https://flo-brannsikring.no/karriere",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/ledige-stillinger": {
+      "requested": "/ledige-stillinger",
+      "final_url": "https://flo-brannsikring.no/ledige-stillinger",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/byggforvaltning": {
+      "requested": "/byggforvaltning",
+      "final_url": "https://flo-brannsikring.no/byggforvaltning",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/energi": {
+      "requested": "/energi",
+      "final_url": "https://flo-brannsikring.no/energi",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/energiledelse": {
+      "requested": "/energiledelse",
+      "final_url": "https://flo-brannsikring.no/energiledelse",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/slokkeutstyr": {
+      "requested": "/slokkeutstyr",
+      "final_url": "https://flo-brannsikring.no/slokkeutstyr",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/frityr": {
+      "requested": "/frityr",
+      "final_url": "https://flo-brannsikring.no/frityr",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/tjenester/brannvernradgivning": {
+      "requested": "/tjenester/brannvernradgivning",
+      "final_url": "https://flo-brannsikring.no/tjenester/brannvernradgivning",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/tjenester/branningenior": {
+      "requested": "/tjenester/branningenior",
+      "final_url": "https://flo-brannsikring.no/tjenester/branningenior",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/tjenester/ribr": {
+      "requested": "/tjenester/ribr",
+      "final_url": "https://flo-brannsikring.no/tjenester/ribr",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/tjenester/industrivern": {
+      "requested": "/tjenester/industrivern",
+      "final_url": "https://flo-brannsikring.no/tjenester/industrivern",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/tjenester/3d-scanning": {
+      "requested": "/tjenester/3d-scanning",
+      "final_url": "https://flo-brannsikring.no/tjenester/3d-scanning",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/tjenester/opplaring": {
+      "requested": "/tjenester/opplaring",
+      "final_url": "https://flo-brannsikring.no/tjenester/opplaring",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/tjenester/brannkonsept": {
+      "requested": "/tjenester/brannkonsept",
+      "final_url": "https://flo-brannsikring.no/tjenester/brannkonsept",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/tjenester/dokumentasjon": {
+      "requested": "/tjenester/dokumentasjon",
+      "final_url": "https://flo-brannsikring.no/tjenester/dokumentasjon",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/sitemap.xml": {
+      "requested": "/sitemap.xml",
+      "final_url": "https://flo-brannsikring.no/sitemap.xml",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/robots.txt": {
+      "requested": "/robots.txt",
+      "final_url": "https://flo-brannsikring.no/robots.txt",
+      "status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 0
+    },
+    "/llms.txt": {
+      "requested": "/llms.txt",
+      "final_url": "https://flo-brannsikring.no/llms.txt",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/feed.xml": {
+      "requested": "/feed.xml",
+      "final_url": "https://flo-brannsikring.no/feed.xml",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/rss.xml": {
+      "requested": "/rss.xml",
+      "final_url": "https://flo-brannsikring.no/rss.xml",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/en": {
+      "requested": "/en",
+      "final_url": "https://flo-brannsikring.no/en",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/english": {
+      "requested": "/english",
+      "final_url": "https://flo-brannsikring.no/english",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/kundehistorier?page=2": {
+      "requested": "/kundehistorier?page=2",
+      "final_url": "https://flo-brannsikring.no/kundehistorier?page=2",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/tjenester?page=2": {
+      "requested": "/tjenester?page=2",
+      "final_url": "https://flo-brannsikring.no/tjenester?page=2",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 71028
+    },
+    "/nyheter?2e36e5f8_page=3": {
+      "requested": "/nyheter?2e36e5f8_page=3",
+      "final_url": "https://flo-brannsikring.no/nyheter?2e36e5f8_page=3",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 61006
+    },
+    "/kundehistorier?page=3": {
+      "requested": "/kundehistorier?page=3",
+      "final_url": "https://flo-brannsikring.no/kundehistorier?page=3",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/tjenester?page=3": {
+      "requested": "/tjenester?page=3",
+      "final_url": "https://flo-brannsikring.no/tjenester?page=3",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 71028
+    },
+    "/nyheter?2e36e5f8_page=4": {
+      "requested": "/nyheter?2e36e5f8_page=4",
+      "final_url": "https://flo-brannsikring.no/nyheter?2e36e5f8_page=4",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 61006
+    },
+    "/kundehistorier?page=4": {
+      "requested": "/kundehistorier?page=4",
+      "final_url": "https://flo-brannsikring.no/kundehistorier?page=4",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/tjenester?page=4": {
+      "requested": "/tjenester?page=4",
+      "final_url": "https://flo-brannsikring.no/tjenester?page=4",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 71028
+    },
+    "/nyheter?2e36e5f8_page=5": {
+      "requested": "/nyheter?2e36e5f8_page=5",
+      "final_url": "https://flo-brannsikring.no/nyheter?2e36e5f8_page=5",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 61006
+    },
+    "/kundehistorier?page=5": {
+      "requested": "/kundehistorier?page=5",
+      "final_url": "https://flo-brannsikring.no/kundehistorier?page=5",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/tjenester?page=5": {
+      "requested": "/tjenester?page=5",
+      "final_url": "https://flo-brannsikring.no/tjenester?page=5",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 71028
+    },
+    "/nyheter?2e36e5f8_page=6": {
+      "requested": "/nyheter?2e36e5f8_page=6",
+      "final_url": "https://flo-brannsikring.no/nyheter?2e36e5f8_page=6",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 61006
+    },
+    "/kundehistorier?page=6": {
+      "requested": "/kundehistorier?page=6",
+      "final_url": "https://flo-brannsikring.no/kundehistorier?page=6",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/tjenester?page=6": {
+      "requested": "/tjenester?page=6",
+      "final_url": "https://flo-brannsikring.no/tjenester?page=6",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 71028
+    },
+    "/nyheter?2e36e5f8_page=7": {
+      "requested": "/nyheter?2e36e5f8_page=7",
+      "final_url": "https://flo-brannsikring.no/nyheter?2e36e5f8_page=7",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 61006
+    },
+    "/kundehistorier?page=7": {
+      "requested": "/kundehistorier?page=7",
+      "final_url": "https://flo-brannsikring.no/kundehistorier?page=7",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/tjenester?page=7": {
+      "requested": "/tjenester?page=7",
+      "final_url": "https://flo-brannsikring.no/tjenester?page=7",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 71028
+    },
+    "/?2e36e5f8_page=2": {
+      "requested": "/?2e36e5f8_page=2",
+      "final_url": "https://flo-brannsikring.no/?2e36e5f8_page=2",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 105830
+    },
+    "/${detailLink}": {
+      "requested": "/${detailLink}",
+      "final_url": "https://flo-brannsikring.no/${detailLink}",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/provekjoring": {
+      "requested": "/provekjoring",
+      "final_url": "https://flo-brannsikring.no/provekjoring",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    },
+    "/kundegrupper/eiendomsselskaper-og-byggeiere": {
+      "requested": "/kundegrupper/eiendomsselskaper-og-byggeiere",
+      "final_url": "https://flo-brannsikring.no/kundegrupper/eiendomsselskaper-og-byggeiere",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 72989
+    },
+    "/kundegrupper/storre-leietakere": {
+      "requested": "/kundegrupper/storre-leietakere",
+      "final_url": "https://flo-brannsikring.no/kundegrupper/storre-leietakere",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 72130
+    },
+    "/?2e36e5f8_page=1": {
+      "requested": "/?2e36e5f8_page=1",
+      "final_url": "https://flo-brannsikring.no/?2e36e5f8_page=1",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 109886
+    },
+    "/kundegrupper": {
+      "requested": "/kundegrupper",
+      "final_url": "https://flo-brannsikring.no/kundegrupper",
+      "status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 27205
+    }
+  },
+  "internal_links": [
+    "/",
+    "/${detailLink}",
+    "/?2e36e5f8_page=1",
+    "/?2e36e5f8_page=2",
+    "/kontakt",
+    "/kundegrupper",
+    "/kundegrupper/eiendomsselskaper-og-byggeiere",
+    "/kundegrupper/storre-leietakere",
+    "/kundehistorier",
+    "/kundehistorier/classic-norway-hotels",
+    "/kundehistorier/coop",
+    "/kundehistorier/weenaas",
+    "/nyheter",
+    "/nyheter/brannsikkerhet-krever-kompetente-og-engasjerte-mennesker",
+    "/nyheter/ny-brannstandard-gjor-hverdagen-enklere-for-forvaltningen",
+    "/nyheter/vr-brannovelse",
+    "/om-oss",
+    "/partnere",
+    "/provekjoring",
+    "/tjenester",
+    "/tjenester/brannforebygging",
+    "/tjenester/brannteknisk-utforelse",
+    "/tjenester/teknisk-forvaltning"
+  ],
+  "assets": [
+    "https://cdn.prod.website-files.com",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b8956710c_favicon256.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b89567112_favicon32.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b8956711b_kundegrupper-p-500.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b8956711b_kundegrupper.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b89567142__8503586-kopi.avif",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b8956714c_Fagmilj%C3%B82.avif",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b89567169__8503613.avif",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b89567181__8503932.avif",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b89567182__8504068.avif",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b8956718d_Screenshot%202025-08-27%20at%2014.38.58.avif",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b8956718e_6d97625296502f6d0cd607f249739a48_Screenshot%202025-08-27%20at%2014.37.59-p-1080.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b8956718e_6d97625296502f6d0cd607f249739a48_Screenshot%202025-08-27%20at%2014.37.59-p-1600.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b8956718e_6d97625296502f6d0cd607f249739a48_Screenshot%202025-08-27%20at%2014.37.59-p-2000.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b8956718e_6d97625296502f6d0cd607f249739a48_Screenshot%202025-08-27%20at%2014.37.59-p-2600.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b8956718e_6d97625296502f6d0cd607f249739a48_Screenshot%202025-08-27%20at%2014.37.59-p-3200.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b8956718e_6d97625296502f6d0cd607f249739a48_Screenshot%202025-08-27%20at%2014.37.59-p-500.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b8956718e_6d97625296502f6d0cd607f249739a48_Screenshot%202025-08-27%20at%2014.37.59-p-800.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/68e37c76e21b707b8956718e_6d97625296502f6d0cd607f249739a48_Screenshot%202025-08-27%20at%2014.37.59.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/690c570972d7ed41a44168dc_flo_sort_r%C3%B8dprikk.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/6a0ab6531209fe98c19d4b80_R%C3%B8d%20%2B%20hvit.%404x-p-1080.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/6a0ab6531209fe98c19d4b80_R%C3%B8d%20%2B%20hvit.%404x-p-1600.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/6a0ab6531209fe98c19d4b80_R%C3%B8d%20%2B%20hvit.%404x-p-2000.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/6a0ab6531209fe98c19d4b80_R%C3%B8d%20%2B%20hvit.%404x-p-2600.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/6a0ab6531209fe98c19d4b80_R%C3%B8d%20%2B%20hvit.%404x-p-500.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/6a0ab6531209fe98c19d4b80_R%C3%B8d%20%2B%20hvit.%404x-p-800.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/6a0ab6531209fe98c19d4b80_R%C3%B8d%20%2B%20hvit.%404x.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/6a1806fac21a92c4ea2a53ca_KONVERTERT%20AVIF%20_8500997-p-1080.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/6a1806fac21a92c4ea2a53ca_KONVERTERT%20AVIF%20_8500997-p-1600.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/6a1806fac21a92c4ea2a53ca_KONVERTERT%20AVIF%20_8500997-p-2000.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/6a1806fac21a92c4ea2a53ca_KONVERTERT%20AVIF%20_8500997-p-2600.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/6a1806fac21a92c4ea2a53ca_KONVERTERT%20AVIF%20_8500997-p-3200.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/6a1806fac21a92c4ea2a53ca_KONVERTERT%20AVIF%20_8500997-p-500.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/6a1806fac21a92c4ea2a53ca_KONVERTERT%20AVIF%20_8500997-p-800.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/6a1806fac21a92c4ea2a53ca_KONVERTERT%20AVIF%20_8500997.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/6a182ec1cc46399c43bf8401_godljent_logo_invers_transparent.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/css/flobrannsikring.shared.826874137.min.css",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/js/flobrannsikring.3b038b37.d7f2300a7763fe8d.js",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/js/flobrannsikring.e07bf8ee.5438a7c858fe8d83.js",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/js/flobrannsikring.schunk.36b8fb49256177c8.js",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b895670f5/js/flobrannsikring.schunk.ec8c9696e280615a.js",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b89567121_coop.svg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b8956715f_weenaas_forvaltning.avif",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b895671be_ikon1.svg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b895671d5_leietakeroppf%C3%B8lging.svg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b895671f6_myndighetskontrakt.svg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b8956720c_datadrevet-innsikt.svg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b8956722f_ra%CC%8Adgivning%20og%20kursing.svg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b8956725a_ett-kontaktpunkt.svg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b8956726f_brannovelser-opplering.svg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b89567285_enova-stotte.svg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b89567286_kundegrupper.avif",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b89567287_leietakere.avif",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b89567289_Norway.avif",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b8956728b_Brannskilt_for_alarmknapp.avif",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b895672c7_Ny%20himmel.avif",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b895672cb__8504042.avif",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b895672cf__8503903.avif",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b895672d0_Screenshot%202025-08-27%20at%2014.37.45.avif",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b895672d1_68a4651843e395246719049a__8503561.avif",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b895672d4_FDV.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b895672dc_Brann.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68e37c76e21b707b895672dd_Drift.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68f20a9728db12483eab42e3_c7_iIlnt7-BxhXWOPsjlzQV5Yux_dzjkrKG0Pwf713_A-p-500.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68f20a9728db12483eab42e3_c7_iIlnt7-BxhXWOPsjlzQV5Yux_dzjkrKG0Pwf713_A-p-800.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/68f20a9728db12483eab42e3_c7_iIlnt7-BxhXWOPsjlzQV5Yux_dzjkrKG0Pwf713_A.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/692ebc0523607670f40faa0b_MISF%20logo.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/69400c3e37c932ef01f36315_20251215_134741(1)-p-1080.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/69400c3e37c932ef01f36315_20251215_134741(1)-p-500.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/69400c3e37c932ef01f36315_20251215_134741(1)-p-800.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/69400c3e37c932ef01f36315_20251215_134741(1).jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/69400c4d1154417976689531_20251215_134912(1)-p-1080.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/69400c4d1154417976689531_20251215_134912(1)-p-500.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/69400c4d1154417976689531_20251215_134912(1)-p-800.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/69400c4d1154417976689531_20251215_134912(1).jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/69400c5ab1aa3f781a9a5aba_20251215_134501(1)-p-1080.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/69400c5ab1aa3f781a9a5aba_20251215_134501(1)-p-500.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/69400c5ab1aa3f781a9a5aba_20251215_134501(1)-p-800.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/69400c5ab1aa3f781a9a5aba_20251215_134501(1).jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a1037318e695b9f40a3a1a9_Bilde%20Mats%20brent-p-500.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a1037318e695b9f40a3a1a9_Bilde%20Mats%20brent-p-800.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a1037318e695b9f40a3a1a9_Bilde%20Mats%20brent.jpg",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a1807a57db7a603d70a8a58_KONVERTERT%20AVIF%2020160901_103854-p-1080.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a1807a57db7a603d70a8a58_KONVERTERT%20AVIF%2020160901_103854-p-500.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a1807a57db7a603d70a8a58_KONVERTERT%20AVIF%2020160901_103854-p-800.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a1807a57db7a603d70a8a58_KONVERTERT%20AVIF%2020160901_103854.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a18080d241ea06a10e4cc5e_KONVERTERT%20AVIF%20GEMINI_GENERATED_IMAGE_ZHM7Y9ZHM7Y9ZHM7-p-1080.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a18080d241ea06a10e4cc5e_KONVERTERT%20AVIF%20GEMINI_GENERATED_IMAGE_ZHM7Y9ZHM7Y9ZHM7-p-1600.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a18080d241ea06a10e4cc5e_KONVERTERT%20AVIF%20GEMINI_GENERATED_IMAGE_ZHM7Y9ZHM7Y9ZHM7-p-2000.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a18080d241ea06a10e4cc5e_KONVERTERT%20AVIF%20GEMINI_GENERATED_IMAGE_ZHM7Y9ZHM7Y9ZHM7-p-500.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a18080d241ea06a10e4cc5e_KONVERTERT%20AVIF%20GEMINI_GENERATED_IMAGE_ZHM7Y9ZHM7Y9ZHM7-p-800.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a18080d241ea06a10e4cc5e_KONVERTERT%20AVIF%20GEMINI_GENERATED_IMAGE_ZHM7Y9ZHM7Y9ZHM7.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a18116ad851ef2bd4c4b705_bremanger-p-500.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a18116ad851ef2bd4c4b705_bremanger.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a18117b2e3e5a94227a928e_agri%201-p-500.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a18117b2e3e5a94227a928e_agri%201.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a1811d2411443935b1e4ee4_Artboard%202%404x-p-1080.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a1811d2411443935b1e4ee4_Artboard%202%404x-p-500.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a1811d2411443935b1e4ee4_Artboard%202%404x-p-800.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a1811d2411443935b1e4ee4_Artboard%202%404x.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a18127bc156cdd0656c80a2_ADA2-kopi.png",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a2123f3c30b68ec4ca1a820_KONVERTERT%20DESIGNER%20(8)-p-1080.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a2123f3c30b68ec4ca1a820_KONVERTERT%20DESIGNER%20(8)-p-500.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a2123f3c30b68ec4ca1a820_KONVERTERT%20DESIGNER%20(8)-p-800.webp",
+    "https://cdn.prod.website-files.com/68e37c76e21b707b89567104/6a2123f3c30b68ec4ca1a820_KONVERTERT%20DESIGNER%20(8).webp",
+    "https://cdn.prod.website-files.com/plugins/Basic/assets/placeholder.60f9b1840c.svg",
+    "https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=68e37c76e21b707b895670f5"
+  ],
+  "external_links": [
+    "https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css",
+    "https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js",
+    "https://cdn.jsdelivr.net/gh/SimonKefas/swiper-starter@v1.1.4/js/script.js",
+    "https://cdn.jsdelivr.net/npm/@finsweet/attributes@2/attributes.js",
+    "https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js",
+    "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js",
+    "https://no.linkedin.com/company/byggforvaltning-norge-as",
+    "https://sgregister.dibk.no/enterprises/979582064?locale=nn",
+    "https://www.byggforvaltningnorge.no/",
+    "https://www.eld365.io/",
+    "https://www.mapbox.com/",
+    "mailto:${email}",
+    "mailto:%C2%A0post@bfnorge.no",
+    "mailto:brynjar@flo-brannsikring.no",
+    "mailto:faktura@bfnorge.no?subject=Fakturahenvendelse",
+    "mailto:flo@flo-brannsikring.no",
+    "mailto:gunvor@flo-brannsikring.no",
+    "mailto:inger@flo-brannsikring.no",
+    "mailto:jan@flo-brannsikring.no",
+    "mailto:kare@flo-brannsikring.no",
+    "mailto:kristoffer@flo-brannsikring.no",
+    "mailto:mats@flo-brannsikring.no",
+    "mailto:post@bfnorge.no",
+    "mailto:roy@flo-brannsikring.no",
+    "mailto:rune@flo-brannsikring.no",
+    "mailto:sigrid@flo-brannsikring.no",
+    "mailto:thomas@flo-brannsikring.no",
+    "mailto:vegard@flo-brannsikring.no",
+    "mailto:yngve@flo-brannsikring.no",
+    "mailto: post@bfnorge.no",
+    "mailto: post@flo-brannsikring.no",
+    "tel:${phone}",
+    "tel:+4740289222",
+    "tel:+4741142338",
+    "tel:+4741507337",
+    "tel:+4745241168",
+    "tel:+4746862619",
+    "tel:+4748231616",
+    "tel:+4748236548",
+    "tel:+4757873364",
+    "tel:+4790051257",
+    "tel:+4790624255",
+    "tel:+4790798968",
+    "tel:+4791128772",
+    "tel:+4795052570",
+    "tel:+4797057321",
+    "tel:+4797081960"
+  ],
+  "pdfs": []
+}
