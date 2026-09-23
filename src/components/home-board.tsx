@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages -- Native navigation ensures the tool anchor opens reliably across deployments. */
 import { OfficeMap } from "@/components/office-map";
 import Link from "next/link";
 import { EdKicker, EdLead, EdSection, EdTitle } from "@/components/ed";
@@ -71,7 +72,7 @@ export function HomeBoard() {
       <section className="home-claim-entry portfolio-paper" aria-labelledby="home-claim-title">
         <div className="portfolio-wrap home-claim-grid">
           <div><p className="story-eyebrow">Få oversikt før dere bestiller</p><h2 id="home-claim-title" className="story-heading">Har dere fått beskjed<br />om <span>et branntiltak?</span></h2></div>
-          <div><p>Et avvik i en rapport. Et krav fra en rådgiver. Et tilbud på oppgradering. Start med å avklare hva beskjeden bygger på.</p><a href="/fag-og-kunnskap/pastand-eller-krav#avklar-beskjeden" className="home-claim-action">Hva bør dere avklare? <span aria-hidden="true">↗</span></a><p className="home-claim-note">Første sortering av kilden. FLO kan deretter vurdere dokumentene.</p></div>
+          <div><p>Et avvik i en rapport. Et krav fra en rådgiver. Et tilbud på oppgradering. Start med å avklare hva beskjeden bygger på.</p><a href="/fag-og-kunnskap/pastand-eller-krav#avklar-beskjeden" className="home-claim-action">Hva bør dere avklare? <span aria-hidden="true">↗</span></a><p className="home-claim-note">Se hva dere bør kontrollere i beskjeden. FLO kan hjelpe med en faglig vurdering.</p></div>
         </div>
       </section>
 

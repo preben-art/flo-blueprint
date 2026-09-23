@@ -1354,7 +1354,7 @@ export const claimAnswers: AnswerPage = page({
   kicker: "Påstand eller krav",
   title: "Ikke alt som sies i et møte, er et pålegg.",
   lead: "Før et tiltak bestemmes må vi vite hva som faktisk er krav, hva som er anbefaling, og hvilke forutsetninger som gjelder for bygget.",
-  hero: cap(stills.skjermPeker, "FLO leser det som er sagt, mot kilden. Verktøyet er arbeidsrom, ikke vedtak."),
+  hero: cap(stills.skjermPeker, "FLO vurderer dokumentasjonen sammen med opplysninger om bygget og bruken."),
   cta: { action: "Få vurdert hva som faktisk gjelder", href: "/kontakt?situasjon=uklart&tema=krav" },
   related: [
     { href: "/situasjon/uklart", label: "Er dette et krav?" },
@@ -1371,8 +1371,8 @@ export const claimAnswers: AnswerPage = page({
     },
     a3: {
       answer:
-        "I bygg og prosjekter blir det ofte sagt at noe «må» gjøres. Uten klasse settes tiltak i gang. Med klasse ser kunden hva som gjelder, hvilke alternativer som finnes, og hva som må dokumenteres.",
-      photo: cap(stills.slokkeManometer, "Det som står i bygget. Klassifisering skjer her, ikke i anleggsmøtet alene."),
+        "En tydelig begrunnelse gjør det enklere å velge riktig tiltak. Vi ser på beskjeden sammen med byggets bruk, tilstand og dokumentasjon, slik at dere får et bedre grunnlag for beslutningen.",
+      photo: cap(stills.slokkeManometer, "Tilstand og dokumentasjon må ses i sammenheng når tiltak vurderes."),
       points: [
         "«Dette må bygges om.»",
         "«Dere må skifte hele løsningen.»",
@@ -1382,11 +1382,11 @@ export const claimAnswers: AnswerPage = page({
     },
     a4: {
       answer:
-        "Den som sa det, eier påstanden. Den som eier bygget, eier plikten. FLO eier klassifiseringen i oppdraget, ikke ansvaret for bygget.",
+        "Eier og bruker har ulike plikter knyttet til brannsikkerheten. FLO kan bistå med faglige vurderinger og dokumentasjon. Ansvar og oppfølging må avklares for det enkelte bygget.",
     },
     a5: {
       answer:
-        "Seks klasser: faktisk krav, anbefaling, faglig vurdering, prosjektvalg, praksis, uklart. Bare den første er pålegg-territorium, og bare når kilden holder for dette bygget.",
+        "Et myndighetspålegg, et faglig råd og et leverandørtilbud har ulik betydning. For å avklare hva som gjelder, må vi undersøke både dokumentet og grunnlaget det viser til.",
       points: [
         "Krav, lov, forskrift, vedtak eller vilkår for dette bygget",
         "Anbefaling, veiledning eller god praksis",
@@ -1398,16 +1398,16 @@ export const claimAnswers: AnswerPage = page({
     },
     a6: {
       answer:
-        "Hva blir hevdet? Hva vet vi om bygg, bruk, løsning, dokumentasjon og avvik? Hva bygger påstanden på? Først da klassifiserer vi.",
+        "Vi trenger beskjeden dere har fått, hvem den kommer fra og opplysninger om bygget. Ta gjerne med tegninger, brannkonsept, rapporter og eventuelle frister.",
       points: ["Påstand", "Fakta", "Kilde", "Klassifisering", "Alternativer", "Beslutning"],
     },
     a7: {
       answer:
-        "Lim inn det som er sagt. Last opp eller beskriv underlaget. Klassifisering og second opinion gjøres digitalt i hele landet. Treff på ord som «pålegg» eller «pleier» er heuristikk.",
+        "En første gjennomgang kan ofte gjøres digitalt. Beskriv saken i kontaktskjemaet eller ta kontakt, så avtaler vi hvordan underlaget kan deles. Veiviseren gir en sjekkliste; den analyserer ikke dokumenter.",
     },
     a8: {
       answer:
-        "Når kilden ikke kan avgjøres uten å se bygget, kommer befaring i Nordvestlandet. Verktøyet på denne siden erstatter ikke det.",
+        "Hvis dokumentene ikke gir tilstrekkelig informasjon om faktisk tilstand eller bruk, kan det være behov for befaring. Vi avtaler omfanget ut fra saken og byggets beliggenhet.",
     },
     a9: {
       answer:
@@ -1415,11 +1415,11 @@ export const claimAnswers: AnswerPage = page({
     },
     a10: {
       answer:
-        "Først: klassifiser. Tiltak etter klasse. Å sette i gang det som ble sagt, venter. Uklart stopper oss, vi henter grunnlag.",
+        "Samle beskjeden og dokumentene, noter fristene og avklar hvem som følger opp. Ved konkrete sikkerhetsproblemer må nødvendige tiltak håndteres straks. En faglig gjennomgang endrer ikke frister fra myndighetene.",
     },
     a11: {
       answer:
-        "Bruk arbeidsverktøyet under, eller send saken. FLO sjekker om det er påbudt, eller bare sagt. Feil klasse er mulig. Da er svaret uklart.",
+        "Bruk veiviseren for å finne ut hva dere bør undersøke, eller kontakt FLO for en konkret vurdering. Ta med beskjeden og dokumentasjonen dere har, så avklarer vi neste steg sammen.",
     },
   },
 });

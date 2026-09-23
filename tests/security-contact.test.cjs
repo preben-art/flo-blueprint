@@ -139,3 +139,16 @@ test('EmailJS placeholders never send; successful and failed transport are disti
   await assert.rejects(sendContactEmail(config, {}, async () => ({ ok: false })), /send-failed/);
   await assert.rejects(sendContactEmail(config, {}, async () => { throw new Error('network'); }), /network/);
 });
+
+const { documentOptions, getClaimGuidance } = require('../src/content/claim-guidance.ts');
+test('guidance uses explicit document choices, never keywords as legal evidence', () => {
+  const unknown = getClaimGuidance('ukjent');
+  for (const input of ['', 'lov', 'ikke pålegg', 'rådgiver anbefaler', '__proto__', 'constructor']) {
+    assert.deepEqual(getClaimGuidance(input), unknown);
+  }
+  const titles = documentOptions.map(option => getClaimGuidance(option.id).title);
+  assert.equal(new Set(titles).size, documentOptions.length);
+  for (const option of documentOptions) assert.equal(getClaimGuidance(option.id).checks.length, 3);
+  assert.match(getClaimGuidance('vedtak').checks.join(' '), /endrer ikke en fastsatt frist/);
+  assert.match(getClaimGuidance('tilbud').description, /alene avgjør ikke/);
+});

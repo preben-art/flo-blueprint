@@ -1,5 +1,5 @@
 import { OfficeMap } from "@/components/office-map";
-import { BlueprintLayout, BlueprintRoom, TechnicalNote } from "@/components/blueprint";
+import { BlueprintLayout, BlueprintRoom } from "@/components/blueprint";
 import { CtaZone } from "@/components/cta-zone";
 import { PageStill } from "@/components/page-still";
 import { PersonCard } from "@/components/person-card";
@@ -44,7 +44,7 @@ export default function OmFloPage() {
       <BlueprintLayout flow>
 
       <div className="mb-3 grid gap-3 lg:grid-cols-2">
-        <BlueprintRoom number="08A" kicker="Selskap" title="Det registeret bekrefter">
+        <BlueprintRoom number="08A" kicker="Selskap" title="FLO Brannsikring AS">
           <dl className="space-y-3 text-[15px]">
             <div className="flex justify-between gap-4 border-b border-flo-ink/15 pb-2">
               <dt className="text-[#6b645c]">Org.nr</dt>
@@ -101,36 +101,19 @@ export default function OmFloPage() {
       <BlueprintRoom
         number="08D"
         kicker="Historikk"
-        title="Tre årstall. Vi slår dem ikke sammen."
+        title="Lokale røtter. Bred brannfaglig kompetanse."
         className="my-3"
       >
-        <ul className="space-y-3 text-[15px] leading-relaxed">
-          <li className="border-b border-flo-ink/15 pb-3">
-            Nettstedet forteller om familiebedrift fra 1993 i Stryn, med Gunvor Flo.
-          </li>
-          <li className="border-b border-flo-ink/15 pb-3">
-            Brønnøysund: underenhet med oppstart 1994-01-01, historisk navn FLO BRANNSIKRING fra 1995.
-          </li>
-          <li className="border-b border-flo-ink/15 pb-3">
-            AS stiftet 1998-01-21. Alle tre kan være sanne på ulike juridiske lag. Vi velger ikke ett år uten
-            bekreftelse.
-          </li>
-          <li>
-            Eierskap mot Byggforvaltning Norge er beskrevet på gammelt nettsted. Offentlig Brreg-payload sier ikke
-            konsern. Det merkes som uløst, ikke som ferdig historie.
-          </li>
-        </ul>
-        <TechnicalNote>
-          Morselskapets eiertabell (Coop-andeler) skal ikke vises som FLO-eierskap. Den hørte hjemme på et annet
-          nettsted.
-        </TechnicalNote>
+        <div className="grid gap-8 text-[16px] leading-relaxed md:grid-cols-2">
+          <div><p className="story-eyebrow">Fra Stryn, siden 1993</p><p className="mt-4">FLO startet som en familiebedrift i Stryn i 1993, med kontroll og vedlikehold av brannslukkere og brannslanger. Nærheten til kundene og arbeidet ute i byggene er en del av historien vår.</p></div>
+          <div><p className="story-eyebrow">Fra utstyr til helhet</p><p className="mt-4">I dag hjelper vi med brannteknisk prosjektering, rådgivning, kontroll, dokumentasjon og montering av brannsikringsutstyr. Fra kontorene i Stryn og Nordfjordeid følger vi opp både nye og eksisterende bygg.</p></div>
+        </div>
       </BlueprintRoom>
 
-      <h2 className="mb-4 mt-10 text-2xl font-normal">Folkene</h2>
-      <p className="mb-6 max-w-2xl text-sm text-[#3d3832]">
-        14 navn på kilden. Brreg oppgir 15 ansatte. Avviket er uløst. Titler som manglet på kilden, er ikke funnet på
-        her.
-      </p>
+      <div className="mb-8 mt-16 grid gap-6 md:grid-cols-2 md:items-end">
+        <div><p className="story-eyebrow">Menneskene i FLO</p><h2 className="mt-4 text-3xl font-normal sm:text-4xl">Fagfolk du kan <span className="text-flo-red">snakke med.</span></h2></div>
+        <p className="max-w-2xl text-[16px] leading-relaxed text-[#3d3832]">Bak tegningene, rådene og kontrollene står mennesker som jobber med brannsikkerhet hver dag. Finn din kontakt nedenfor, eller ta kontakt med oss, så hjelper vi deg videre til riktig fagperson.</p>
+      </div>
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
         {people.map((person, i) => (
           <PersonCard

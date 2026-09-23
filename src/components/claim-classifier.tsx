@@ -1,61 +1,54 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input, Label, Textarea } from "@/components/ui/form-fields";
-import { classifyClaim, defaultTool, type ToolConfig } from "@/content/tool";
+import { documentOptions, getClaimGuidance } from "@/content/claim-guidance";
 
 export function ClaimClassifier() {
-  const [tool, setTool] = useState<ToolConfig>({
-    intro: defaultTool.intro,
-    disclaimer: defaultTool.disclaimer,
-    classes: defaultTool.classes.map((klass) => ({ ...klass, keywords: [...klass.keywords] })),
-  });
+  const [documentType, setDocumentType] = useState("");
   const [claim, setClaim] = useState("");
   const [source, setSource] = useState("");
   const [done, setDone] = useState(false);
 
-  useEffect(() => {
-    let live = true;
-    fetch("/api/desk/tool")
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data: { tool?: ToolConfig } | null) => {
-        if (live && data?.tool?.classes?.length) setTool(data.tool);
-      })
-      .catch(() => undefined);
-    return () => { live = false; };
-  }, []);
-  const result = useMemo(() => classifyClaim(source, tool.classes), [source, tool.classes]);
-  const klass = tool.classes.find((item) => item.id === result) ?? tool.classes.at(-1);
+  const result = getClaimGuidance(documentType);
 
   return (
     <div className="claim-workspace">
-      <form className="claim-form" onSubmit={(e) => { e.preventDefault(); setDone(true); }}>
+      <form className="claim-form" onSubmit={(e) => { e.preventDefault(); if (claim.trim() && documentType) setDone(true); }}>
         <p className="story-eyebrow">Start med det dere har</p>
         <h3>Hva har dere fått beskjed om?</h3>
-        <p className="claim-help">Skriv inn beskjeden og hvor den kommer fra. Du får en første sortering av kilden og hjelp til neste steg.</p>
+        <p className="claim-help">Velg hva slags dokument dere har fått. Da får dere en sjekkliste for hva dere bør undersøke før saken tas videre.</p>
         <div>
           <Label htmlFor="claim">Beskjeden eller tiltaket</Label>
           <Textarea id="claim" value={claim} onChange={(e) => { setClaim(e.target.value); setDone(false); }} placeholder="For eksempel: Vi har fått beskjed om å oppgradere brannalarmanlegget." required maxLength={4000} />
         </div>
         <div>
-          <Label htmlFor="source">Hvem sier det – og hvilket dokument viser de til?</Label>
-          <Input id="source" value={source} onChange={(e) => { setSource(e.target.value); setDone(false); }} placeholder="For eksempel: rådgiver, tilsynsrapport eller tilbud" required maxLength={1000} />
-          <p className="claim-field-hint">Mangler du kilden? Skriv «vet ikke».</p>
+          <Label htmlFor="document-type">Hva slags beskjed har dere fått?</Label>
+          <select id="document-type" required value={documentType} onChange={(e) => { setDocumentType(e.target.value); setDone(false); }} className="min-h-11 w-full rounded-md border border-flo-ink bg-[#fbf8f2] px-3 py-3 text-base text-flo-ink focus-visible:outline-2 focus-visible:outline-flo-red">
+            <option value="" disabled>Velg dokumenttype</option>
+            {documentOptions.map(option => <option key={option.id} value={option.id}>{option.label}</option>)}
+          </select>
+        </div>
+        <div>
+          <Label htmlFor="source">Avsender eller dokumentnavn (valgfritt)</Label>
+          <Input id="source" value={source} onChange={(e) => { setSource(e.target.value); setDone(false); }} placeholder="For eksempel: rådgiver, tilsynsrapport eller tilbud" maxLength={1000} />
+          <p className="claim-field-hint">Skriv det dere vet. La feltet stå tomt hvis dere er usikre.</p>
         </div>
         <Button type="submit">Se hva dere bør avklare <span aria-hidden="true">↗</span></Button>
-        <p className="claim-field-hint">Teksten sendes ikke til FLO når du bruker verktøyet.</p>
+        <p className="claim-field-hint">Svarene følger dokumenttypen du velger. Friteksten analyseres ikke og sendes ikke til FLO.</p>
       </form>
       <aside className="claim-guidance" aria-live="polite" aria-atomic="true">
-        {done && klass ? <>
-          <p className="story-eyebrow">Din første sortering</p>
-          <h3>{klass.id === "uklart" ? "Vi trenger kilden for å komme videre." : `Kilden peker mot: ${klass.label.toLowerCase()}.`}</h3>
-          <p>{klass.meaning}</p>
-          <p className="claim-result-note">Dette er et treff på ord i kildefeltet. Verktøyet har ikke vurdert dokumentet eller om tiltaket gjelder deres bygg.</p>
-          <blockquote>{claim}</blockquote>
-          <h4>La FLO se på grunnlaget.</h4>
-          <p>Ta med beskjeden og dokumentet til en faglig gjennomgang. Da kan vi avklare hva som gjelder, og hva dere bør gjøre videre.</p>
+        {done ? <>
+          <p className="story-eyebrow">Dette bør dere undersøke</p>
+          <h3>{result.title}</h3>
+          <p>{result.description}</p>
+          <ol className="claim-steps">{result.checks.map((check, index) => <li key={check}><span>{String(index + 1).padStart(2, "0")}</span><p>{check}</p></li>)}</ol>
+          <blockquote>{claim}{source.trim() && <footer className="mt-2 text-sm">Oppgitt kilde: {source}</footer>}</blockquote>
+          <p className="claim-result-note">Dette er en sjekkliste, ikke en vurdering av dokumentet eller en konklusjon om hva som gjelder deres bygg.</p>
+          <h4 className="mt-6">Vil dere ha en faglig avklaring?</h4>
+          <p>Ta med beskjeden og underlaget til FLO. Vi kan vurdere dokumentasjonen opp mot bygget og hjelpe dere med neste steg.</p>
           <Link href="/kontakt?situasjon=uklart" className="story-link">Få saken vurdert av FLO <span aria-hidden="true">↗</span></Link>
         </> : <>
           <p className="story-eyebrow">Før dere bestiller tiltak</p>
@@ -69,7 +62,7 @@ export function ClaimClassifier() {
           <Link href="/kontakt?situasjon=uklart" className="story-link">Vil du heller snakke med oss? <span aria-hidden="true">↗</span></Link>
         </>}
       </aside>
-      <details className="claim-explainer"><summary>Hva betyr kategoriene, og hvordan fungerer verktøyet?</summary><p>{tool.intro}</p><ul>{tool.classes.map(item => <li key={item.id}><strong>{item.label}.</strong> {item.meaning}</li>)}</ul><p>{tool.disclaimer}</p></details>
+      <details className="claim-explainer"><summary>Hvordan fungerer veiviseren?</summary><p>Du får en sjekkliste basert på dokumenttypen du selv velger. Verktøyet leser ikke dokumenter og avgjør ikke om et tiltak er lovpålagt. For en konkret vurdering trenger FLO underlaget og opplysninger om bygget.</p><p>Bakgrunn: <a className="underline" href="https://www.dsb.no/brannsikkerhet/ofte-stilte-sporsmal-til-forskrift-om-brannforebygging/" target="_blank" rel="noreferrer">DSBs spørsmål og svar om brannforebygging</a>.</p></details>
     </div>
   );
 }
