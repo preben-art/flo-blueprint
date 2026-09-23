@@ -2419,8 +2419,8 @@ body:has(main .cinema-hero) .site-header:not([data-solid="true"]):not(:has(detai
 .contact-field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .contact-field-note { font-size: 13px; color: var(--flo-muted-soft); }
 .contact-premium-form label { font-size: 14px; letter-spacing: 0; text-transform: none; font-family: inherit; font-weight: 500; }
-.contact-premium-form input:not([type=hidden]), .contact-premium-form select, .contact-premium-form textarea { border: 1px solid #c9c0b5; background: #fbf8f2; border-radius: 2px; font-size: 16px; padding: 12px 14px; min-width: 0; width: 100%; }
-.contact-premium-form input, .contact-premium-form select { min-height: 50px; }
+.contact-premium-form input:not([type=hidden]):not([type=checkbox]), .contact-premium-form select, .contact-premium-form textarea { border: 1px solid #c9c0b5; background: #fbf8f2; border-radius: 2px; font-size: 16px; padding: 12px 14px; min-width: 0; width: 100%; }
+.contact-premium-form input:not([type=checkbox]), .contact-premium-form select { min-height: 50px; }
 .contact-premium-form textarea { min-height: 170px; line-height: 1.7; }
 .contact-premium-form :is(input, select, textarea):focus-visible { outline: 2px solid var(--flo-red-text); outline-offset: 3px; }
 .contact-premium-form > .btn { min-height: 52px; }
