@@ -66,14 +66,17 @@ export default async function KontaktPage({
           </div>
         </div>
       </section>
-      <section id="personvern" aria-labelledby="privacy-title" className="portfolio-paper scroll-mt-28 border-t border-flo-ink/15">
+      <section className="portfolio-paper border-t border-flo-ink/15">
         <div className="portfolio-wrap max-w-4xl text-base leading-relaxed">
-          <p className="story-eyebrow">Personvern i kontaktskjemaet</p>
-          <h2 id="privacy-title" className="mb-6 mt-4 text-3xl font-normal">Slik brukes henvendelsen din.</h2>
+          <details id="personvern" className="scroll-mt-28">
+          <summary className="cursor-pointer text-lg font-medium text-flo-ink">Personvern – slik brukes henvendelsen din</summary>
+          <div className="mt-6">
           <p>{company.legalName}, org.nr. {company.orgnr}, er ansvarlig for oppfølgingen av henvendelsen. Navn, kontaktopplysninger, eventuell bedrift og beskrivelsen av saken brukes til å besvare forespørselen og avklare behovet ditt.</p>
           <p className="mt-4">Når skjemaet er aktivert, sendes opplysningene til FLO via EmailJS og den tilknyttede e-posttjenesten. Avhukingen, tekstversjonen og tidspunktene for bekreftelse og sending følger meldingen. Avhukingen gjelder denne informasjonen, ikke markedsføring.</p>
           <p className="mt-4">EmailJS opplyser at behandlingen kan innebære overføring til USA. Les <a className="underline text-flo-red" href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noreferrer">EmailJS sin personvernerklæring</a>. Ikke send sensitive personopplysninger i skjemaet.</p>
           <p className="mt-4">For spørsmål om lagring, innsyn, retting eller sletting av opplysninger hos FLO, kontakt <a className="underline text-flo-red" href={`mailto:${company.email}`}>{company.email}</a>. Du kan også bruke e-post eller telefon direkte.</p>
+          </div>
+          </details>
         </div>
       </section>
       <CoverageBand />
