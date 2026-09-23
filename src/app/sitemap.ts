@@ -1,10 +1,14 @@
+import { listDeskPosts } from "@/lib/desk";
+import { editorialPath } from "@/lib/editorial-path";
 import type { MetadataRoute } from "next";
 import { knowledgeNodes } from "@/content/knowledge/nodes";
-import { articles, customers, news, projects, services, situations } from "@/content/site";
-import { canonicalOrigin } from "@/lib/seo";
+import { articles, customers, projects, services, situations } from "@/content/site";
+import { canonicalOrigin, isIndexableDeployment } from "@/lib/seo";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+export const dynamic = "force-dynamic";
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  if (!isIndexableDeployment()) return [];
+  const posts = await listDeskPosts();
   const paths = [
     "/",
     "/situasjon",
@@ -26,12 +30,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...customers.filter((c) => c.slug !== "privat").map((c) => `/hvem-er-du/${c.slug}`),
     ...projects.map((p) => `/prosjekter/${p.slug}`),
     ...articles.map((a) => `/fag-og-kunnskap/${a.slug}`),
-    ...news.map((item) => `/nyheter/${item.slug}`),
+    ...posts.map(editorialPath),
     ...knowledgeNodes.map((n) => `/fag-og-kunnskap/${n.slug}`),
   ];
 
   return [...new Set(paths)].map((path) => ({
     url: `${canonicalOrigin}${path}`,
-    lastModified: now,
+    ...(posts.find((post) => editorialPath(post) === path && post.source === "desk")
+      ? { lastModified: posts.find((post) => editorialPath(post) === path)!.updatedAt } : {}),
   }));
 }

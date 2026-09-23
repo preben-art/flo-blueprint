@@ -43,7 +43,7 @@ export function pageMeta(
       locale: "nb_NO",
       type: options?.article ? "article" : "website",
       siteName: company.brandName,
-      images: [{ ...ogImage, url: image }],
+      images: [options?.image ? { url: image, alt: `${company.brandName}: ${title}` } : ogImage],
     },
     twitter: {
       card: "summary_large_image",

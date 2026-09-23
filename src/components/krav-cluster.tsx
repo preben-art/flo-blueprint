@@ -8,14 +8,14 @@ export function KravCluster() {
         <div className="plan-read plan-float lg:col-span-5">
           <p className="ed-kicker">Samme bygg</p>
           <h2 className="mt-4 max-w-md text-3xl font-normal sm:text-4xl">Tilsyn, internkontroll og TEK i samme bygg?</h2>
-          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-[#221d19]">
+          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-flo-muted">
             Tilsyn, internkontroll og TEK er ikke tre separate jobber. De treffer ofte samme dokumentasjon og samme bruk.
           </p>
         </div>
         <ol className="plan-read plan-float lg:col-span-7">
           {kravCluster.map((item, i) => (
-            <li key={item.id} className="border-b border-[#161210]/12 py-4">
-              <Link href={item.href} className="group block hover:text-[#c62e32]">
+            <li key={item.id} className="border-b border-flo-ink/12 py-4">
+              <Link href={item.href} className="group block hover:text-flo-red">
                 <p className="ed-kicker">
                   {String(i + 1).padStart(2, "0")} · {item.label}
                 </p>
@@ -25,7 +25,7 @@ export function KravCluster() {
           ))}
         </ol>
         <p className="plan-read plan-float lg:col-span-12">
-          <Link href="/fag-og-kunnskap/flere-krav-samme-bygg" className="text-sm text-[#c62e32] hover:underline">
+          <Link href="/fag-og-kunnskap/flere-krav-samme-bygg" className="text-sm text-flo-red hover:underline">
             Les hvordan de henger sammen
           </Link>
         </p>

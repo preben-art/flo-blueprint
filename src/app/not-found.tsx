@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <BlueprintLayout>
       <BlueprintRoom number="00" kicker="Fant ikke siden" title="Denne siden finnes ikke.">
-        <p className="mb-6 max-w-xl text-[15px] leading-relaxed text-[#221d19]">
+        <p className="mb-6 max-w-xl text-[15px] leading-relaxed text-flo-muted">
           Gå til forsiden, eller start med avviket, ombyggingen eller spørsmålet om hva som kreves.
         </p>
         <div className="flex flex-col gap-3 sm:flex-row">

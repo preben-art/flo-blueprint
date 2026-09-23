@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { canManagePost } from "@/lib/desk-validation";
 import Link from "next/link";
 import { createDeskEntry, loginDesk, logoutDesk, setDeskStatus } from "@/app/redaksjon/actions";
 import { Button } from "@/components/ui/button";
@@ -25,20 +26,24 @@ export function DeskBoard({
   const [kind, setKind] = useState<PostKind>("nyhet");
   const [notice, setNotice] = useState("");
 
-  async function load(all = true) {
-    const res = await fetch(`/api/desk?all=${all ? "1" : "0"}`, { credentials: "same-origin" });
-    const data = (await res.json()) as DeskResponse;
-    setPosts(data.posts ?? []);
-    setSession(data.session ?? initialSession);
-    if ((data.session ?? initialSession)?.role === "flo") {
-      const toolRes = await fetch("/api/desk/tool", { credentials: "same-origin" });
-      const toolData = (await toolRes.json()) as { tool?: ToolConfig };
-      if (toolData.tool) setTool(toolData.tool);
-    }
-  }
-
   useEffect(() => {
-    load().catch(() => setError("Redaksjonen kunne ikke lastes."));
+    const controller = new AbortController();
+    fetch("/api/desk?all=1", { credentials: "same-origin", signal: controller.signal })
+      .then(async (res) => {
+        if (!res.ok) throw new Error("load-failed");
+        const data = await res.json() as DeskResponse;
+        if (controller.signal.aborted) return;
+        setPosts(data.posts ?? []);
+        setSession(data.session);
+        if (data.session?.role === "flo") {
+          const toolRes = await fetch("/api/desk/tool", { credentials: "same-origin", signal: controller.signal });
+          if (!toolRes.ok) throw new Error("load-failed");
+          const toolData = await toolRes.json() as { tool?: ToolConfig };
+          if (!controller.signal.aborted && toolData.tool) setTool(toolData.tool);
+        }
+      })
+      .catch(() => { if (!controller.signal.aborted) setError("Redaksjonen kunne ikke lastes."); });
+    return () => controller.abort();
   }, []);
 
   async function saveTool(e: React.FormEvent) {
@@ -67,7 +72,7 @@ export function DeskBoard({
       <form action={loginDesk} method="post" className="plan-read plan-float grid max-w-md gap-4">
         <p className="ed-kicker">Redaksjon</p>
         <h2 className="text-2xl font-normal">Logg inn for å legge inn eller ta ned innhold.</h2>
-        <p className="text-[15px] leading-relaxed text-[#221d19]">
+        <p className="text-[15px] leading-relaxed text-flo-muted">
           Kunder legger inn nyheter og artikler, og kan ta ned eget innhold. FLO styrer arbeidsverktøyet og hele
           listen.
         </p>
@@ -79,13 +84,13 @@ export function DeskBoard({
           <Label htmlFor="key">Nøkkel</Label>
           <Input id="key" name="passphrase" type="password" required autoComplete="current-password" />
         </div>
-        {error ? <p className="text-sm text-[#c62e32]">{error}</p> : null}
+        {error ? <p className="text-sm text-flo-red">{error}</p> : null}
         <Button type="submit">Åpne redaksjonen</Button>
       </form>
     );
   }
 
-  const own = (post: DeskPost) => session.role === "flo" || (post.source === "desk" && post.authorName === session.name);
+  const own = (post: DeskPost) => canManagePost(post, session);
 
   return (
     <div className="grid gap-10">
@@ -93,7 +98,7 @@ export function DeskBoard({
         <div>
           <p className="ed-kicker">{session.role === "flo" ? "FLO" : "Kunde"}</p>
           <h2 className="mt-2 text-2xl font-normal">{session.name}</h2>
-          <p className="mt-2 text-sm text-[#221d19]">Innhold kan legges ut og tas ned herfra. Det vises på Nyheter og Artikler.</p>
+          <p className="mt-2 text-sm text-flo-muted">Innhold kan legges ut og tas ned herfra. Det vises på Nyheter og Artikler.</p>
         </div>
         <form action={logoutDesk}>
           <Button type="submit" variant="outline">
@@ -102,8 +107,8 @@ export function DeskBoard({
         </form>
       </div>
 
-      {error ? <p className="text-sm text-[#c62e32]">{error}</p> : null}
-      {notice ? <p className="text-sm text-[#161210]">{notice}</p> : null}
+      {error ? <p className="text-sm text-flo-red">{error}</p> : null}
+      {notice ? <p className="text-sm text-flo-ink">{notice}</p> : null}
 
       <form action={createDeskEntry} className="plan-read plan-float grid gap-4">
         <p className="ed-kicker">Nytt innhold</p>
@@ -113,7 +118,7 @@ export function DeskBoard({
             <select
               id="kind"
               name="kind"
-              className="flex h-11 w-full rounded-md border border-[#161210] bg-[#fbf8f2] px-3 text-sm"
+              className="flex h-11 w-full rounded-md border border-flo-ink bg-[#fbf8f2] px-3 text-sm"
               value={kind}
               onChange={(e) => setKind(e.target.value as PostKind)}
             >
@@ -123,20 +128,20 @@ export function DeskBoard({
           </div>
           <div>
             <Label htmlFor="kicker">Stikkord</Label>
-            <Input id="kicker" name="kicker" placeholder="Digitalt, Bolig…" />
+            <Input id="kicker" name="kicker" maxLength={150} placeholder="Digitalt, Bolig…" />
           </div>
         </div>
         <div>
           <Label htmlFor="title">Tittel</Label>
-          <Input id="title" name="title" required />
+          <Input id="title" name="title" required maxLength={250} />
         </div>
         <div>
           <Label htmlFor="excerpt">Ingress</Label>
-          <Textarea id="excerpt" name="excerpt" />
+          <Textarea id="excerpt" name="excerpt" maxLength={1500} />
         </div>
         <div>
           <Label htmlFor="body">Tekst</Label>
-          <Textarea id="body" name="body" required className="min-h-40" />
+          <Textarea id="body" name="body" required maxLength={50000} className="min-h-40" />
         </div>
         <div>
           <Label htmlFor="still">Studiobilde, valgfritt</Label>
@@ -147,7 +152,7 @@ export function DeskBoard({
 
       <div className="plan-read plan-float">
         <p className="ed-kicker">Innhold</p>
-        <ul className="mt-6 divide-y divide-[#161210]/12 border-y border-[#161210]/12">
+        <ul className="mt-6 divide-y divide-flo-ink/12 border-y border-flo-ink/12">
           {posts.map((post) => (
             <li key={post.id} className="flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:justify-between">
               <div>
@@ -155,10 +160,10 @@ export function DeskBoard({
                   {post.kind} · {post.status === "published" ? "ute" : "tatt ned"} · {post.authorName}
                 </p>
                 <p className="mt-1 text-lg font-normal">{post.title}</p>
-                <p className="mt-1 text-sm text-[#221d19]">{post.excerpt}</p>
+                <p className="mt-1 text-sm text-flo-muted">{post.excerpt}</p>
                 <Link
                   href={post.kind === "nyhet" ? `/nyheter/${post.slug}` : `/artikler/${post.slug}`}
-                  className="mt-2 inline-block text-sm text-[#c62e32] hover:underline"
+                  className="mt-2 inline-block text-sm text-flo-red hover:underline"
                 >
                   Åpne
                 </Link>
@@ -194,7 +199,7 @@ export function DeskBoard({
             />
           </div>
           {tool.classes.map((klass, i) => (
-            <div key={klass.id} className="grid gap-3 border-t border-[#161210]/12 pt-4 sm:grid-cols-2">
+            <div key={klass.id} className="grid gap-3 border-t border-flo-ink/12 pt-4 sm:grid-cols-2">
               <div>
                 <Label htmlFor={`label-${klass.id}`}>Klasse</Label>
                 <Input

@@ -1,6 +1,6 @@
 import { company, people } from "@/content/site";
-import { canonicalOrigin, canonicalUrl, ids, organizationNode, placeNodes, websiteNode } from "@/lib/semantic/identity";
-import { publicService, serviceNode } from "@/lib/semantic/services";
+import { canonicalUrl, ids, organizationNode, placeNodes, websiteNode } from "@/lib/semantic/identity";
+import { publicService, publicServices, serviceNode } from "@/lib/semantic/services";
 
 export type FaqItem = { question: string; answer: string };
 
@@ -9,6 +9,7 @@ export type PageFacts = {
   title: string;
   description: string;
   kind?: "WebPage" | "AboutPage" | "ContactPage" | "CollectionPage" | "ProfilePage";
+  image?: string;
   topic?: string;
   audience?: string;
   area?: string;
@@ -59,7 +60,7 @@ export function pageGraph(facts: PageFacts) {
   const pageId = ids.webpage(facts.path);
   const crumbs = facts.breadcrumbs ?? breadcrumbsFor(facts.path, facts.title);
   const service = facts.serviceSlug ? publicService(facts.serviceSlug) : undefined;
-  const pageType = facts.news ? "NewsArticle" : facts.article ? "Article" : (facts.kind ?? "WebPage");
+  const pageType = facts.kind ?? "WebPage";
 
   const webpage: Record<string, unknown> = {
     "@type": pageType,
@@ -72,7 +73,7 @@ export function pageGraph(facts: PageFacts) {
     about: { "@id": service ? ids.service(service.slug) : ids.organization },
     publisher: { "@id": ids.organization },
     breadcrumb: { "@id": ids.breadcrumb(facts.path) },
-    primaryImageOfPage: `${canonicalOrigin}/og.jpg`,
+    primaryImageOfPage: canonicalUrl(facts.image ?? "/og.jpg"),
   };
 
   if (facts.topic) webpage.about = [{ "@id": ids.organization }, { "@type": "Thing", name: facts.topic }];
@@ -80,15 +81,24 @@ export function pageGraph(facts: PageFacts) {
   if (facts.area) webpage.spatialCoverage = facts.area;
   if (facts.datePublished) webpage.datePublished = facts.datePublished;
   if (facts.dateModified) webpage.dateModified = facts.dateModified;
-  if (facts.article || facts.news) {
-    webpage.author = { "@id": ids.organization };
-    webpage.headline = facts.title;
-  }
+
   if (service) webpage.mainEntity = { "@id": ids.service(service.slug) };
 
   const graph: Record<string, unknown>[] = [organizationNode(), ...placeNodes(), websiteNode(), webpage];
 
-  if (service) graph.push(serviceNode(service));
+  if (service) graph.push(...publicServices().map(serviceNode));
+  if (facts.article || facts.news) {
+    const articleId = `${canonicalUrl(facts.path)}#article`;
+    webpage.mainEntity = { "@id": articleId };
+    graph.push({
+      "@type": facts.news ? "NewsArticle" : "Article", "@id": articleId,
+      mainEntityOfPage: { "@id": pageId }, headline: facts.title,
+      description: facts.description, inLanguage: "nb-NO",
+      author: { "@id": ids.organization }, publisher: { "@id": ids.organization },
+      image: canonicalUrl(facts.image ?? "/og.jpg"),
+      datePublished: facts.datePublished, dateModified: facts.dateModified,
+    });
+  }
 
   graph.push({
     "@type": "BreadcrumbList",

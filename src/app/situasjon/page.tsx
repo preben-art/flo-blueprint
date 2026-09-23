@@ -35,7 +35,7 @@ export default function SituasjonIndexPage() {
         <h2 className="mt-4 max-w-md text-3xl font-normal sm:text-4xl">
           Tilsyn, ombygging eller uklart krav.
         </h2>
-        <p className="mt-4 max-w-md text-[15px] leading-relaxed text-[#221d19]">
+        <p className="mt-4 max-w-md text-[15px] leading-relaxed text-flo-muted">
           Tre innganger. Samme tegning: hva som er brannskille, hvor rømningen går, og hva som faktisk er kontrollert.
         </p>
       </PlanSplit>

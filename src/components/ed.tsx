@@ -32,12 +32,12 @@ export function EdKicker({ children }: { children: ReactNode }) {
 
 export function EdTitle({ children }: { children: ReactNode }) {
   return (
-    <h2 className="mt-4 max-w-3xl text-3xl font-normal tracking-[-0.012em] text-[#161210] sm:text-5xl">{children}</h2>
+    <h2 className="mt-4 max-w-3xl text-3xl font-normal tracking-[-0.012em] text-flo-ink sm:text-5xl">{children}</h2>
   );
 }
 
 export function EdLead({ children }: { children: ReactNode }) {
-  return <p className="mt-5 max-w-2xl text-[17px] font-normal leading-relaxed text-pretty text-[#221d19]">{children}</p>;
+  return <p className="mt-5 max-w-2xl text-[17px] font-normal leading-relaxed text-pretty text-flo-muted">{children}</p>;
 }
 
 export function RailStep({

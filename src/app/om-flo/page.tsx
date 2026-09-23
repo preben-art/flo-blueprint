@@ -1,3 +1,4 @@
+import { OfficeMap } from "@/components/office-map";
 import { BlueprintLayout, BlueprintRoom, TechnicalNote } from "@/components/blueprint";
 import { CtaZone } from "@/components/cta-zone";
 import { PageStill } from "@/components/page-still";
@@ -35,26 +36,26 @@ export default function OmFloPage() {
       <PlanSplit tone="paper" still={stills.drawings} stillAlt={photoAlt[stills.drawings]} caption="Fagmiljøet i Stryn leser underlaget før tiltak settes i gang.">
         <p className="ed-kicker">Fagmiljø</p>
         <h2 className="mt-4 text-2xl font-normal sm:text-3xl">To adresser. Ett fagmiljø.</h2>
-        <p className="mt-4 text-[15px] leading-relaxed text-[#221d19]">{company.coverage.digital}</p>
+        <p className="mt-4 text-[15px] leading-relaxed text-flo-muted">{company.coverage.digital}</p>
         <p className="ed-kicker mt-12">Nordvestlandet</p>
         <h2 className="mt-4 text-2xl font-normal sm:text-3xl">Stryn og Nordfjordeid.</h2>
-        <p className="mt-4 text-[15px] leading-relaxed text-[#221d19]">{company.coverage.physical}</p>
+        <p className="mt-4 text-[15px] leading-relaxed text-flo-muted">{company.coverage.physical}</p>
       </PlanSplit>
       <BlueprintLayout flow>
 
       <div className="mb-3 grid gap-3 lg:grid-cols-2">
         <BlueprintRoom number="08A" kicker="Selskap" title="Det registeret bekrefter">
           <dl className="space-y-3 text-[15px]">
-            <div className="flex justify-between gap-4 border-b border-[#161210]/15 pb-2">
+            <div className="flex justify-between gap-4 border-b border-flo-ink/15 pb-2">
               <dt className="text-[#6b645c]">Org.nr</dt>
               <dd>{company.orgnr}</dd>
             </div>
-            <div className="flex justify-between gap-4 border-b border-[#161210]/15 pb-2">
+            <div className="flex justify-between gap-4 border-b border-flo-ink/15 pb-2">
               <dt className="text-[#6b645c]">Godkjenning</dt>
               <dd>{company.approvalPeriod}</dd>
             </div>
             {company.flags.map((f) => (
-              <div key={f} className="flex justify-between gap-4 border-b border-[#161210]/15 pb-2">
+              <div key={f} className="flex justify-between gap-4 border-b border-flo-ink/15 pb-2">
                 <dt className="text-[#6b645c]">Merknad</dt>
                 <dd>{f}</dd>
               </div>
@@ -62,7 +63,7 @@ export default function OmFloPage() {
           </dl>
           <a
             href={company.approvalUrl}
-            className="mt-4 inline-block text-sm underline hover:text-[#c62e32]"
+            className="mt-4 inline-block text-sm underline hover:text-flo-red"
             target="_blank"
             rel="noreferrer"
           >
@@ -88,8 +89,8 @@ export default function OmFloPage() {
       <BlueprintRoom number="08C" kicker="Godkjenning" title="Tiltaksklasser" className="my-3">
         <div className="grid gap-4 sm:grid-cols-3">
           {company.approvals.map((a) => (
-            <div key={a.area} className="border border-[#161210] p-4">
-              <p className="room-number text-[#c62e32]">{a.class}</p>
+            <div key={a.area} className="border border-flo-ink p-4">
+              <p className="room-number text-flo-red">{a.class}</p>
               <p className="mt-2 font-medium">{a.function}</p>
               <p className="text-sm text-[#3d3832]">{a.area}</p>
             </div>
@@ -104,13 +105,13 @@ export default function OmFloPage() {
         className="my-3"
       >
         <ul className="space-y-3 text-[15px] leading-relaxed">
-          <li className="border-b border-[#161210]/15 pb-3">
+          <li className="border-b border-flo-ink/15 pb-3">
             Nettstedet forteller om familiebedrift fra 1993 i Stryn, med Gunvor Flo.
           </li>
-          <li className="border-b border-[#161210]/15 pb-3">
+          <li className="border-b border-flo-ink/15 pb-3">
             Brønnøysund: underenhet med oppstart 1994-01-01, historisk navn FLO BRANNSIKRING fra 1995.
           </li>
-          <li className="border-b border-[#161210]/15 pb-3">
+          <li className="border-b border-flo-ink/15 pb-3">
             AS stiftet 1998-01-21. Alle tre kan være sanne på ulike juridiske lag. Vi velger ikke ett år uten
             bekreftelse.
           </li>
@@ -148,6 +149,7 @@ export default function OmFloPage() {
       </div>
 
     </BlueprintLayout>
+      <OfficeMap />
     <CtaZone title="Snakk med oss direkte." body="Sentralbord, post eller skjema. Vi svarer innen én til to virkedager." />
     </>
   );

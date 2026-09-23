@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    turbopackFileSystemCacheForDev: process.env.FLO_LOW_DISK_MODE !== "1",
+    turbopackFileSystemCacheForBuild: process.env.FLO_LOW_DISK_MODE !== "1",
+  },
   allowedDevOrigins: ["127.0.0.1", "localhost", "cursor", "0.0.0.0"],
   images: {
     qualities: [75, 90, 95],

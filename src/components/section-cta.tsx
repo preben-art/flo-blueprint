@@ -27,7 +27,7 @@ export function SectionCta({
         </Button>
       ) : null}
       {note ? (
-        <p className={cn("text-sm sm:ml-2", tone === "dark" ? "text-[#fbf8f2]" : "text-[#161210]")}>
+        <p className={cn("text-sm sm:ml-2", tone === "dark" ? "text-[#fbf8f2]" : "text-flo-ink")}>
           {note}
         </p>
       ) : null}

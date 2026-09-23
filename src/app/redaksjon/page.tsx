@@ -15,7 +15,7 @@ export const metadata = pageMeta(
 
 const errors: Record<string, string> = {
   nokkel: "Ugyldig nøkkel.",
-  skjema: "Tittel og tekst må fylles inn.",
+  skjema: "Kontroller feltene. Tittel: maks 250 tegn. Stikkord: 150. Ingress: 1500. Tekst: 50 000. Tittel og tekst må fylles inn.",
   bilde: "Bildet må være JPG, PNG eller WebP under 4 MB.",
   tilgang: "Du kan bare ta ned eget innhold.",
 };

@@ -15,11 +15,11 @@ export function RoomLabel({
 }) {
   return (
     <div className={cn("flex items-center gap-3", className)}>
-      <span className={cn("room-number", onDark ? "text-[#c62e32]" : "text-[#c62e32]")}>
+      <span className={cn("room-number", onDark ? "text-flo-red" : "text-flo-red")}>
         {number}
       </span>
       {title ? (
-        <span className={cn("room-number", onDark ? "text-[#fbf8f2]" : "text-[#161210]")}>
+        <span className={cn("room-number", onDark ? "text-[#fbf8f2]" : "text-flo-ink")}>
           {title}
         </span>
       ) : null}
@@ -35,7 +35,7 @@ export function TechnicalNote({
   className?: string;
 }) {
   return (
-    <p className={cn("mt-4 max-w-xl text-sm leading-relaxed text-[#161210]", className)}>
+    <p className={cn("mt-4 max-w-xl text-sm leading-relaxed text-flo-ink", className)}>
       {children}
     </p>
   );
@@ -92,10 +92,10 @@ export function ProcessPath({
   steps: readonly { id: string; label: string }[];
 }) {
   return (
-    <ol className="grid grid-cols-1 divide-y divide-[#161210]/15 border-y border-[#161210]/20 sm:grid-cols-3 sm:divide-x sm:divide-y-0 lg:grid-cols-9">
+    <ol className="grid grid-cols-1 divide-y divide-flo-ink/15 border-y border-flo-ink/20 sm:grid-cols-3 sm:divide-x sm:divide-y-0 lg:grid-cols-9">
       {steps.map((step, i) => (
         <li key={step.id} className="px-3 py-4">
-          <div className="room-number mb-2 text-[#c62e32]">
+          <div className="room-number mb-2 text-flo-red">
             {String(i + 1).padStart(2, "0")}
           </div>
           <div className="text-sm font-medium leading-snug">{step.label}</div>

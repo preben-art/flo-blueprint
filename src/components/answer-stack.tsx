@@ -16,10 +16,12 @@ export function AnswerStack({
   page,
   insertAfter,
   afterKrav,
+  afterHero,
 }: {
   page: AnswerPage;
   insertAfter?: Partial<Record<AnswerId, ReactNode>>;
   afterKrav?: ReactNode;
+  afterHero?: ReactNode;
 }) {
   const path =
     page.kind === "situation"
@@ -35,6 +37,7 @@ export function AnswerStack({
             : `/fag-og-kunnskap/${page.slug}`;
   const facts: PageFacts = {
     path,
+    image: page.hero.src,
     title: page.title,
     description: firstSentence(page.answers.a1.answer),
     kind: page.kind === "service" ? "WebPage" : "WebPage",
@@ -43,14 +46,31 @@ export function AnswerStack({
     topic: page.kicker,
     faqs: answersAsFaq(page),
   };
+  // Allocate images per page, keeping the original photo when it is unique.
+  // Compare URLs, since several names in `stills` refer to the same asset.
+  const usedImages = new Set([page.hero.src]);
+  function choosePhoto(candidates: string[]) {
+    const src = candidates.find(candidate => !usedImages.has(candidate));
+    if (!src) throw new Error(`No unique section photo for ${page.slug}`);
+    usedImages.add(src);
+    return src;
+  }
   const practice = page.answers.a3.photo;
-  const splitStill =
-    practice?.src && practice.src !== page.hero.src
-      ? practice.src
-      : page.kind === "claim"
-        ? stills.internkontroll
-        : stills.bygg;
-  const splitAlt = photoAlt[splitStill] ?? page.hero.alt;
+  const practiceSrc = choosePhoto([
+    ...(practice ? [practice.src] : []),
+    stills.romningOvenfra, stills.slokkeManometer, stills.internkontrollRom,
+  ]);
+  const practiceAlt = photoAlt[practiceSrc] ?? practice?.alt ?? "Brannsikring i bygget";
+  const practiceCaption = practiceSrc === practice?.src ? practice.caption : practiceAlt;
+  const splitStill = choosePhoto([
+    page.kind === "claim" ? stills.skjermPeker : stills.drawings,
+    stills.digitalt, stills.internkontrollRom, stills.skjerm,
+  ]);
+  const splitAlt = photoAlt[splitStill];
+  const inspectionSrc = choosePhoto([
+    ...(page.answers.a8.photo ? [page.answers.a8.photo.src] : []),
+    stills.anlegg, stills.befaring, stills.anleggNar, stills.slokker,
+  ]);
 
   return (
     <>
@@ -63,16 +83,18 @@ export function AnswerStack({
         title={page.title}
         lead={page.lead}
         caption={page.hero.caption}
+        action={afterHero ? { href: "#avklar-beskjeden", label: "Avklar beskjeden" } : undefined}
       />
 
       <AnswerNav />
+      {afterHero}
 
       <PlanSplit
         id="situasjonen"
         className="scroll-mt-28 sm:scroll-mt-32"
         still={splitStill}
         stillAlt={splitAlt}
-        caption={practice?.caption ?? page.hero.caption}
+        caption={splitAlt}
       >
         <p className="ed-kicker">Hva gjelder?</p>
         <div className="mt-4 space-y-12">
@@ -94,9 +116,9 @@ export function AnswerStack({
           </div>
           <div className="lg:col-span-6">
             <PlanPlate
-              src={practice?.src ?? stills.romningOvenfra}
-              alt={practice?.alt ?? page.hero.alt}
-              caption={practice?.caption ?? page.hero.caption}
+              src={practiceSrc}
+              alt={practiceAlt}
+              caption={practiceCaption}
               sizes="(max-width: 1024px) 100vw, 50vw"
               ratio="wide"
             />
@@ -158,8 +180,8 @@ export function AnswerStack({
             {insertAfter?.a8}
             <PlanPlate
               className="mt-8"
-              src={page.answers.a8.photo?.src ?? stills.anlegg}
-              alt={page.answers.a8.photo?.alt ?? "Befaring når bygget må ses"}
+              src={inspectionSrc}
+              alt={photoAlt[inspectionSrc] ?? "Befaring når bygget må ses"}
               caption="Fysisk når dokumentene ikke kan svare alene."
               sizes="(max-width: 1024px) 100vw, 50vw"
               ratio="wide"
@@ -185,11 +207,11 @@ export function AnswerStack({
             <h2 className="max-w-3xl text-3xl font-normal text-[#fbf8f2] sm:text-5xl">
               Hva gjør vi nå?
             </h2>
-            <p className="mt-6 max-w-2xl text-lg font-normal leading-relaxed text-[#fbf8f2]">
+            <p className="mt-6 max-w-2xl text-[16px] font-normal leading-relaxed text-[#fbf8f2]">
               {page.answers.a11.answer}
             </p>
             {page.answers.a11.detail ? (
-              <p className="mt-4 max-w-2xl text-[15px] font-normal leading-relaxed text-[#fbf8f2]/80">
+              <p className="mt-4 max-w-2xl text-[16px] font-normal leading-relaxed text-[#fbf8f2]/80">
                 {page.answers.a11.detail}
               </p>
             ) : null}
@@ -199,7 +221,7 @@ export function AnswerStack({
               <ul className="mt-12 flex flex-wrap gap-x-8 gap-y-3 text-sm">
                 {page.related.map((rel) => (
                   <li key={rel.href}>
-                    <Link href={rel.href} className="text-[#fbf8f2] underline decoration-[#c62e32]/60 hover:text-[#c62e32]">
+                    <Link href={rel.href} className="text-[#fbf8f2] underline decoration-flo-red/60 hover:text-flo-red">
                       {rel.label}
                     </Link>
                   </li>

@@ -10,3 +10,7 @@ tmp-scaffold/
 
 out/
 *.tsbuildinfo
+.env*
+!.env.example
+public/uploads/
+data/editorial/*.tmp

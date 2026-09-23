@@ -1,4 +1,5 @@
-import { StillFrame } from "@/components/still-frame";
+import Link from "next/link";
+import Image from "next/image";
 
 export function PageStill({
   src,
@@ -9,6 +10,7 @@ export function PageStill({
   lead,
   caption,
   stamp,
+  action,
 }: {
   src: string;
   alt: string;
@@ -18,29 +20,26 @@ export function PageStill({
   lead?: string;
   caption?: string;
   stamp?: string;
+  action?: { href: string; label: string };
   washTo?: "paper" | "ink" | "glow";
 }) {
   return (
-    <section className="plan-hero">
-      <div className="plan-hero-layout">
-        <div className="plan-hero-copy plan-float">
-          <p className="ed-kicker">
+    <section className="cinema-hero cinema-hero-subpage" aria-label={title}>
+      <Image src={src} alt={alt} fill priority sizes="100vw" quality={95} unoptimized={src.startsWith("/uploads/")} className="cinema-hero-image" />
+      <div className="cinema-hero-shade" aria-hidden="true" />
+      <div className="cinema-hero-content">
+          <p className="ed-kicker cinema-hero-kicker">
             {room} · {kicker}
           </p>
-          <h1 className="mt-6 max-w-none text-[2.15rem] font-light leading-[1.08] tracking-[0.016em] text-[#161210] sm:text-[2.65rem] lg:text-[3.15rem]">
+          <h1>
             {title}
           </h1>
           {lead ? (
-            <p className="mt-6 text-base font-normal leading-[1.65] tracking-[0.01em] text-[#221d19] sm:text-[17px]">{lead}</p>
+            <p className="cinema-hero-lead">{lead}</p>
           ) : null}
-          {stamp ? <p className="ed-kicker mt-8">{stamp}</p> : null}
-        </div>
-        <figure className="plan-float">
-          <div className="plan-hero-still">
-            <StillFrame src={src} alt={alt} priority sizes="(max-width: 1024px) 100vw, 64vw" className="aspect-[16/10] lg:min-h-[34rem] lg:aspect-auto" />
-          </div>
-          {caption ? <figcaption className="plan-note">{caption}</figcaption> : null}
-        </figure>
+          {action ? <div className="cinema-hero-actions"><Link className="btn btn-lacquer inline-flex min-h-12 items-center rounded-full px-7 text-sm text-[#fbf8f2]" href={action.href}>{action.label} ↗</Link></div> : null}
+          {stamp ? <p className="cinema-hero-foot">{stamp}</p> : null}
+          {caption ? <p className="cinema-hero-foot">{caption}</p> : null}
       </div>
     </section>
   );

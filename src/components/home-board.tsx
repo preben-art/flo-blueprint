@@ -1,5 +1,6 @@
+import { OfficeMap } from "@/components/office-map";
 import Link from "next/link";
-import { EdKicker, EdLead, EdSection, EdTitle, RailStep } from "@/components/ed";
+import { EdKicker, EdLead, EdSection, EdTitle } from "@/components/ed";
 import { StillFrame } from "@/components/still-frame";
 import { PartnerMark } from "@/components/partner-mark";
 import { PartnerStrip } from "@/components/partner-strip";
@@ -8,7 +9,7 @@ import { SectionCta } from "@/components/section-cta";
 import { SituationCards } from "@/components/situation-cards";
 import { Button } from "@/components/ui/button";
 import { ClarifyPath } from "@/components/clarify-path";
-import { claimPath, customerExplain, deliveryTracks } from "@/content/explain";
+import { customerExplain, deliveryTracks } from "@/content/explain";
 import { knowledgeNodes } from "@/content/knowledge/nodes";
 import {
   articleBySlug,
@@ -67,12 +68,20 @@ export function HomeBoard() {
     <>
       <PartnerStrip tone="light" />
 
+      <section className="home-claim-entry portfolio-paper" aria-labelledby="home-claim-title">
+        <div className="portfolio-wrap home-claim-grid">
+          <div><p className="story-eyebrow">Få oversikt før dere bestiller</p><h2 id="home-claim-title" className="story-heading">Har dere fått beskjed<br />om <span>et branntiltak?</span></h2></div>
+          <div><p>Et avvik i en rapport. Et krav fra en rådgiver. Et tilbud på oppgradering. Start med å avklare hva beskjeden bygger på.</p><a href="/fag-og-kunnskap/pastand-eller-krav#avklar-beskjeden" className="home-claim-action">Hva bør dere avklare? <span aria-hidden="true">↗</span></a><p className="home-claim-note">Første sortering av kilden. FLO kan deretter vurdere dokumentene.</p></div>
+        </div>
+      </section>
+
+
       <PlanBand id="situasjon" density="whisper">
         <div className="plan-read plan-float max-w-3xl">
-          <EdKicker>Avvik og ombygging</EdKicker>
-          <EdTitle>Hva har skjedd hos dere?</EdTitle>
+          <EdKicker>Fra avklaring til handling</EdKicker>
+          <EdTitle>Finn veien videre for deres bygg.</EdTitle>
           <EdLead>
-            Har dere fått tilsyn, skal dere bygge om, eller er det uklart hva som kreves?
+            Enten dere har fått et avvik, planlegger en endring eller trenger oversikt: Velg situasjonen som passer, og se hvordan FLO kan hjelpe.
           </EdLead>
         </div>
         <SituationCards showExamples heading="h3" />
@@ -95,25 +104,7 @@ export function HomeBoard() {
         </div>
       </EdSection>
 
-      <EdSection id="pastand-eller-krav" tone="sheet">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="plan-read plan-float lg:col-span-5">
-            <EdKicker>Påbud</EdKicker>
-            <EdTitle>Er dette påbudt?</EdTitle>
-            <EdLead>
-              Noen sier at det må gjøres. Vi sjekker om det står i forskrift, konsept eller vedtak, eller om det er et forslag.
-            </EdLead>
-            <SectionCta action="Få vurdert hva som faktisk gjelder" href="/fag-og-kunnskap/pastand-eller-krav" />
-          </div>
-          <ol className="ed-rail lg:col-span-7">
-            {claimPath.map((step, i) => (
-              <RailStep key={step.id} index={i} title={step.label}>
-                <p className="mt-1 text-[15px] leading-relaxed text-[#221d19]">{step.meaning}</p>
-              </RailStep>
-            ))}
-          </ol>
-        </div>
-      </EdSection>
+
 
       <EdSection id="hvem" tone="paper">
         <div className="plan-read plan-float max-w-3xl">
@@ -141,10 +132,10 @@ export function HomeBoard() {
                 <div className={imageLeft ? "plan-read plan-float lg:col-span-7 lg:order-2" : "plan-read plan-float lg:col-span-7 lg:order-1"}>
                   <p className="ed-kicker">{c.label}</p>
                   <h3 className="mt-3 text-2xl font-normal sm:text-3xl">{expl.realQuestion}</h3>
-                  <p className="mt-4 text-[15px] leading-relaxed text-pretty text-[#221d19]">{expl.meaning}</p>
+                  <p className="mt-4 text-[15px] leading-relaxed text-pretty text-flo-muted">{expl.meaning}</p>
                   <ul className="mt-6 space-y-2">
                     {expl.typical.slice(0, 4).map((t) => (
-                      <li key={t} className="border-b border-[#161210]/12 pb-2 text-sm text-[#221d19]">
+                      <li key={t} className="border-b border-flo-ink/12 pb-2 text-sm text-flo-muted">
                         {t}
                       </li>
                     ))}
@@ -160,23 +151,23 @@ export function HomeBoard() {
             );
           })}
         </div>
-        <ul className="mt-16 grid gap-px border border-[#161210]/12 bg-[#161210]/12 sm:grid-cols-3">
+        <ul className="mt-16 grid gap-px border border-flo-ink/12 bg-flo-ink/12 sm:grid-cols-3">
           {(commercialCustomers ?? customers.filter((item) => item.track !== "privat"))
             .filter((c) => !featuredIcps.includes(c.slug as (typeof featuredIcps)[number]))
             .map((c) => (
               <li key={c.slug} className="bg-[#fbf8f2] p-5">
-                <Link href={`/hvem-er-du/${c.slug}`} className="block hover:text-[#c62e32]">
+                <Link href={`/hvem-er-du/${c.slug}`} className="block hover:text-flo-red">
                   <p className="ed-kicker">{c.confirmed ? "Navngitt oppdrag" : "Ingen navngitt sak ennå"}</p>
                   <p className="mt-2 text-lg font-normal">{c.label}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-[#221d19]">{customerExplain[c.slug].realQuestion}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-flo-muted">{customerExplain[c.slug].realQuestion}</p>
                 </Link>
               </li>
             ))}
         </ul>
-        <div className="mt-8 border border-[#161210]/12 bg-[#fbf8f2] p-6 sm:p-8">
+        <div className="mt-8 border border-flo-ink/12 bg-[#fbf8f2] p-6 sm:p-8">
           <p className="ed-kicker">Bolig</p>
           <h3 className="mt-3 text-2xl font-normal">Kan jeg leie ut kjelleren?</h3>
-          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[#221d19]">
+          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-flo-muted">
             Utleiedel, kjeller, loft og bruksendring i bolig. Det er et annet spor enn næringseiendom.
           </p>
           <div className="mt-6">
@@ -189,19 +180,19 @@ export function HomeBoard() {
 
       <EdSection id="kartlegging" tone="mist" className="scan-section">
         <div className="grid items-stretch gap-6 lg:grid-cols-12 lg:gap-8">
-          <figure className="plan-float scan-lead lg:col-span-5">
+          <figure className="plan-float scan-lead min-w-0 lg:col-span-5">
             <StillFrame
               src={stillSkanner}
               alt={photoAlt[stillSkanner] ?? "FLO-medarbeider med 3D-laserskanner"}
               sizes="(max-width: 1024px) 100vw, 42vw"
-              className="aspect-[4/5] h-full lg:aspect-auto lg:min-h-[36rem]"
+              className="aspect-[4/5] lg:aspect-auto lg:min-h-[36rem]"
             />
             <figcaption className="plan-note">3D-laserskanning. Bygget måles slik det faktisk står.</figcaption>
           </figure>
           <div className="grid gap-6 lg:col-span-7">
             <div className="plan-read plan-float">
               <EdKicker>3D-skanning</EdKicker>
-              <EdTitle>Stemmer tegningene med bygget?</EdTitle>
+              <EdTitle>Stemmer tegningene <span className="heading-accent">med bygget?</span></EdTitle>
               <EdLead>
                 Når papirene og virkeligheten ikke treffer hverandre, skanner vi bygget og bygger et oppdatert underlag: punktsky,
                 modell og tegning. Skanning er et verktøy i saken, ikke et produkt dere kjøper i tillegg.
@@ -253,8 +244,8 @@ export function HomeBoard() {
             <li key={step.n} className="plan-read p-5 sm:p-6">
               <p className="ed-kicker">{step.n}</p>
               <h3 className="mt-3 text-xl font-normal">{step.t}</h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-[#221d19]">{step.q}</p>
-              <Link href={step.href} className="mt-4 inline-block text-sm text-[#c62e32] hover:underline">
+              <p className="mt-3 text-[15px] leading-relaxed text-flo-muted">{step.q}</p>
+              <Link href={step.href} className="mt-4 inline-block text-sm text-flo-red hover:underline">
                 Les mer
               </Link>
             </li>
@@ -268,7 +259,7 @@ export function HomeBoard() {
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
                 <EdKicker>Artikler og nyheter</EdKicker>
-                <EdTitle>Det vi skriver, kan leses før noen reiser.</EdTitle>
+                <EdTitle>Kunnskap som gjør det enklere å velge riktig.</EdTitle>
               </div>
               <div className="flex flex-wrap gap-3">
                 <Button asChild variant="outline">
@@ -298,12 +289,12 @@ export function HomeBoard() {
                 </time>
               </div>
               <h3 className="mt-4 text-2xl font-normal leading-tight sm:text-3xl">
-                <Link href={`/artikler/${featureArticle.slug}`} className="hover:text-[#c62e32]">
+                <Link href={`/artikler/${featureArticle.slug}`} className="hover:text-flo-red">
                   {featureArticle.title}
                 </Link>
               </h3>
-              <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[#221d19]">{featureArticle.excerpt}</p>
-              <Link href={`/artikler/${featureArticle.slug}`} className="mt-auto inline-block pt-6 text-sm text-[#c62e32] hover:underline">
+              <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-flo-muted">{featureArticle.excerpt}</p>
+              <Link href={`/artikler/${featureArticle.slug}`} className="mt-auto inline-block pt-6 text-sm text-flo-red hover:underline">
                 Les artikkelen
               </Link>
             </div>
@@ -342,13 +333,13 @@ export function HomeBoard() {
                   </time>
                 </div>
                 <h3 className="mt-3 text-xl font-normal leading-tight">
-                  <Link href={`/nyheter/${news[0].slug}`} className="hover:text-[#c62e32]">
+                  <Link href={`/nyheter/${news[0].slug}`} className="hover:text-flo-red">
                     {news[0].title}
                   </Link>
                 </h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-[#221d19]">{news[0].excerpt}</p>
+                <p className="mt-3 text-[15px] leading-relaxed text-flo-muted">{news[0].excerpt}</p>
                 {news[1] ? (
-                  <Link href={`/nyheter/${news[1].slug}`} className="aktuelt-row mt-5 border-t border-[#161210]/12 pt-4">
+                  <Link href={`/nyheter/${news[1].slug}`} className="aktuelt-row mt-5 border-t border-flo-ink/12 pt-4">
                     <span className="aktuelt-meta">Nyhet · {shortDate(news[1].date)}</span>
                     <span className="aktuelt-title">{news[1].title}</span>
                   </Link>
@@ -363,7 +354,7 @@ export function HomeBoard() {
         <div className="grid items-end gap-6 lg:grid-cols-12">
           <div className="plan-read plan-float max-w-3xl lg:col-span-7">
             <EdKicker>Digitalt eller befaring</EdKicker>
-            <EdTitle>Må dere komme på befaring?</EdTitle>
+            <EdTitle>Må dere komme <span className="heading-accent">på befaring?</span></EdTitle>
             <EdLead>
               Ofte kan vi lese rapporten og tegningene først, uansett hvor i landet bygget ligger. Vi kommer til bygget når
               papirene ikke kan svare, fra Stryn og Nordfjordeid.
@@ -382,7 +373,7 @@ export function HomeBoard() {
             </div>
           </dl>
         </div>
-        <ol className="ed-flow mt-12 border border-[#161210]/12">
+        <ol className="ed-flow mt-12 border border-flo-ink/12">
           {deliveryTracks.map((track) => (
             <li key={track.id} className="flex min-w-0 flex-col bg-[#fbf8f2]">
               <StillFrame
@@ -397,7 +388,7 @@ export function HomeBoard() {
                   <p className="geo-tag">{track.area}</p>
                 </div>
                 <h3 className="mt-3 text-xl font-normal">{track.value}</h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-[#221d19]">{track.lead}</p>
+                <p className="mt-3 text-[15px] leading-relaxed text-flo-muted">{track.lead}</p>
                 <p className="ed-kicker mt-6">Når</p>
                 <ul className="mt-3 space-y-2">
                   {track.when.slice(0, 4).map((w) => (
@@ -429,13 +420,13 @@ export function HomeBoard() {
           <EdTitle>Hvem har dere jobbet for?</EdTitle>
           <EdLead>Sentral godkjenning hos DiBK er dokumentert. Oppdragene vi kan navngi, vises her. Der resultatet mangler, står det.</EdLead>
         </div>
-        <article className="mt-12 border border-[#161210]/12 bg-[#fbf8f2] p-6 sm:p-8">
+        <article className="mt-12 border border-flo-ink/12 bg-[#fbf8f2] p-6 sm:p-8">
           <p className="ed-kicker">Godkjenning</p>
           <h3 className="mt-3 text-xl font-normal">DiBK sentral godkjenning</h3>
-          <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[#221d19]">
+          <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-flo-muted">
             {company.approvals.map((a) => `${a.function}, ${a.area} ${a.class}`).join(". ")}.
           </p>
-          <a href={company.approvalUrl} className="mt-4 inline-block text-sm text-[#c62e32] hover:underline" target="_blank" rel="noreferrer">
+          <a href={company.approvalUrl} className="mt-4 inline-block text-sm text-flo-red hover:underline" target="_blank" rel="noreferrer">
             Åpne registeret
           </a>
         </article>
@@ -448,10 +439,10 @@ export function HomeBoard() {
                 <div className="flex flex-1 flex-col px-5 py-6 sm:px-6 sm:py-8">
                   <PartnerMark src={p.logo} name={p.name} mark={p.mark} />
                   {p.mark === "logo" ? <h3 className="mt-4 text-xl font-normal">{p.name}</h3> : <h3 className="sr-only">{p.name}</h3>}
-                  <p className="mt-3 text-[15px] leading-relaxed text-[#221d19]">{p.whatWeCanSay}</p>
+                  <p className="mt-3 text-[15px] leading-relaxed text-flo-muted">{p.whatWeCanSay}</p>
                   <Link
                     href={`/prosjekter/${p.slug}`}
-                    className="mt-auto inline-block pt-5 text-sm text-[#c62e32] hover:underline"
+                    className="mt-auto inline-block pt-5 text-sm text-flo-red hover:underline"
                   >
                     Les oppdraget
                   </Link>
@@ -460,13 +451,13 @@ export function HomeBoard() {
             );
           })}
         </div>
-        <article className="mt-4 border border-[#161210]/12 bg-[#fbf8f2] p-6 sm:p-8">
+        <article className="mt-4 border border-flo-ink/12 bg-[#fbf8f2] p-6 sm:p-8">
           <p className="ed-kicker">Kompetanse</p>
           <h3 className="mt-3 text-xl font-normal">Hva kan vi avklare før noen reiser?</h3>
-          <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-[#221d19]">
+          <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-flo-muted">
             Bygg, bruk og dokumentasjon. Om det som er sagt er krav eller forslag. Om saken kan leses herfra, eller om bygget må ses.
           </p>
-          <Link href="/om-flo" className="mt-4 inline-block text-sm text-[#c62e32] hover:underline">
+          <Link href="/om-flo" className="mt-4 inline-block text-sm text-flo-red hover:underline">
             Om FLO
           </Link>
         </article>
@@ -480,15 +471,15 @@ export function HomeBoard() {
             <EdLead>
               {insight?.contract.direct ?? "FLO skiller påstand fra kilde før noe kalles krav."}
             </EdLead>
-            <ul className="mt-8 space-y-0 border-t border-[#161210]/12">
+            <ul className="mt-8 space-y-0 border-t border-flo-ink/12">
               {[
                 { href: "/fagmiljo", q: "Fagmiljøet" },
                 { href: "/nyheter", q: "Nyheter" },
                 { href: "/artikler", q: "Artikler" },
                 { href: "/fag-og-kunnskap/pastand-eller-krav", q: "Er dette et krav?" },
               ].map((item) => (
-                <li key={item.href} className="border-b border-[#161210]/12">
-                  <Link href={item.href} className="block py-3 text-[15px] hover:text-[#c62e32]">
+                <li key={item.href} className="border-b border-flo-ink/12">
+                  <Link href={item.href} className="block py-3 text-[15px] hover:text-flo-red">
                     {item.q}
                   </Link>
                 </li>
@@ -497,7 +488,7 @@ export function HomeBoard() {
             {articleBySlug("brannkonsept-eller-prosjektering") ? (
               <p className="mt-8 text-[15px] leading-relaxed">
                 Les mer:{" "}
-                <Link href="/fag-og-kunnskap/brannkonsept-eller-prosjektering" className="text-[#c62e32] hover:underline">
+                <Link href="/fag-og-kunnskap/brannkonsept-eller-prosjektering" className="text-flo-red hover:underline">
                   {articleBySlug("brannkonsept-eller-prosjektering")!.title}
                 </Link>
               </p>
@@ -515,6 +506,8 @@ export function HomeBoard() {
           </figure>
         </div>
       </EdSection>
+
+      <OfficeMap />
 
       <EdSection id="neste" tone="ink" className="join-footer">
         <div className="plan-read plan-read-ink plan-float max-w-3xl">

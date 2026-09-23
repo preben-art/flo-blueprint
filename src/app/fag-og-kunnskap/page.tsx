@@ -66,13 +66,13 @@ export default function KnowledgePage() {
           <div className="plan-read plan-float">
             <p className="ed-kicker">Ofte stilt</p>
             <h2 className="mt-4 text-3xl font-normal sm:text-4xl">Hvem har ansvaret, og er dette et krav?</h2>
-            <ul className="mt-10 divide-y divide-[#161210]/12 border-y border-[#161210]/12">
+            <ul className="mt-10 divide-y divide-flo-ink/12 border-y border-flo-ink/12">
               {commercialNodes.map((n) => (
                 <li key={n.slug}>
-                  <Link href={`/fag-og-kunnskap/${n.slug}`} className="block py-6 hover:text-[#c62e32]">
+                  <Link href={`/fag-og-kunnskap/${n.slug}`} className="block py-6 hover:text-flo-red">
                     <p className="ed-kicker">{n.kicker}</p>
                     <h3 className="mt-2 text-xl font-normal">{n.question}</h3>
-                    <p className="mt-2 max-w-3xl text-[15px] leading-relaxed text-[#221d19]">{n.contract.direct}</p>
+                    <p className="mt-2 max-w-3xl text-[15px] leading-relaxed text-flo-muted">{n.contract.direct}</p>
                   </Link>
                 </li>
               ))}
@@ -89,14 +89,14 @@ export default function KnowledgePage() {
               <article key={graph.id} className="plan-read plan-float">
                 <p className="ed-kicker">Vanlig sak</p>
                 <h2 className="mt-3 text-2xl font-normal">
-                  <Link href={graph.href} className="hover:text-[#c62e32]">
+                  <Link href={graph.href} className="hover:text-flo-red">
                     {graph.label}
                   </Link>
                 </h2>
                 <ol className="ed-rail mt-6">
                   {graph.steps.map((step, j) => (
                     <RailStep key={step} index={j}>
-                      <p className="text-[15px] leading-relaxed text-[#221d19]">{step}</p>
+                      <p className="text-[15px] leading-relaxed text-flo-muted">{step}</p>
                     </RailStep>
                   ))}
                 </ol>
@@ -114,14 +114,14 @@ export default function KnowledgePage() {
             <p className="ed-kicker">Artikler</p>
             <ul className="mt-8 grid gap-8 lg:grid-cols-2">
               {articles.map((a) => (
-                <li key={a.slug} className="border-t border-[#161210]/12 pt-5">
+                <li key={a.slug} className="border-t border-flo-ink/12 pt-5">
                   <p className="ed-kicker">{a.kicker}</p>
                   <h2 className="mt-2 text-2xl font-normal">
-                    <Link href={`/fag-og-kunnskap/${a.slug}`} className="hover:text-[#c62e32]">
+                    <Link href={`/fag-og-kunnskap/${a.slug}`} className="hover:text-flo-red">
                       {a.title}
                     </Link>
                   </h2>
-                  <p className="mt-3 text-[15px] leading-relaxed text-[#221d19]">{a.excerpt}</p>
+                  <p className="mt-3 text-[15px] leading-relaxed text-flo-muted">{a.excerpt}</p>
                 </li>
               ))}
             </ul>
@@ -135,10 +135,10 @@ export default function KnowledgePage() {
             <div className="plan-read plan-float max-w-2xl">
               <p className="ed-kicker">Bolig</p>
               <h2 className="mt-4 max-w-xl text-3xl font-normal sm:text-4xl">{n.question}</h2>
-              <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#221d19]">{n.contract.direct}</p>
-              <p className="mt-4 max-w-xl text-sm text-[#221d19]">Send inn tegninger eller bilder</p>
+              <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-flo-muted">{n.contract.direct}</p>
+              <p className="mt-4 max-w-xl text-sm text-flo-muted">Send inn tegninger eller bilder</p>
               <p className="mt-6">
-                <Link href={`/fag-og-kunnskap/${n.slug}`} className="text-sm text-[#c62e32] hover:underline">
+                <Link href={`/fag-og-kunnskap/${n.slug}`} className="text-sm text-flo-red hover:underline">
                   Få vurdert boligen
                 </Link>
               </p>
@@ -151,19 +151,19 @@ export default function KnowledgePage() {
         <div className="ed-wrap">
           <div className="plan-read plan-float">
             <p className="ed-kicker">Kilder</p>
-            <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#221d19]">
+            <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-flo-muted">
               Hva som gjelder, avhenger av bygg, bruk og når bygget ble oppført. Vi siterer kilden. Vi dikter ikke opp FLO-bevis.
             </p>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2">
               {sources.map((r) => (
-                <li key={r.id} className="border-b border-[#161210]/12 pb-3">
+                <li key={r.id} className="border-b border-flo-ink/12 pb-3">
                   <p className="ed-kicker">Nivå {r.level}</p>
                   <p className="mt-1 font-normal">{r.label}</p>
-                  <p className="mt-1 text-sm text-[#221d19]">{r.note}</p>
+                  <p className="mt-1 text-sm text-flo-muted">{r.note}</p>
                 </li>
               ))}
             </ul>
-            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-[#221d19]">
+            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-flo-muted">
               {sourceAuthority.map((a) => (
                 <li key={a.level}>
                   {a.level} {a.label}
@@ -182,7 +182,7 @@ export default function KnowledgePage() {
         <ul className="mt-8">
           {domains.map((d) => (
             <li key={d.id}>
-              <Link href={d.href} className="block border-b border-[#161210]/12 py-3 hover:text-[#c62e32]">
+              <Link href={d.href} className="block border-b border-flo-ink/12 py-3 hover:text-flo-red">
                 {d.label}
               </Link>
             </li>

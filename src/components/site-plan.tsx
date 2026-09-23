@@ -64,11 +64,10 @@ export function SitePlan() {
 
     let frame = 0;
     const update = () => {
-      const y = window.scrollY;
-      el.style.setProperty("--plan-y", `${(y * 0.045).toFixed(2)}px`);
-      el.style.setProperty("--plan-x", `${(y * 0.01).toFixed(2)}px`);
+      el.style.setProperty("--plan-y", "0px");
+      el.style.setProperty("--plan-x", "0px");
       // Cap the float so long pages never push content out of their own section.
-      document.documentElement.style.setProperty("--float-y", `${Math.min(y * 0.02, 22).toFixed(2)}px`);
+      document.documentElement.style.setProperty("--float-y", "0px");
 
       let ink = 0;
       document.querySelectorAll(DARK).forEach((node) => {

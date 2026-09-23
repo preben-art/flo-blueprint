@@ -29,7 +29,7 @@ export function AnswerNav() {
   return (
     <nav
       aria-label="Innhold"
-      className="answer-nav sticky top-[3.65rem] z-40 border-b border-[#161210]/10 bg-[#fbf8f2]/72 backdrop-blur-md sm:top-[4.15rem]"
+      className="answer-nav sticky top-[3.65rem] z-40 border-b border-flo-ink/10 bg-[#fbf8f2]/72 backdrop-blur-md sm:top-[4.15rem]"
     >
       <ol className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-4 py-2.5 sm:px-6">
         {answerChapters.map((ch) => (
@@ -39,8 +39,8 @@ export function AnswerNav() {
               className={cn(
                 "flex items-center rounded-full px-3 py-1.5 text-[11px] tracking-wide uppercase no-underline transition-colors",
                 active === ch.id
-                  ? "bg-[#c62e32]/12 text-[#c62e32]"
-                  : "text-[#161210]/70 hover:text-[#161210]",
+                  ? "bg-flo-red/12 text-flo-red"
+                  : "text-flo-ink/70 hover:text-flo-ink",
               )}
             >
               {ch.label}

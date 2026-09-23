@@ -50,7 +50,7 @@ export default function HvemErDuPage() {
                   <div className="flex flex-1 flex-col px-5 py-6 sm:px-6 sm:py-8">
                     <p className="ed-kicker">{c.room}</p>
                     <h3 className="mt-3 text-xl font-normal sm:text-2xl">{c.label}</h3>
-                    <p className="mt-3 text-[15px] leading-relaxed text-[#221d19]">{expl.realQuestion}</p>
+                    <p className="mt-3 text-[15px] leading-relaxed text-flo-muted">{expl.realQuestion}</p>
                     <p className="mt-3 text-[15px] leading-relaxed">{expl.meaning}</p>
                     <div className="mt-auto pt-6">
                       <Button asChild>
@@ -95,7 +95,7 @@ export default function HvemErDuPage() {
             <div className="plan-read plan-float lg:col-span-6">
               <p className="ed-kicker">Bolig</p>
               <h2 className="mt-4 text-3xl font-normal sm:text-4xl">{customerExplain[c.slug].realQuestion}</h2>
-              <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#221d19]">
+              <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-flo-muted">
                 Utleiedel, kjeller, loft og bruksendring. Det er et annet spor enn næringseiendom.
               </p>
               <div className="mt-6">

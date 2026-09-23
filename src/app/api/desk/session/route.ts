@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import {
   decodeSession,
   encodeSession,
-  roleFromPassphrase,
+  authenticateDesk,
   sessionCookieName,
   writeSessionCookie,
   clearSessionCookie,
@@ -18,14 +18,13 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const body = (await request.json()) as { passphrase?: string; name?: string };
-  const role = roleFromPassphrase(String(body.passphrase ?? ""));
-  if (!role) {
+  const session = authenticateDesk(String(body.passphrase ?? ""), String(body.name ?? ""));
+  if (!session) {
     return Response.json({ error: "Ugyldig nøkkel." }, { status: 401 });
   }
-  const name = String(body.name ?? "").trim() || (role === "flo" ? "FLO" : "Kunde");
-  const token = encodeSession(role, name);
+  const token = encodeSession(session);
   await writeSessionCookie(token);
-  return Response.json({ session: { role, name } });
+  return Response.json({ session });
 }
 
 export async function DELETE() {

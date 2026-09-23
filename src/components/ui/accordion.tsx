@@ -12,7 +12,7 @@ export function AccordionItem({
 }: React.ComponentProps<typeof AccordionPrimitive.Item>) {
   return (
     <AccordionPrimitive.Item
-      className={cn("border-b border-[#161210]/20", className)}
+      className={cn("border-b border-flo-ink/20", className)}
       {...props}
     />
   );
@@ -27,7 +27,7 @@ export function AccordionTrigger({
     <AccordionPrimitive.Header className="flex">
       <AccordionPrimitive.Trigger
         className={cn(
-          "flex flex-1 items-baseline justify-between gap-4 py-4 text-left text-base font-normal hover:text-[#c62e32] data-[state=open]:text-[#c62e32]",
+          "flex flex-1 items-baseline justify-between gap-4 py-4 text-left text-base font-normal hover:text-flo-red data-[state=open]:text-flo-red",
           className,
         )}
         {...props}
@@ -36,7 +36,7 @@ export function AccordionTrigger({
         <span className="room-number shrink-0 text-[#6b645c] data-[state=open]:hidden [[data-state=open]_&]:hidden">
           åpne
         </span>
-        <span className="room-number hidden shrink-0 text-[#c62e32] [[data-state=open]_&]:inline">
+        <span className="room-number hidden shrink-0 text-flo-red [[data-state=open]_&]:inline">
           lukk
         </span>
       </AccordionPrimitive.Trigger>
@@ -57,7 +57,7 @@ export function AccordionContent({
       )}
       {...props}
     >
-      <div className="pb-5 text-[15px] leading-relaxed text-[#221d19]">{children}</div>
+      <div className="pb-5 text-[15px] leading-relaxed text-flo-muted">{children}</div>
     </AccordionPrimitive.Content>
   );
 }

@@ -10,12 +10,12 @@ export function PartnerStrip({ tone = "dark" }: { tone?: "dark" | "light" }) {
     <section
       className={cn(
         light
-          ? "border-y border-[#161210]/10 bg-[#f4f1ea]/62"
-          : "relative border-t border-[#c62e32]/40",
+          ? "border-y border-flo-ink/10 bg-[#f4f1ea]/62"
+          : "relative border-t border-flo-red/40",
       )}
     >
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
-        <p className={cn("ed-kicker mb-6", !light && "text-[#c62e32]")}>
+        <p className={cn("ed-kicker mb-6", !light && "text-flo-red")}>
           Hvem har vi jobbet for?
         </p>
         <ul className="grid grid-cols-2 items-center gap-x-8 gap-y-6 sm:grid-cols-4 lg:grid-cols-8">

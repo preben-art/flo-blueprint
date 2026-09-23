@@ -63,8 +63,8 @@ export default function PrivatPage() {
       <PlanSplit still={stills.slokkerHaand} stillAlt={photoAlt[stills.slokkerHaand]} caption="Varsling, slokking og rømning i bolig. Bruksendring vurderes før rommet tas i bruk.">
         <p className="ed-kicker">Direkte svar</p>
         <h2 className="mt-4 max-w-xl text-3xl font-normal sm:text-4xl">{expl.realQuestion}</h2>
-        <p className="mt-4 max-w-xl text-[16px] leading-relaxed text-[#221d19]">{expl.meaning}</p>
-        <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#221d19]">
+        <p className="mt-4 max-w-xl text-[16px] leading-relaxed text-flo-muted">{expl.meaning}</p>
+        <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-flo-muted">
           FLO konkluderer ikke «lovlig utleie» uten sak. Første steg er å lese det du har: tegning, foto og hva som skal
           endres. {company.coverage.digital}
         </p>
@@ -111,7 +111,7 @@ export default function PrivatPage() {
             <div className="mt-10">
               <FaqBlock items={privatFaqs} />
             </div>
-            <p className="mt-8 text-sm text-[#221d19]">
+            <p className="mt-8 text-sm text-flo-muted">
               Privat er ikke dokumentert som FLO-hovedmarked. Sporet vises uten oppdiktet boligsak.
             </p>
             <SectionCta action="Send tegninger og bilder" href="/kontakt?situasjon=endres&hvem=privat" />

@@ -68,7 +68,7 @@ export default function FilmPage() {
           </video>
           <figcaption className="film-caption">
             <span>FLO Brannsikring · leveransefilm · 1080p · 25 fps · stereo</span>
-            <a href={FILM} download className="text-[#ff7a7a] hover:underline">
+            <a href={FILM} download className="text-flo-red-accent hover:underline">
               Last ned (MP4, 33 MB)
             </a>
           </figcaption>
@@ -105,7 +105,7 @@ export default function FilmPage() {
         <div className="plan-read plan-float max-w-3xl">
           <EdKicker>Opphav</EdKicker>
           <h2 className="mt-4 text-2xl font-normal sm:text-3xl">Ingenting i grensesnittet er tegnet om.</h2>
-          <p className="mt-4 text-[15px] leading-relaxed text-[#221d19]">
+          <p className="mt-4 text-[15px] leading-relaxed text-flo-muted">
             Nettstedet er rendret fra produksjonsbygget, bilde for bilde, med kontrollert klokke slik at scroll og
             bevegelser er nøyaktige. Broene mellom sidene er kamerabevegelser på FLO sine egne fotografier og
             8K-stillbilder av sidene. Tekst, logo, knapper og layout er aldri generert. Musikken er komponert for

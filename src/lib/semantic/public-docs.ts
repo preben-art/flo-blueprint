@@ -1,19 +1,22 @@
-import { articles, company, news } from "@/content/site";
+import { listDeskPosts } from "@/lib/desk";
+import { editorialPath } from "@/lib/editorial-path";
+import { company } from "@/content/site";
 import { knowledgeNodes } from "@/content/knowledge/nodes";
 import { canonicalOrigin, canonicalUrl } from "@/lib/semantic/identity";
 import { publicServices } from "@/lib/semantic/services";
 
 const lines = (...parts: string[]) => parts.filter(Boolean).join("\n");
 
-export function llmsText() {
+export async function llmsText() {
+  const posts = await listDeskPosts();
   const services = publicServices()
     .map((service) => `- ${service.serviceName}: ${service.shortDescription} ${canonicalUrl(`/losninger/${service.slug}`)}`)
     .join("\n");
   const questions = knowledgeNodes
     .map((node) => `- ${node.question} ${canonicalUrl(`/fag-og-kunnskap/${node.slug}`)}`)
     .join("\n");
-  const pieces = articles
-    .map((article) => `- ${article.title} ${canonicalUrl(`/artikler/${article.slug}`)}`)
+  const pieces = posts.filter((post) => post.kind === "artikkel")
+    .map((article) => `- ${article.title} ${canonicalUrl(editorialPath(article))}`)
     .join("\n");
 
   return lines(
@@ -39,7 +42,7 @@ export function llmsText() {
     pieces,
     "",
     "## Nyheter",
-    news.map((item) => `- ${item.title} ${canonicalUrl(`/nyheter/${item.slug}`)}`).join("\n"),
+    posts.filter((post) => post.kind === "nyhet").map((item) => `- ${item.title} ${canonicalUrl(`/nyheter/${item.slug}`)}`).join("\n"),
     "",
     "## Maskinlesbart",
     `- ${canonicalUrl("/sitemap.xml")}`,

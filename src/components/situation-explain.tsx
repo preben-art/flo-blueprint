@@ -22,7 +22,7 @@ export function SituationExplain({
   if (!sit) return null;
 
   return (
-    <article id={slug} className={cn("border-y border-[#161210]/15", compact && "border-0")}>
+    <article id={slug} className={cn("border-y border-flo-ink/15", compact && "border-0")}>
       {!compact ? (
         <div className="relative isolate min-h-[32vh] overflow-hidden sm:min-h-[40vh]">
           <MediaPhoto
@@ -48,23 +48,23 @@ export function SituationExplain({
             <h2 className="text-2xl font-normal sm:text-3xl">{sit.label}</h2>
           </>
         ) : null}
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[#161210]">{expl.meaning}</p>
+        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-flo-ink">{expl.meaning}</p>
         <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[#3d3832]">{expl.problem}</p>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-2">
           <div>
-            <p className="room-number mb-4 text-[#c62e32]">Før tiltak bestemmes</p>
+            <p className="room-number mb-4 text-flo-red">Før tiltak bestemmes</p>
             <ol className="space-y-3">
               {expl.clarify.map((q, i) => (
-                <li key={q} className="flex gap-3 border-b border-[#161210]/10 pb-3 text-[15px] leading-relaxed">
-                  <span className="room-number shrink-0 text-[#c62e32]">{String(i + 1).padStart(2, "0")}</span>
+                <li key={q} className="flex gap-3 border-b border-flo-ink/10 pb-3 text-[15px] leading-relaxed">
+                  <span className="room-number shrink-0 text-flo-red">{String(i + 1).padStart(2, "0")}</span>
                   <span>{q}</span>
                 </li>
               ))}
             </ol>
           </div>
           <div>
-            <p className="room-number mb-4 text-[#c62e32]">FLOs rolle</p>
+            <p className="room-number mb-4 text-flo-red">FLOs rolle</p>
             <p className="max-w-xl text-[15px] leading-relaxed text-[#3d3832]">{expl.role}</p>
             <div className="mt-8">
               <NextNeed items={expl.nextNeed} />
@@ -75,7 +75,7 @@ export function SituationExplain({
         <SectionCta action={expl.cta} href={expl.href} />
         {compact ? (
           <p className="mt-4 text-sm">
-            <Link href={`/situasjon/${slug}`} className="underline hover:text-[#c62e32]">
+            <Link href={`/situasjon/${slug}`} className="underline hover:text-flo-red">
               Les hele avklaringen
             </Link>
           </p>

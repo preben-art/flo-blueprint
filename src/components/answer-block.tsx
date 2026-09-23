@@ -23,7 +23,7 @@ export function AnswerBlock({
           <h2
         className={cn(
           "max-w-xl font-normal leading-snug",
-          onDark ? "text-xl text-[#fbf8f2] sm:text-2xl" : "text-xl text-[#161210] sm:text-2xl",
+          onDark ? "text-xl text-[#fbf8f2] sm:text-2xl" : "text-xl text-flo-ink sm:text-2xl",
         )}
       >
         {answerQuestion[id]}
@@ -33,7 +33,7 @@ export function AnswerBlock({
           "mt-5 max-w-xl font-normal leading-relaxed",
           onDark
             ? "text-[16px] text-[#fbf8f2]"
-            : "text-[16px] text-[#221d19]",
+            : "text-[16px] text-flo-muted",
         )}
       >
         {item.answer}
@@ -41,8 +41,8 @@ export function AnswerBlock({
       {item.detail ? (
         <p
           className={cn(
-            "mt-4 max-w-2xl text-[15px] font-normal leading-relaxed",
-            onDark ? "text-[#fbf8f2]/90" : "text-[#221d19]",
+            "mt-4 max-w-2xl text-[16px] font-normal leading-relaxed",
+            onDark ? "text-[#fbf8f2]/90" : "text-flo-muted",
           )}
         >
           {item.detail}
@@ -54,8 +54,8 @@ export function AnswerBlock({
             <li
               key={p}
               className={cn(
-                "border-b py-2.5 text-[15px] font-normal leading-relaxed",
-                onDark ? "border-[#fbf8f2]/18 text-[#fbf8f2]" : "border-[#161210]/18 text-[#161210]",
+                "border-b py-2.5 text-[16px] font-normal leading-relaxed",
+                onDark ? "border-[#fbf8f2]/18 text-[#fbf8f2]" : "border-flo-ink/18 text-flo-ink",
               )}
             >
               {p}

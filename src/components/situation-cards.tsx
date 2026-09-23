@@ -30,7 +30,7 @@ export function SituationCards({
               {showExamples ? (
                 <ul className="mt-5 space-y-2">
                   {sit.examples.slice(0, 4).map((ex) => (
-                    <li key={ex} className="border-b border-[#161210]/12 pb-2 text-sm leading-snug">
+                    <li key={ex} className="border-b border-flo-ink/12 pb-2 text-sm leading-snug">
                       {ex}
                     </li>
                   ))}

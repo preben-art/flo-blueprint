@@ -56,10 +56,10 @@ export default function DigitaltPage() {
       <PlanSplit still={stills.drawings} stillAlt={photoAlt[stills.drawings]} caption="Tegninger og dokumenter leses først, før noen reiser.">
         <p className="ed-kicker">Før noen reiser</p>
         <h2 className="mt-4 max-w-xl text-3xl font-normal sm:text-4xl">{digital.value}</h2>
-        <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#221d19]">{digital.lead}</p>
+        <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-flo-muted">{digital.lead}</p>
         <ul className="mt-8 grid gap-3 sm:grid-cols-2">
           {digital.when.map((item) => (
-            <li key={item} className="border-t border-[#161210]/12 pt-3 text-[15px] leading-relaxed">
+            <li key={item} className="border-t border-flo-ink/12 pt-3 text-[15px] leading-relaxed">
               {item}
             </li>
           ))}
@@ -89,11 +89,11 @@ export default function DigitaltPage() {
         <div className="ed-wrap">
           <div className="plan-read plan-float max-w-2xl">
             <p className="ed-kicker">Ofte stilt</p>
-            <ul className="mt-8 divide-y divide-[#161210]/12 border-y border-[#161210]/12">
+            <ul className="mt-8 divide-y divide-flo-ink/12 border-y border-flo-ink/12">
               {faqs.map((item) => (
                 <li key={item.question} className="py-6">
                   <h2 className="text-xl font-normal">{item.question}</h2>
-                  <p className="mt-3 text-[15px] leading-relaxed text-[#221d19]">{item.answer}</p>
+                  <p className="mt-3 text-[15px] leading-relaxed text-flo-muted">{item.answer}</p>
                 </li>
               ))}
             </ul>

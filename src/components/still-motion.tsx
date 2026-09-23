@@ -35,7 +35,8 @@ export function StillMotion({
       navigator as Navigator & { connection?: { saveData?: boolean } }
     ).connection;
     if (conn?.saveData) return;
-    setArmed(true);
+    const frame = requestAnimationFrame(() => setArmed(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {

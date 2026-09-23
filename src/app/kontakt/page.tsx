@@ -1,9 +1,8 @@
+import { OfficeMap } from "@/components/office-map";
 import { SocialLinks } from "@/components/social-links";
-import { BlueprintRoom } from "@/components/blueprint";
 import { ContactForm } from "@/components/contact-form";
 import { CoverageBand } from "@/components/coverage-band";
 import { PageStill } from "@/components/page-still";
-import { PlanSplit } from "@/components/plan-field";
 import { company, photoAlt, stills } from "@/content/site";
 import { PageSemantics } from "@/components/page-semantics";
 import { pageMeta } from "@/lib/seo";
@@ -49,43 +48,26 @@ export default async function KontaktPage({
             : "Har dere fått avvik, skal dere bygge om, eller er det uklart hva som kreves? Rapporten eller tegningene holder for å starte."
         }
       />
-      <CoverageBand />
-      <PlanSplit tone="paper" caption="Send underlaget. Vi leser det mot brannskille, rømning og det som står i bygget." still={isPrivate ? stills.utgang : stills.bygg} stillAlt={photoAlt[isPrivate ? stills.utgang : stills.bygg]}>
-        <p className="mb-8 max-w-xl text-[15px] leading-relaxed text-[#221d19]">
-          Skjemaet her er lokal visning. Det sender ikke til et eksternt system ennå. Rapporten, tegningene eller det
-          som ble sagt, holder for å starte.
-        </p>
-        <BlueprintRoom number="07A" kicker="Skjema" title="Hva gjelder?">
-          <ContactForm situasjon={pick("situasjon")} spor={pick("spor")} hvem={pick("hvem")} />
-        </BlueprintRoom>
-        <BlueprintRoom number="07B" kicker="Direkte" title="Uten skjema" className="mt-3">
-          <p className="text-[15px] leading-relaxed">
-            Sentralbord{" "}
-            <a className="underline hover:text-[#c62e32]" href={`tel:${company.switchboard.replace(/\s/g, "")}`}>
-              {company.switchboard}
-            </a>
-          </p>
-          <p className="mt-2 text-[15px]">
-            <a className="underline hover:text-[#c62e32]" href={`mailto:${company.email}`}>
-              {company.email}
-            </a>
-          </p>
-          <p className="mt-2 text-[15px] text-[#3d3832]">Faktura: {company.invoice}</p>
-          <ul className="mt-8 space-y-5">
-            {company.locations.map((loc) => (
-              <li key={loc.id}>
-                <p className="room-number text-[#c62e32]">{loc.name}</p>
-                <p className="mt-1 text-[15px]">{loc.address}</p>
-                <p className="text-[15px]">{loc.postal}</p>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <p className="ed-kicker">Følg FLO</p>
-            <SocialLinks tone="light" showLabels />
+      <section className="portfolio-paper" id="send-saken" aria-labelledby="contact-title">
+        <div className="portfolio-wrap">
+          <div className="contact-intro"><p className="story-eyebrow">La oss se på saken</p><h2 id="contact-title" className="story-heading">Fortell oss litt.<br /><span>Vi hjelper dere videre.</span></h2><p>Et avvik, en tegning eller et spørsmål. Start med det dere har – dere trenger ikke ha alle svarene.</p></div>
+          <div className="contact-layout">
+            <div className="contact-form-panel"><ContactForm situasjon={pick("situasjon")} spor={pick("spor")} hvem={pick("hvem")} /></div>
+            <aside className="contact-direct">
+              <p className="story-eyebrow">Direkte til FLO</p><h3>Vil du heller<br />snakke med oss?</h3>
+              <a className="contact-phone" href={`tel:${company.switchboard.replace(/\s/g, "")}`}>{company.switchboard}</a>
+              <a className="contact-email" href={`mailto:${company.email}`}>{company.email}</a>
+              <div className="contact-next"><h4>Hva skjer videre?</h4><p>Vi leser henvendelsen og tar kontakt for å avklare behovet. Dokumentene vurderes først; befaring avtales når bygget må ses.</p></div>
+              <p className="contact-attachments">Rapporter, tegninger og bilder kan sendes direkte på e-post.</p>
+              <div className="contact-offices">{company.locations.map(loc => <address key={loc.id}><strong>{loc.name}</strong><a href={loc.mapsUrl} target="_blank" rel="noopener noreferrer">{loc.address}<br />{loc.postal} ↗</a></address>)}</div>
+              <SocialLinks showLabels />
+              <p className="contact-invoice">Faktura: <a href={`mailto:${company.invoice}`}>{company.invoice}</a></p>
+            </aside>
           </div>
-        </BlueprintRoom>
-      </PlanSplit>
+        </div>
+      </section>
+      <CoverageBand />
+      <OfficeMap />
     </>
   );
 }

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { SocialLinks } from "@/components/social-links";
 import { nav } from "@/content/site";
 import { cn } from "@/lib/utils";
 
@@ -29,6 +30,37 @@ function isCurrent(href: string, pathname: string, children?: readonly { href: s
 export function SiteHeader() {
   const pathname = usePathname();
   const menuRef = useRef<HTMLDetailsElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const hero = document.querySelector<HTMLElement>("main .cinema-hero");
+      // Change surface when the header reaches the end of the actual hero,
+      // including short mobile heroes and pages opened at an anchor.
+      const solid = !hero || hero.getBoundingClientRect().bottom <= header.offsetHeight;
+      header.dataset.solid = String(solid);
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    schedule();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    const observer = new ResizeObserver(schedule);
+    const main = document.querySelector("main");
+    if (main) observer.observe(main);
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     menuRef.current?.removeAttribute("open");
@@ -39,16 +71,16 @@ export function SiteHeader() {
   }
 
   return (
-    <header className="site-header">
+    <header ref={headerRef} className="site-header">
       <div className="site-header-bar">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 sm:gap-6 sm:px-6">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 sm:gap-4 sm:px-6">
           <Link href="/" className="relative z-[1] flex shrink-0 items-center" onClick={closeMenu}>
             <Image
               src="/brand/flo-wordmark-red-white-dot.png"
               alt="Flo Brannsikring"
               width={280}
               height={84}
-              className="h-9 w-auto sm:h-11"
+              className="site-header-logo h-7 w-auto sm:h-11"
               priority
             />
           </Link>
@@ -93,10 +125,11 @@ export function SiteHeader() {
             })}
           </nav>
           <div className="flex items-center gap-2 sm:gap-3">
-            <Button asChild size="sm">
+            <SocialLinks tone="light" className="header-social" />
+            <Button asChild size="sm" className="hidden lg:inline-flex">
               <Link href="/kontakt">Send saken</Link>
             </Button>
-            <details ref={menuRef} className="group md:hidden">
+            <details ref={menuRef} className="group lg:hidden">
               <summary className="site-menu-toggle">
                 <span className="group-open:hidden">Meny</span>
                 <span className="hidden group-open:inline">Lukk</span>

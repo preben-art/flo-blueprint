@@ -37,7 +37,7 @@ export default function FagmiljoPage() {
       <PlanSplit still={stills.skjerm} stillAlt={photoAlt[stills.skjerm]} caption="Nyheter og artikler leses her. Det som publiseres, kan tas ned.">
         <p className="ed-kicker">Les det som står</p>
         <h2 className="mt-4 max-w-xl text-3xl font-normal sm:text-4xl">Nyheter, artikler og spørsmål.</h2>
-        <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#221d19]">
+        <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-flo-muted">
           Det som publiseres, kan tas ned igjen. FLO styrer arbeidsverktøyet. Kunder kan legge inn eget innhold.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -57,11 +57,11 @@ export default function FagmiljoPage() {
           <div className="plan-read plan-float lg:col-span-6">
             <p className="ed-kicker">Stryn og Nordfjordeid</p>
             <h2 className="mt-4 text-3xl font-normal sm:text-4xl">Hvem leser saken?</h2>
-            <ul className="mt-8 divide-y divide-[#161210]/12 border-y border-[#161210]/12">
+            <ul className="mt-8 divide-y divide-flo-ink/12 border-y border-flo-ink/12">
               {visible.slice(0, 8).map((person) => (
                 <li key={person.email} className="py-4">
                   <p className="font-normal">{person.name}</p>
-                  <p className="mt-1 text-sm text-[#221d19]">
+                  <p className="mt-1 text-sm text-flo-muted">
                     {person.role}
                     {person.location ? `, ${person.location}` : ""}
                   </p>

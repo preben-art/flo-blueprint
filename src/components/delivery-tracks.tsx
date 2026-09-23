@@ -39,10 +39,10 @@ export function DeliveryTracks() {
             <div className="plan-frame" />
             <div className="relative z-[3] flex h-full min-h-[58vh] flex-col justify-end p-5 pb-8 sm:p-8">
               <TypeNode>
-                <p className="room-number text-[#c62e32]">{track.label}</p>
+                <p className="room-number text-flo-red">{track.label}</p>
                 <h3 className="mt-4 text-2xl font-normal text-[#fbf8f2]">{track.value}</h3>
                 <p className="mt-3 max-w-sm text-sm leading-relaxed text-[#fbf8f2]">{track.lead}</p>
-                <span className="mt-6 text-sm font-medium text-[#c62e32]">{track.cta}</span>
+                <span className="mt-6 text-sm font-medium text-flo-red">{track.cta}</span>
               </TypeNode>
             </div>
           </Link>

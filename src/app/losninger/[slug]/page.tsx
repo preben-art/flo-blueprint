@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const s = serviceBySlug(slug);
   const doc = serviceAnswers[slug];
   if (!s || !doc) return {};
-  return pageMeta(s.label, firstSentence(doc.answers.a1.answer), `/losninger/${s.slug}`);
+  return pageMeta(s.label, firstSentence(doc.answers.a1.answer), `/losninger/${s.slug}`, { image: doc.hero.src });
 }
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {

@@ -1,15 +1,15 @@
-import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
+import { randomBytes } from "node:crypto";
+import { canManagePost, validImagePath, validatePostInput } from "./desk-validation";
+export { authenticateDesk, encodeSession, decodeSession } from "./desk-auth";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { articleStill, articles, news, stills } from "@/content/site";
 import { defaultTool, type ToolConfig } from "@/content/tool";
-import type { DeskPost, DeskRole, PostKind, PostStatus } from "@/lib/desk-types";
+import type { DeskPost, DeskRole, DeskSession, PostKind, PostStatus } from "@/lib/desk-types";
 
 const DESK_PATH = path.join(process.cwd(), "data/editorial/desk.json");
 const COOKIE = "flo_desk";
-const secret = () => process.env.FLO_DESK_SECRET ?? "flo-desk-local";
-const floKey = () => process.env.FLO_DESK_KEY ?? "flo-redaksjon";
-const kundeKey = () => process.env.FLO_DESK_KUNDE ?? "kunde";
+
 
 type DeskFile = {
   hidden: string[];
@@ -34,7 +34,7 @@ async function readDesk(): Promise<DeskFile> {
     const base = emptyDesk();
     return {
       hidden: Array.isArray(parsed.hidden) ? parsed.hidden : [],
-      posts: Array.isArray(parsed.posts) ? parsed.posts : [],
+      posts: Array.isArray(parsed.posts) ? parsed.posts.map((post) => ({ ...post, still: validImagePath(post.still) ? post.still : undefined })) : [],
       tool: parsed.tool?.classes?.length ? parsed.tool : base.tool,
     };
   } catch {
@@ -134,7 +134,9 @@ export async function createDeskPost(input: {
   still?: string;
   authorRole: DeskRole;
   authorName: string;
+  authorId: string;
 }) {
+  validatePostInput(input);
   const desk = await readDesk();
   const now = new Date().toISOString();
   const base = slugify(input.title) || `innlegg-${randomBytes(3).toString("hex")}`;
@@ -158,6 +160,7 @@ export async function createDeskPost(input: {
       .filter(Boolean),
     still: input.still,
     status: "published",
+    authorId: input.authorId,
     authorRole: input.authorRole,
     authorName: input.authorName.trim() || (input.authorRole === "flo" ? "FLO" : "Kunde"),
     createdAt: now,
@@ -170,14 +173,12 @@ export async function createDeskPost(input: {
   return post;
 }
 
-export async function setPostStatus(id: string, status: PostStatus, actor: { role: DeskRole; name: string }) {
+export async function setPostStatus(id: string, status: PostStatus, actor: DeskSession) {
   const desk = await readDesk();
   const live = mergePosts(desk);
   const current = live.find((post) => post.id === id);
   if (!current) return null;
-  if (actor.role !== "flo") {
-    if (current.source === "seed" || current.authorName !== actor.name) throw new Error("forbidden");
-  }
+  if (!canManagePost(current, actor)) throw new Error("forbidden");
 
   if (current.source === "seed") {
     const key = `${current.kind}:${current.slug}`;
@@ -225,61 +226,14 @@ export async function saveToolConfig(tool: ToolConfig) {
   return desk.tool;
 }
 
-function sign(payload: string) {
-  return createHmac("sha256", secret()).update(payload).digest("hex");
-}
-
-export function sessionCookieName() {
-  return COOKIE;
-}
-
-export function encodeSession(role: DeskRole, name: string) {
-  const exp = Date.now() + 7 * 24 * 60 * 60 * 1000;
-  const payload = Buffer.from(JSON.stringify({ role, name, exp })).toString("base64url");
-  return `${payload}.${sign(payload)}`;
-}
-
-export function decodeSession(token?: string | null) {
-  if (!token) return null;
-  const [payload, sig] = token.split(".");
-  if (!payload || !sig) return null;
-  const expected = sign(payload);
-  const a = Buffer.from(sig);
-  const b = Buffer.from(expected);
-  if (a.length !== b.length || !timingSafeEqual(a, b)) return null;
-  try {
-    const data = JSON.parse(Buffer.from(payload, "base64url").toString("utf8")) as {
-      role: DeskRole;
-      name: string;
-      exp: number;
-    };
-    if (data.exp < Date.now()) return null;
-    if (data.role !== "flo" && data.role !== "kunde") return null;
-    return { role: data.role, name: data.name };
-  } catch {
-    return null;
-  }
-}
-
-function safeEqual(a: string, b: string) {
-  const left = Buffer.from(a);
-  const right = Buffer.from(b);
-  if (left.length !== right.length) return false;
-  return timingSafeEqual(left, right);
-}
-
-export function roleFromPassphrase(passphrase: string): DeskRole | null {
-  const key = passphrase.trim();
-  if (safeEqual(key, floKey())) return "flo";
-  if (safeEqual(key, kundeKey())) return "kunde";
-  return null;
-}
+export function sessionCookieName() { return COOKIE; }
 
 export async function writeSessionCookie(token: string) {
   const { cookies } = await import("next/headers");
   const jar = await cookies();
   jar.set(COOKIE, token, {
     httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
     path: "/",
     maxAge: 7 * 24 * 60 * 60,

@@ -14,12 +14,14 @@ export type DeskPost = {
   status: PostStatus;
   authorRole: DeskRole;
   authorName: string;
+  authorId?: string;
   createdAt: string;
   updatedAt: string;
   source: "seed" | "desk";
 };
 
 export type DeskSession = {
+  id: string;
   role: DeskRole;
   name: string;
 };

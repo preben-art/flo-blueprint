@@ -18,7 +18,7 @@ export function PartnerMark({
     return (
       <p
         className={cn(
-          "font-medium tracking-tight text-[#161210]",
+          "font-medium tracking-tight text-flo-ink",
           size === "card"
             ? "max-w-[18rem] text-[1.85rem] leading-[1.05]"
             : "text-center text-[12px] leading-[1.15] sm:text-[13px]",

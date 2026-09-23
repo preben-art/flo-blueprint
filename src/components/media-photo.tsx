@@ -1,13 +1,5 @@
 import Image from "next/image";
-import { StillMotion } from "@/components/still-motion";
 import { cn } from "@/lib/utils";
-
-/** Real photos that also exist as short camera-move loops (same frame, same crop). */
-const motionClips: Record<string, string> = {
-  "/media/nodutgang-lys.jpg": "/media/motion/nodutgang-lys.mp4",
-  "/media/skanner.jpg": "/media/motion/skanner.mp4",
-  "/media/slokker-kontroll.jpg": "/media/motion/slokker-kontroll.mp4",
-};
 
 const stillFocus: Record<string, string> = {
   "/media/naeringsbygg.jpg": "object-[center_58%]",
@@ -53,7 +45,6 @@ export function MediaPhoto({
   sizes?: string;
 }) {
   const focus = stillFocus[src] ?? "object-center";
-  const clip = motionClips[src];
   return (
     <div className="still-move" data-speed="auto">
       <Image
@@ -66,13 +57,7 @@ export function MediaPhoto({
         sizes={sizes}
         className={cn("hdr-still object-cover", focus, className)}
       />
-      {clip ? (
-        <StillMotion
-          src={clip}
-          poster={src}
-          className={cn("object-cover", focus, className)}
-        />
-      ) : null}
+
     </div>
   );
 }

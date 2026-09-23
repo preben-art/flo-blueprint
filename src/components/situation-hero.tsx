@@ -13,7 +13,7 @@ export function SituationHero() {
       <div className="plan-titleblock bg-[#120e0d] px-4 sm:px-6">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 py-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="room-number text-[#c62e32]">FLO BRANNSIKRING</p>
+            <p className="room-number text-flo-red">FLO BRANNSIKRING</p>
             <p className="mt-2 text-sm font-normal tracking-[0.08em] uppercase text-[#fbf8f2]">
               Markedskart, hovedplan
             </p>
@@ -54,7 +54,7 @@ export function SituationHero() {
                   <p className="mt-4 max-w-md text-[15px] font-normal leading-relaxed text-[#fbf8f2]">
                     {expl.meaning}
                   </p>
-                  <span className="mt-8 inline-flex text-sm font-normal tracking-[0.06em] text-[#c62e32]">
+                  <span className="mt-8 inline-flex text-sm font-normal tracking-[0.06em] text-flo-red">
                     {expl.cta}
                   </span>
                 </TypeNode>

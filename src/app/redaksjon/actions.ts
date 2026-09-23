@@ -5,12 +5,13 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { DeskInputError, validatePostInput } from "@/lib/desk-validation";
 import {
   clearSessionCookie,
   createDeskPost,
   decodeSession,
   encodeSession,
-  roleFromPassphrase,
+  authenticateDesk,
   sessionCookieName,
   setPostStatus,
   writeSessionCookie,
@@ -26,9 +27,9 @@ async function requireSession() {
 export async function loginDesk(formData: FormData) {
   const passphrase = String(formData.get("passphrase") ?? "");
   const name = String(formData.get("name") ?? "").trim();
-  const role = roleFromPassphrase(passphrase);
-  if (!role) redirect("/redaksjon?feil=nokkel");
-  const token = encodeSession(role, name || (role === "flo" ? "FLO" : "Kunde"));
+  const session = authenticateDesk(passphrase, name);
+  if (!session) redirect("/redaksjon?feil=nokkel");
+  const token = encodeSession(session);
   await writeSessionCookie(token);
   redirect("/redaksjon");
 }
@@ -45,6 +46,13 @@ export async function createDeskEntry(formData: FormData) {
   const body = String(formData.get("body") ?? "").trim();
   if (kind !== "nyhet" && kind !== "artikkel") redirect("/redaksjon?feil=skjema");
   if (!title || !body) redirect("/redaksjon?feil=skjema");
+  // Validate before an upload writes any files; createDeskPost also enforces this boundary.
+  try {
+    validatePostInput({ kind, title, body, kicker: String(formData.get("kicker") ?? ""), excerpt: String(formData.get("excerpt") ?? "") });
+  } catch (error) {
+    if (error instanceof DeskInputError) redirect("/redaksjon?feil=skjema");
+    throw error;
+  }
 
   let still: string | undefined;
   const file = formData.get("file");
@@ -67,6 +75,7 @@ export async function createDeskEntry(formData: FormData) {
     excerpt: String(formData.get("excerpt") ?? ""),
     body,
     still,
+    authorId: session.id,
     authorRole: session.role,
     authorName: session.name,
   });

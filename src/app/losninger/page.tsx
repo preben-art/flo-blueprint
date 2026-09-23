@@ -48,7 +48,7 @@ export default function LosningerPage() {
                   <div className="flex flex-1 flex-col px-5 py-6 sm:px-6 sm:py-8">
                     <p className="ed-kicker">{s.room}</p>
                     <h3 className="mt-3 text-xl font-normal sm:text-2xl">{s.label}</h3>
-                    <p className="mt-3 text-[15px] leading-relaxed text-[#221d19]">{serviceExplain[s.slug].directAnswer}</p>
+                    <p className="mt-3 text-[15px] leading-relaxed text-flo-muted">{serviceExplain[s.slug].directAnswer}</p>
                     <div className="mt-auto pt-6">
                       <Button asChild>
                         <Link href={`/losninger/${s.slug}`}>{serviceExplain[s.slug].cta}</Link>

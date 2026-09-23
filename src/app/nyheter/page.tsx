@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata = pageMeta(
   "Nyheter",
-  "Faglige oppdateringer fra FLO. Kunder kan legge inn innhold og ta det ned igjen i redaksjonen.",
+  "Nyheter og faglige oppdateringer fra FLO Brannsikring.",
   "/nyheter",
 );
 
@@ -20,7 +20,7 @@ export default async function NyheterPage() {
       <PageSemantics
         path="/nyheter"
         title="Nyheter"
-        description="Faglige oppdateringer fra FLO. Kunder kan legge inn innhold og ta det ned igjen i redaksjonen."
+        description="Nyheter og faglige oppdateringer fra FLO Brannsikring."
         kind="CollectionPage"
       />
       <PageStill
@@ -28,15 +28,15 @@ export default async function NyheterPage() {
         alt={photoAlt[stills.befaring]}
         room="08"
         kicker="Nyheter"
-        title="Det som gjelder nå."
-        lead="Nyheter fra fagmiljøet. Innhold kan legges inn og tas ned i redaksjonen, uten at det blir et oppdiktet nyhetsrom."
+        title="Nytt fra FLO."
+        lead="Menneskene, faget og hverdagen bak brannsikringen. Følg oppdateringene fra FLO."
       />
-      <section className="ed">
-        <div className="ed-wrap">
+      <section className="portfolio-paper">
+        <div className="portfolio-wrap">
           <EditorialList
             posts={posts}
             kind="nyhet"
-            empty="Ingen nyheter ligger ute nå. Redaksjonen kan legge inn innhold når det finnes noe å si."
+            empty="Nye oppdateringer kommer her. Har du et spørsmål i mellomtiden, ta gjerne kontakt."
           />
         </div>
       </section>

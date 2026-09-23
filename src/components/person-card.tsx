@@ -19,12 +19,12 @@ export function PersonCard({ person, index }: { person: Person; index: number })
     .join("");
 
   return (
-    <article className="border border-[#161210]/12 bg-[#fbf8f2]">
+    <article className="border border-flo-ink/12 bg-[#fbf8f2]">
       <div className="still-crop still-depth relative aspect-[4/5]">
         {person.photo ? (
           <MediaPhoto src={person.photo} alt={person.name} sizes="(max-width: 768px) 50vw, 240px" />
         ) : (
-          <span className="absolute left-4 top-6 font-mono text-5xl tracking-widest text-[#c62e32]/40">
+          <span className="absolute left-4 top-6 font-mono text-5xl tracking-widest text-flo-red/40">
             {initials}
           </span>
         )}
@@ -32,16 +32,16 @@ export function PersonCard({ person, index }: { person: Person; index: number })
       <div className="p-4">
         <p className="ed-kicker">08{room}</p>
         <h3 className="mt-2 text-lg font-medium leading-tight">{person.name}</h3>
-        {person.role ? <p className="mt-1 text-sm text-[#221d19]">{person.role}</p> : null}
-        <p className="mt-1 text-xs uppercase tracking-wider text-[#221d19]">{person.location}</p>
+        {person.role ? <p className="mt-1 text-sm text-flo-muted">{person.role}</p> : null}
+        <p className="mt-1 text-xs uppercase tracking-wider text-flo-muted">{person.location}</p>
         <p className="mt-3 text-sm">
-          <a href={`mailto:${person.email}`} className="text-[#c62e32] hover:underline">
+          <a href={`mailto:${person.email}`} className="text-flo-red hover:underline">
             {person.email}
           </a>
         </p>
         {person.phone ? (
           <p className="text-sm">
-            <a href={`tel:${person.phone.replace(/\s/g, "")}`} className="hover:text-[#c62e32]">
+            <a href={`tel:${person.phone.replace(/\s/g, "")}`} className="hover:text-flo-red">
               {person.phone}
             </a>
           </p>

@@ -31,7 +31,7 @@ export function SiteHero() {
             asChild
             size="lg"
             variant="outline"
-            className="border-[#fbf8f2] text-[#fbf8f2] hover:bg-[#fbf8f2] hover:text-[#161210]"
+            className="border-[#fbf8f2] text-[#fbf8f2] hover:bg-[#fbf8f2] hover:text-flo-ink"
           >
             <Link href="/kontakt?spor=digitalt">Start digitalt</Link>
           </Button>
@@ -39,7 +39,7 @@ export function SiteHero() {
         <div className="mt-10 grid gap-4 border-t border-[#fbf8f2]/25 pt-6 sm:grid-cols-3">
           {company.approvals.map((a) => (
             <div key={a.area}>
-              <p className="room-number text-[#c62e32]">{a.class}</p>
+              <p className="room-number text-flo-red">{a.class}</p>
               <p className="mt-1 text-sm font-medium text-[#fbf8f2]">
                 {a.function}
                 <span className="block font-normal text-[#d9d2c6]">{a.area}</span>

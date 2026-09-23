@@ -5,12 +5,12 @@ export function NextNeed({
 }) {
   return (
     <div>
-      <p className="room-number mb-4 text-[#c62e32]">Hva kan komme etterpå</p>
+      <p className="room-number mb-4 text-flo-red">Hva kan komme etterpå</p>
       <ul className="space-y-3">
         {items.map((item) => (
-          <li key={item.from} className="border-b border-[#161210]/15 pb-3 text-[15px] leading-relaxed">
+          <li key={item.from} className="border-b border-flo-ink/15 pb-3 text-[15px] leading-relaxed">
             <span className="text-[#3d3832]">{item.from}</span>
-            <span className="mx-2 text-[#c62e32]">så</span>
+            <span className="mx-2 text-flo-red">så</span>
             <span className="font-medium">{item.to}</span>
           </li>
         ))}

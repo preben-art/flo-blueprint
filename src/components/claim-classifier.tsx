@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input, Label, Textarea } from "@/components/ui/form-fields";
@@ -23,71 +24,52 @@ export function ClaimClassifier() {
         if (live && data?.tool?.classes?.length) setTool(data.tool);
       })
       .catch(() => undefined);
-    return () => {
-      live = false;
-    };
+    return () => { live = false; };
   }, []);
-
   const result = useMemo(() => classifyClaim(source, tool.classes), [source, tool.classes]);
   const klass = tool.classes.find((item) => item.id === result) ?? tool.classes.at(-1);
 
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
-      <form
-        className="grid gap-4"
-        onSubmit={(e) => {
-          e.preventDefault();
-          setDone(true);
-        }}
-      >
-        <p className="text-[15px] leading-relaxed text-[#221d19]">{tool.intro}</p>
+    <div className="claim-workspace">
+      <form className="claim-form" onSubmit={(e) => { e.preventDefault(); setDone(true); }}>
+        <p className="story-eyebrow">Start med det dere har</p>
+        <h3>Hva har dere fått beskjed om?</h3>
+        <p className="claim-help">Skriv inn beskjeden og hvor den kommer fra. Du får en første sortering av kilden og hjelp til neste steg.</p>
         <div>
-          <Label htmlFor="claim">Påstanden</Label>
-          <Textarea
-            id="claim"
-            value={claim}
-            onChange={(e) => {
-              setClaim(e.target.value);
-              setDone(false);
-            }}
-            placeholder="«Dette må gjøres.»"
-            required
-          />
+          <Label htmlFor="claim">Beskjeden eller tiltaket</Label>
+          <Textarea id="claim" value={claim} onChange={(e) => { setClaim(e.target.value); setDone(false); }} placeholder="For eksempel: Vi har fått beskjed om å oppgradere brannalarmanlegget." required maxLength={4000} />
         </div>
         <div>
-          <Label htmlFor="source">Hvem sier det, og hva er kilden?</Label>
-          <Input
-            id="source"
-            value={source}
-            onChange={(e) => {
-              setSource(e.target.value);
-              setDone(false);
-            }}
-            placeholder="Tilsyn, rådgiver, entreprenør, veileder, forskrift…"
-            required
-          />
+          <Label htmlFor="source">Hvem sier det – og hvilket dokument viser de til?</Label>
+          <Input id="source" value={source} onChange={(e) => { setSource(e.target.value); setDone(false); }} placeholder="For eksempel: rådgiver, tilsynsrapport eller tilbud" required maxLength={1000} />
+          <p className="claim-field-hint">Mangler du kilden? Skriv «vet ikke».</p>
         </div>
-        <Button type="submit">Klassifiser</Button>
+        <Button type="submit">Se hva dere bør avklare <span aria-hidden="true">↗</span></Button>
+        <p className="claim-field-hint">Teksten sendes ikke til FLO når du bruker verktøyet.</p>
       </form>
-      <div className="border border-[#161210] bg-[#fbf8f2] p-5">
-        <p className="room-number mb-3 text-[#c62e32]">Foreløpig klasse</p>
-        {done && klass ? (
-          <>
-            <h3 className="text-2xl font-normal">{klass.label}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-[#161210]">{klass.meaning}</p>
-            {claim ? <p className="mt-4 border-t border-[#161210]/20 pt-4 text-sm">«{claim}»</p> : null}
-            <p className="mt-4 text-sm text-[#161210]">{tool.disclaimer}</p>
-          </>
-        ) : (
-          <ul className="space-y-3 text-sm leading-relaxed text-[#161210]">
-            {tool.classes.map((item) => (
-              <li key={item.id}>
-                <span className="font-medium">{item.label}.</span> {item.meaning}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+      <aside className="claim-guidance" aria-live="polite" aria-atomic="true">
+        {done && klass ? <>
+          <p className="story-eyebrow">Din første sortering</p>
+          <h3>{klass.id === "uklart" ? "Vi trenger kilden for å komme videre." : `Kilden peker mot: ${klass.label.toLowerCase()}.`}</h3>
+          <p>{klass.meaning}</p>
+          <p className="claim-result-note">Dette er et treff på ord i kildefeltet. Verktøyet har ikke vurdert dokumentet eller om tiltaket gjelder deres bygg.</p>
+          <blockquote>{claim}</blockquote>
+          <h4>La FLO se på grunnlaget.</h4>
+          <p>Ta med beskjeden og dokumentet til en faglig gjennomgang. Da kan vi avklare hva som gjelder, og hva dere bør gjøre videre.</p>
+          <Link href="/kontakt?situasjon=uklart" className="story-link">Få saken vurdert av FLO <span aria-hidden="true">↗</span></Link>
+        </> : <>
+          <p className="story-eyebrow">Før dere bestiller tiltak</p>
+          <h3>Et tydelig grunnlag.<br /><span>Et tryggere neste steg.</span></h3>
+          <p>Et krav, en anbefaling og et prosjektvalg kan høres like ut. Start med å finne ut hva beskjeden bygger på.</p>
+          <ol className="claim-steps">
+            <li><span>01</span><div><h4>Finn beskjeden</h4><p>Rapporten, e-posten eller tilbudet dere har fått.</p></div></li>
+            <li><span>02</span><div><h4>Se på kilden</h4><p>Hvem står bak, og hva viser de til?</p></div></li>
+            <li><span>03</span><div><h4>Avklar veien videre</h4><p>FLO kan lese underlaget opp mot deres bygg.</p></div></li>
+          </ol>
+          <Link href="/kontakt?situasjon=uklart" className="story-link">Vil du heller snakke med oss? <span aria-hidden="true">↗</span></Link>
+        </>}
+      </aside>
+      <details className="claim-explainer"><summary>Hva betyr kategoriene, og hvordan fungerer verktøyet?</summary><p>{tool.intro}</p><ul>{tool.classes.map(item => <li key={item.id}><strong>{item.label}.</strong> {item.meaning}</li>)}</ul><p>{tool.disclaimer}</p></details>
     </div>
   );
 }

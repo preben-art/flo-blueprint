@@ -66,7 +66,7 @@ export function KnowledgeAnswer({ node }: { node: KnowledgeNode }) {
         <p className="ed-kicker mt-12">Hva avhenger det av?</p>
         <ul className="mt-4 space-y-0">
           {c.dependsOn.map((item) => (
-            <li key={item} className="border-b border-[#161210]/12 py-3 text-[15px] leading-relaxed">
+            <li key={item} className="border-b border-flo-ink/12 py-3 text-[15px] leading-relaxed">
               {item}
             </li>
           ))}
@@ -93,14 +93,14 @@ export function KnowledgeAnswer({ node }: { node: KnowledgeNode }) {
             <ol className="ed-rail mt-6">
               {c.alternatives.map((item, i) => (
                 <RailStep key={item} index={i}>
-                  <p className="text-[15px] leading-relaxed text-[#221d19]">{item}</p>
+                  <p className="text-[15px] leading-relaxed text-flo-muted">{item}</p>
                 </RailStep>
               ))}
             </ol>
           </div>
           <div className="plan-read plan-float lg:col-span-6">
             <p className="ed-kicker">Hva kan vi ikke avgjøre her?</p>
-            <p className="mt-4 text-[15px] leading-relaxed text-[#221d19]">{c.limitation}</p>
+            <p className="mt-4 text-[15px] leading-relaxed text-flo-muted">{c.limitation}</p>
             <PlanPlate
               className="mt-8"
               src={thirdStill}
@@ -119,12 +119,12 @@ export function KnowledgeAnswer({ node }: { node: KnowledgeNode }) {
             <p className="ed-kicker">Hva må vi se?</p>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
               {c.documents.map((item) => (
-                <li key={item} className="border-b border-[#161210]/12 pb-3 text-[15px] text-[#221d19]">
+                <li key={item} className="border-b border-flo-ink/12 pb-3 text-[15px] text-flo-muted">
                   {item}
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-sm text-[#221d19]">
+            <p className="mt-6 text-sm text-flo-muted">
               Spor: {c.next.mode === "digitalt" ? "digitalt først" : c.next.mode === "hybrid" ? "hybrid" : "fysisk når det trengs"}.
             </p>
           </div>
@@ -141,7 +141,7 @@ export function KnowledgeAnswer({ node }: { node: KnowledgeNode }) {
               <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm">
                 {node.related.map((rel) => (
                   <li key={rel.href}>
-                    <Link href={rel.href} className="text-[#fbf8f2] underline decoration-[#c62e32]/60 hover:text-[#c62e32]">
+                    <Link href={rel.href} className="text-[#fbf8f2] underline decoration-flo-red/60 hover:text-flo-red">
                       {rel.label}
                     </Link>
                   </li>
@@ -159,7 +159,7 @@ export function KnowledgeAnswer({ node }: { node: KnowledgeNode }) {
                     <p className="mt-1 text-[15px] leading-relaxed text-[#fbf8f2]/90">{s.note}</p>
                     <a
                       href={s.href}
-                      className="mt-1 inline-block text-sm text-[#c62e32] hover:underline"
+                      className="mt-1 inline-block text-sm text-flo-red hover:underline"
                       {...(s.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
                     >
                       Åpne kilde

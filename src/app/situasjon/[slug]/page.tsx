@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const s = situationBySlug(slug);
   const doc = situationAnswers[slug];
   if (!s || !doc) return {};
-  return pageMeta(s.label, firstSentence(doc.answers.a1.answer), `/situasjon/${s.slug}`);
+  return pageMeta(s.label, firstSentence(doc.answers.a1.answer), `/situasjon/${s.slug}`, { image: doc.hero.src });
 }
 
 export default async function SituasjonPage({ params }: { params: Promise<{ slug: string }> }) {

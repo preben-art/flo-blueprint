@@ -1,80 +1,24 @@
 import Link from "next/link";
-import { CtaZone } from "@/components/cta-zone";
 import { StillFrame } from "@/components/still-frame";
 import { PageStill } from "@/components/page-still";
-import { PartnerMark } from "@/components/partner-mark";
-import { PlanSplit } from "@/components/plan-field";
-import { photoAlt, projects, stills } from "@/content/site";
+import { photoAlt, projects, projectStill, stills } from "@/content/site";
 import { PageSemantics } from "@/components/page-semantics";
 import { pageMeta } from "@/lib/seo";
-
-const projectImage: Record<string, string> = {
-  coop: "/media/coop-extra.jpg",
-  "classic-norway": "/media/classic-norway.jpg",
-  weenaas: "/partners/weenaas.jpg",
-};
-
-export const metadata = pageMeta(
-  "Hvem har dere jobbet for?",
-  "Coop, Classic Norway Hotels og Wenaas er navngitt. Der brannresultatet mangler, står det.",
-  "/prosjekter",
-);
-
+const description = "Bli kjent med navngitte kunder og relasjoner fra FLOs referansemateriale innen handel, hotell og eiendom.";
+export const metadata = pageMeta("Kunder og referanser", description, "/prosjekter", { image: stills.utgang });
 export default function ProsjekterPage() {
-  return (
-    <>
-      <PageSemantics
-        path="/prosjekter"
-        title="Hvem har dere jobbet for?"
-        description="Coop, Classic Norway Hotels og Wenaas er navngitt. Der brannresultatet mangler, står det."
-        kind="CollectionPage"
-        topic="Navngitte oppdrag"
-      />
-      <PageStill
-        src={stills.utgang}
-        alt={photoAlt[stills.utgang]}
-        room="06"
-        kicker="Oppdrag"
-        title="Hvem har dere jobbet for?"
-        lead="Coop, Classic Norway Hotels og Wenaas er navngitt. Brannspesifikk effekt som mangler, står her, ikke som et oppdiktet resultat."
-      />
-      <PlanSplit still={stills.bygg} stillAlt={photoAlt[stills.bygg]} caption="Oppdragene leses mot bygget, ikke som et oppdiktet før/etter.">
-        <p className="ed-kicker">Navngitt</p>
-        <h2 className="mt-4 max-w-md text-3xl font-normal sm:text-4xl">
-          Oppdragene vi kan navngi.
-        </h2>
-        <p className="mt-4 max-w-md text-[15px] leading-relaxed text-[#221d19]">
-          Der resultatet mangler, står det. Tegningen viser premissene vi leser mot, ikke et oppdiktet før/etter.
-        </p>
-        <div className="mt-10 space-y-8">
-          {projects.map((p) => {
-            const src = projectImage[p.slug] ?? stills.bygg;
-            return (
-              <article key={p.slug} className="border-t border-[#161210]/12 pt-8">
-                <StillFrame src={src} alt={photoAlt[src] ?? p.name} sizes="(max-width: 1024px) 100vw, 50vw" className="aspect-[16/10]" />
-                <div className="pt-6">
-                  <PartnerMark src={p.logo} name={p.name} mark={p.mark} />
-                  {p.mark === "logo" ? (
-                    <h3 className="mt-4 text-[1.45rem] font-normal leading-snug tracking-tight">
-                      <Link href={`/prosjekter/${p.slug}`} className="hover:text-[#c62e32]">
-                        {p.name}
-                      </Link>
-                    </h3>
-                  ) : (
-                    <h3 className="sr-only">{p.name}</h3>
-                  )}
-                  <p className="mt-3 text-[15px] leading-relaxed text-[#221d19]">{p.status}</p>
-                  <p className="mt-3 text-[15px] leading-relaxed">{p.whatWeCanSay}</p>
-                  <Link href={`/prosjekter/${p.slug}`} className="mt-4 inline-block text-sm text-[#c62e32] hover:underline">
-                    Les oppdraget
-                  </Link>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-      </PlanSplit>
-      <CtaZone />
-    </>
-  );
+  return <>
+    <PageSemantics path="/prosjekter" title="Kunder og referanser" description={description} image={stills.utgang} kind="CollectionPage" />
+    <PageStill src={stills.utgang} alt={photoAlt[stills.utgang]} room="06" kicker="Oppdrag og referanser" title="Byggene er ulike. Ansvaret er viktig." lead="Fra handel og eiendom til hotell og overnatting. Her møter du noen av kundene og relasjonene i FLOs referansemateriale." />
+    <section className="portfolio-paper"><div className="portfolio-wrap">
+      <div className="story-section-heading"><div><p className="story-eyebrow">Kunder og relasjoner</p><h2 className="story-heading">Et innblikk i <span>FLO.</span></h2></div><p>Les om referansene og hvilke fagområder de er knyttet til.</p></div>
+      <ul className="portfolio-grid">{projects.map(p => {
+        const src = projectStill[p.slug] ?? stills.bygg;
+        return <li key={p.slug}><Link className="portfolio-card" href={`/prosjekter/${p.slug}`}>
+          <StillFrame src={src} alt={photoAlt[src] ?? p.name} sizes="(max-width: 760px) 100vw, 50vw" className="portfolio-image aspect-[16/10]" />
+          <div className="portfolio-card-copy"><p className="story-eyebrow">{p.status}</p><h2>{p.name}</h2><p>{p.summary}</p><span className="story-link">Se referansen <span aria-hidden="true">↗</span></span></div>
+        </Link></li>;
+      })}</ul>
+    </div></section>
+  </>;
 }

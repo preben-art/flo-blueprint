@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
-import { MotionLayer } from "@/components/motion-layer";
-import { PlanCursor } from "@/components/plan-cursor";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SitePlan } from "@/components/site-plan";
@@ -51,8 +49,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <SiteHeader />
         <SitePlan />
-        <PlanCursor />
-        <MotionLayer />
         <div id="smooth-wrapper" className="w-full">
           <div id="smooth-content" className="flex min-h-svh flex-col">
             <main id="innhold" className="plan-flow flex-1">

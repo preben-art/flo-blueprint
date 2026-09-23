@@ -1,3 +1,9 @@
+export const homeHero = {
+  title: "Få kontroll på brannkravene.",
+  lead: "Har dere fått avvik, skal bygge om eller er usikre på kravene? FLO hjelper dere å avklare hva bygget trenger – fra brannrådgivning og prosjektering til praktisk utførelse.",
+  action: "Få vurdert saken",
+};
+
 export const company = {
   legalName: "FLO BRANNSIKRING AS",
   brandName: "Flo Brannsikring",
@@ -31,12 +37,15 @@ export const company = {
   switchboard: "+47 57 87 33 64",
   email: "post@flo-brannsikring.no",
   invoice: "faktura@flo-brannsikring.no",
+  googleBusinessUrl: "https://share.google/0BKT6AXUjxTv4hrKT",
+  googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d469.77852947074405!2d6.717166440544943!3d61.902241892968966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x461662ac1f618a1b%3A0xfd49fef788c4746f!2sFLO%20BRANNSIKRING%20AS!5e0!3m2!1sno!2sno!4v1790176140207!5m2!1sno!2sno",
   locations: [
     {
       id: "stryn",
       name: "Hovedkontor Stryn",
       address: "Perhusvegen 1A",
       postal: "6783 Stryn",
+      mapsUrl: "https://www.google.com/maps/search/?api=1&query=Perhusvegen%201A%2C%206783%20Stryn",
       poBox: "Postboks 207, 6781 Stryn",
       locality: "Stryn",
       postalCode: "6783",
@@ -47,6 +56,7 @@ export const company = {
       name: "Avdelingskontor Nordfjordeid",
       address: "Øyane 8",
       postal: "6770 Nordfjordeid",
+      mapsUrl: "https://www.google.com/maps/search/?api=1&query=%C3%98yane%208%2C%206770%20Nordfjordeid",
       locality: "Nordfjordeid",
       postalCode: "6770",
       geo: { lat: 61.9087, lng: 5.9885 },
@@ -548,11 +558,11 @@ export const projects = [
     logo: "/partners/coop.svg",
     mark: "logo" as const,
     services: ["Brannteknisk utførelse", "Branningeniører / RIBr", "Brannvernrådgivning"],
-    status: "Navngitt kunde. Brannspesifikk effekt er ikke dokumentert i kildematerialet.",
+    status: "Handel og næring",
     summary:
-      "Coop er en navngitt relasjon i FLO sitt materiale, blant annet Coop Nordvest, Coop Nordland og eldre oppdrag mot Coop-eiendom. Vi publiserer ikke forvaltnings-sitater fra andre merkevarer som om de var FLO-resultat.",
+      "Coop er blant kundene i FLOs referansemateriale, med referanser til Coop Nordvest, Coop Nordland og Coop-eiendom.",
     whatWeCanSay:
-      "Kunden er navngitt. Tjenestetaggene på kilden peker mot alle tre FLO-fag. Før/etter, bygg og ansvarlig FLO-person mangler. Det merkes her, ikke skjules.",
+      "Referansen oppgir kunde og fagområder. Konkrete bygg, leveranseomfang og resultater er foreløpig ikke beskrevet i denne omtalen.",
   },
   {
     slug: "classic-norway",
@@ -561,10 +571,10 @@ export const projects = [
     logo: "/partners/classic-norway.jpg",
     mark: "type" as const,
     services: ["Brannvernrådgivning", "Branningeniører / RIBr"],
-    status: "Navngitt kunde i overnatting. Proof er svakt.",
+    status: "Hotell og overnatting",
     summary:
-      "Hotell og overnatting inngår i FLO sitt tjenestespekter. Classic Norway er navngitt. Vi har ikke et FLO-signert resultat å vise ennå.",
-    whatWeCanSay: "Kunde og fagtagger er bekreftet. Bygg, omfang og branneffekt er ikke dokumentert.",
+      "Classic Norway Hotels er en av FLOs navngitte kunder innen hotell og overnatting. Referansen omfatter fagområdene brannvernrådgivning og RIBr.",
+    whatWeCanSay: "Kunde og fagområder er bekreftet. Konkrete bygg, leveranseomfang og resultater er foreløpig ikke beskrevet i denne omtalen.",
   },
   {
     slug: "weenaas",
@@ -573,10 +583,10 @@ export const projects = [
     logo: "/partners/weenaas.jpg",
     mark: "type" as const,
     services: ["Brannvernrådgivning", "Branningeniører / RIBr"],
-    status: "Navngitt relasjon. Stavemåte Weenaas/Wenaas er uklar i kilden.",
+    status: "Eiendom",
     summary:
-      "Navnet finnes i kildematerialet. Innholdet som fulgte med, handlet om eiendomsforvaltning, ikke et dokumentert brannfaglig resultat. Derfor vises relasjonen, ikke et oppdiktet case.",
-    whatWeCanSay: "Relasjon er navngitt. FLO-spesifikk dokumentasjon av effekt mangler.",
+      "Wenaas er en navngitt relasjon i FLOs referansemateriale innen eiendom.",
+    whatWeCanSay: "Referansen gjelder en navngitt relasjon. Underlaget beskriver eiendomsforvaltning; konkrete brannfaglige leveranser og resultater er ikke dokumentert.",
   },
 ] as const;
 
@@ -669,11 +679,11 @@ export const news = [
     date: "2026-09-16",
     kicker: "Fagmiljø",
     excerpt:
-      "Rådgivning, RIBr og utførelse er samlet i ett fagmiljø. Det som publiseres her, styres fra redaksjonen, ikke fra et oppdiktet nyhetsrom.",
+      "Rådgivning, RIBr og praktisk utførelse er samlet i ett fagmiljø, med kontorer i Stryn og Nordfjordeid og digital rådgivning i hele Norge.",
     body: [
       "FLO Brannsikring har hovedkontor i Stryn og avdelingskontor på Nordfjordeid. Digital lesning dekker hele landet. Befaring, kontroll og utførelse er Nordvestlandet.",
-      "Nyheter og artikler på denne siden er et redaksjonelt spor. Kunder kan legge inn innhold og ta det ned igjen. FLO styrer arbeidsverktøyet og det som skal stå.",
-      "Vi publiserer ikke oppdiktede resultater. Der bevis mangler, står det.",
+      "Fagmiljøet dekker brannvernrådgivning, brannprosjektering og brannteknisk utførelse. Behovet i bygget avgjør hvilke fagområder som må involveres.",
+      "Har dere en rapport, en tegning eller et spørsmål om bygget? Send underlaget til FLO, så avklarer vi om saken kan vurderes digitalt eller trenger en befaring.",
     ],
   },
 ] as const;
@@ -956,7 +966,7 @@ export const articleStill: Record<string, string> = {
 export const situationStill: Record<string, string> = {
   papekt: stills.internkontrollRom,
   endres: stills.romning,
-  uklart: stills.skjerm,
+  uklart: stills.befaring,
 };
 
 export const projectStill: Record<string, string> = {

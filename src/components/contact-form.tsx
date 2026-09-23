@@ -1,13 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { company } from "@/content/site";
+import { emailConfigured, sendContactEmail } from "@/lib/contact-email";
 import { Button } from "@/components/ui/button";
 import { Input, Label, Textarea } from "@/components/ui/form-fields";
 
 const situasjoner = [
   { value: "papekt", label: "Vi har fått avvik, tilsyn eller pålegg" },
-  { value: "endres", label: "Vi skal bygge om, endre bruk eller ta inn ny leietaker" },
-  { value: "uklart", label: "Vi er usikre på hva som kreves, eller hvem som har ansvaret" },
+  { value: "endres", label: "Ombygging eller endret bruk" },
+  { value: "uklart", label: "Usikker på krav eller ansvar" },
 ] as const;
 
 const spor = [
@@ -27,15 +29,24 @@ export function ContactForm({
   hvem?: string;
 }) {
   const [sent, setSent] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const submitting = useRef(false);
+  const config = {
+    serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+    templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+    publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+  };
+  const configured = emailConfigured(config);
   const isPrivate = hvem === "privat";
 
   if (sent) {
     return (
-      <div className="border border-[#161210] bg-[#fbf8f2] p-6">
-        <p className="room-number mb-2 text-[#c62e32]">Mottatt</p>
-        <p className="text-lg font-medium">Takk. Vi tar kontakt innen én til to virkedager.</p>
+      <div className="border border-flo-ink bg-[#fbf8f2] p-6">
+        <p className="room-number mb-2 text-flo-red">Mottatt</p>
+        <p className="text-lg font-medium" role="status">Takk. Meldingen er sendt til FLO.</p>
         <p className="mt-2 text-sm text-[#3d3832]">
-          Dette er en lokal visning. Meldingen lagres ikke hos en ekstern tjeneste ennå.
+          Ta kontakt på telefon hvis saken haster. Dokumenter kan ettersendes på e-post.
         </p>
       </div>
     );
@@ -46,38 +57,72 @@ export function ContactForm({
 
   return (
     <form
-      className="grid gap-4"
-      onSubmit={(e) => {
+      className="contact-premium-form"
+      aria-busy={busy}
+      onSubmit={async (e) => {
         e.preventDefault();
-        setSent(true);
+        if (submitting.current || !configured) return;
+        const data = new FormData(e.currentTarget);
+        if (data.get("website")) return;
+        submitting.current = true;
+        setBusy(true); setError("");
+        try {
+          await sendContactEmail(config, {
+            from_name: String(data.get("navn") ?? ""),
+            company: String(data.get("bedrift") ?? ""),
+            reply_to: String(data.get("epost") ?? ""),
+            phone: String(data.get("telefon") ?? ""),
+            situation: String(data.get("situasjon") ?? ""),
+            delivery: String(data.get("spor") ?? ""),
+            audience: hvem ?? "",
+            message: String(data.get("melding") ?? ""),
+            page_url: window.location.origin + window.location.pathname,
+          });
+          setSent(true);
+        } catch {
+          setError("Meldingen kunne ikke sendes. Prøv igjen, eller kontakt oss direkte på e-post. Teksten din er beholdt.");
+        } finally {
+          submitting.current = false; setBusy(false);
+        }
       }}
     >
+      {!configured ? <p role="status" className="contact-availability">
+        Skjemaet er ikke aktivert ennå. Send forespørselen til{" "}
+        <a className="underline" href={`mailto:${company.email}`}>{company.email}</a>, eller ring{" "}
+        <a className="underline" href={`tel:${company.switchboard.replace(/\s/g, "")}`}>{company.switchboard}</a>.
+      </p> : null}
+      <div hidden aria-hidden="true"><label>Nettside<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
       {hvem ? <input type="hidden" name="hvem" value={hvem} /> : null}
+      <fieldset className="contact-fields"><legend>01 · Kontaktinformasjon</legend><p className="contact-field-note">Felter merket * må fylles ut.</p>
+      <div className="contact-field-grid">
       <div>
-        <Label htmlFor="navn">Navn</Label>
-        <Input id="navn" name="navn" required autoComplete="name" />
+        <Label htmlFor="navn">Navn *</Label>
+        <Input id="navn" name="navn" required maxLength={100} autoComplete="name" />
       </div>
       <div>
-        <Label htmlFor="bedrift">{isPrivate ? "Bedrift (hvis aktuelt)" : "Bedrift"}</Label>
-        <Input id="bedrift" name="bedrift" required={!isPrivate} />
+        <Label htmlFor="bedrift">{isPrivate ? "Bedrift (hvis aktuelt)" : "Bedrift *"}</Label>
+        <Input id="bedrift" name="bedrift" maxLength={150} autoComplete="organization" required={!isPrivate} />
       </div>
-      <div className="grid gap-4 sm:grid-cols-2">
+      </div>
+      <div className="contact-field-grid">
         <div>
-          <Label htmlFor="epost">E-post</Label>
-          <Input id="epost" name="epost" type="email" required autoComplete="email" />
+          <Label htmlFor="epost">E-post *</Label>
+          <Input id="epost" name="epost" type="email" required maxLength={254} autoComplete="email" />
         </div>
         <div>
-          <Label htmlFor="telefon">Telefon</Label>
-          <Input id="telefon" name="telefon" type="tel" autoComplete="tel" />
+          <Label htmlFor="telefon">Telefon (valgfritt)</Label>
+          <Input id="telefon" name="telefon" type="tel" maxLength={40} autoComplete="tel" />
         </div>
       </div>
+      </fieldset>
+      <fieldset className="contact-fields"><legend>02 · Saken deres</legend>
       <div>
-        <Label htmlFor="situasjon">Hva gjelder?</Label>
+        <Label htmlFor="situasjon">Hva gjelder saken? *</Label>
         <select
           id="situasjon"
           name="situasjon"
           required
-          className="flex h-11 w-full rounded-md border border-[#161210] bg-[#fbf8f2] px-3 text-sm"
+          className="flex h-11 w-full rounded-md border border-flo-ink bg-[#fbf8f2] px-3 text-sm"
           defaultValue={defaultSit}
         >
           <option value="" disabled={!defaultSit}>
@@ -95,7 +140,7 @@ export function ContactForm({
         <select
           id="spor"
           name="spor"
-          className="flex h-11 w-full rounded-md border border-[#161210] bg-[#fbf8f2] px-3 text-sm"
+          className="flex h-11 w-full rounded-md border border-flo-ink bg-[#fbf8f2] px-3 text-sm"
           defaultValue={sporDefault}
         >
           {spor.map((s) => (
@@ -106,10 +151,11 @@ export function ContactForm({
         </select>
       </div>
       <div>
-        <Label htmlFor="melding">{isPrivate ? "Situasjonen, og hva som skal endres" : "Situasjonen, kort"}</Label>
+        <Label htmlFor="melding">{isPrivate ? "Hva skal endres? *" : "Beskriv saken kort *"}</Label>
         <Textarea
           id="melding"
           name="melding"
+          maxLength={5000}
           required
           placeholder={
             isPrivate
@@ -123,7 +169,10 @@ export function ContactForm({
           ? "Har du tegninger eller bilder? Beskriv dem her, eller si at du kan sende dem. FLO starter digitalt."
           : "Har du dokumentasjon? Beskriv den her, eller si at du kan sende den. FLO starter med det vi allerede vet."}
       </p>
-      <Button type="submit">{isPrivate ? "Send inn tegninger / bilder" : "Send det dere har"}</Button>
+      </fieldset>
+      {configured ? <p className="text-sm text-[#6b645c]">Opplysningene sendes til FLO via EmailJS for å besvare forespørselen. Ikke legg sensitive opplysninger i meldingen.</p> : null}
+      {error ? <p role="alert" className="text-sm text-[#a51f25]">{error}</p> : null}
+      <Button type="submit" disabled={busy || !configured}>{busy ? "Sender …" : "Send saken til FLO ↗"}</Button>
     </form>
   );
 }

@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       "/privat",
     );
   }
-  return pageMeta(c.label, firstSentence(doc.answers.a1.answer), `/hvem-er-du/${c.slug}`);
+  return pageMeta(c.label, firstSentence(doc.answers.a1.answer), `/hvem-er-du/${c.slug}`, { image: doc.hero.src });
 }
 
 export default async function CustomerPage({ params }: { params: Promise<{ slug: string }> }) {

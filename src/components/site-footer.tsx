@@ -1,116 +1,59 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { SocialLinks } from "@/components/social-links";
 import { company, nav } from "@/content/site";
 
 export function SiteFooter() {
   return (
-    <footer className="site-footer mt-auto text-[#fbf8f2]">
-      <div className="footer-body mx-auto grid max-w-6xl gap-14 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-12 lg:gap-16">
-        <div className="lg:col-span-7">
-          <Image
-            src="/brand/flo-wordmark-red-white-dot.png"
-            alt="Flo Brannsikring"
-            width={280}
-            height={84}
-            className="mb-8 h-12 w-auto sm:h-14"
-          />
-          <p className="max-w-md text-[16px] font-normal leading-relaxed text-[#fbf8f2]/88">
-            {company.promise}
-          </p>
-          <p className="mt-10">
-            <a
-              href={`tel:${company.switchboard.replace(/\s/g, "")}`}
-              className="text-3xl font-medium tracking-tight text-[#fbf8f2] hover:text-[#c62e32] sm:text-4xl"
-            >
-              {company.switchboard}
-            </a>
-          </p>
-          <p className="mt-3">
-            <a href={`mailto:${company.email}`} className="text-sm text-[#fbf8f2]/80 hover:text-[#c62e32]">
-              {company.email}
-            </a>
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Button asChild>
-              <Link href="/kontakt">Send saken</Link>
-            </Button>
-            <Button asChild variant="sheet">
-              <Link href="/kontakt">Kontakt</Link>
-            </Button>
+    <footer className="site-footer footer-premium mt-auto">
+      <div className="footer-radiance" aria-hidden="true" />
+      <div className="footer-shell">
+        <div className="footer-invitation">
+          <div>
+            <p className="footer-eyebrow">Fra spørsmål til avklaring</p>
+            <h2>La oss gjøre<br /><span>neste steg klart.</span></h2>
           </div>
-          <div className="mt-10 flex flex-wrap items-center gap-5">
-            <p className="ed-kicker">Følg FLO</p>
+          <div className="footer-invitation-aside">
+            <p>Et avvik, en tegning eller et spørsmål.<br />Vi starter med det dere har.</p>
+            <Link href="/kontakt" className="footer-action">Få vurdert saken <span aria-hidden="true">↗</span></Link>
+          </div>
+        </div>
+        <div className="footer-premium-grid">
+          <div className="footer-brand">
+            <Image src="/brand/flo-wordmark-red-white-dot.png" alt="Flo Brannsikring" width={280} height={72} className="h-auto w-48" />
+            <p>{company.promise}</p>
+            <p className="footer-eyebrow">Følg FLO</p>
             <SocialLinks tone="dark" showLabels />
           </div>
-        </div>
-        <div className="grid gap-10 sm:grid-cols-2 lg:col-span-5">
-          <div>
-            <p className="ed-kicker mb-5">Hva gjelder?</p>
-            <ul className="space-y-3 text-[15px]">
-              {nav.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="text-[#fbf8f2]/88 hover:text-[#c62e32]">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link href="/kontakt" className="text-[#fbf8f2]/88 hover:text-[#c62e32]">
-                  Kontakt
-                </Link>
-              </li>
-              <li>
-                <Link href="/film" className="text-[#fbf8f2]/88 hover:text-[#c62e32]">
-                  Leveransefilm
-                </Link>
-              </li>
+          <nav aria-label="Bunnmeny">
+            <h3 className="footer-eyebrow">Finn riktig vei</h3>
+            <ul className="footer-link-list">
+              {nav.map(item => <li key={item.href}><Link href={item.href}>{item.label}</Link></li>)}
+              <li><Link href="/kontakt">Kontakt</Link></li>
+              <li><Link href="/film">Leveransefilm</Link></li>
             </ul>
-          </div>
+          </nav>
           <div>
-            <p className="ed-kicker mb-5">Stryn og Nordfjordeid</p>
-            <ul className="space-y-5 text-[15px] leading-relaxed">
-              {company.locations.map((loc) => (
-                <li key={loc.id}>
-                  <p className="font-medium text-[#fbf8f2]">{loc.name}</p>
-                  <p className="text-[#fbf8f2]/75">
-                    {loc.address}
-                    <br />
-                    {loc.postal}
-                  </p>
-                </li>
-              ))}
-            </ul>
-            <a
-              href={company.approvalUrl}
-              className="mt-8 inline-block opacity-90 hover:opacity-100"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Image
-                src="/brand/dibk-sentralt-godkjent-invers.png"
-                alt="Sentral godkjenning, DiBK"
-                width={160}
-                height={64}
-                className="h-11 w-auto"
-              />
-            </a>
-            <p className="mt-4 font-mono text-[11px] tracking-[0.14em] text-[#fbf8f2]/55 uppercase">
-              Org.nr {company.orgnr}
-            </p>
+            <h3 className="footer-eyebrow">Snakk med oss</h3>
+            <a className="footer-phone" href={`tel:${company.switchboard.replace(/\s/g, "")}`}>{company.switchboard}</a>
+            <a className="footer-email" href={`mailto:${company.email}`}>{company.email}</a>
+            <a className="footer-google-link" href={company.googleBusinessUrl} target="_blank" rel="noopener noreferrer">FLO på Google <span aria-hidden="true">↗</span></a>
+            <div className="footer-offices">
+              {company.locations.map(loc => <address key={loc.id}><strong>{loc.name}</strong><br /><a href={loc.mapsUrl} target="_blank" rel="noopener noreferrer" aria-label={`Se ${loc.address}, ${loc.postal} i Google Maps`}>{loc.address}<br />{loc.postal} <span aria-hidden="true">↗</span></a></address>)}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="footer-legal">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-[11px] tracking-wide text-[#fbf8f2]/55 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <span>
-            © {new Date().getFullYear()} {company.legalName}
-          </span>
-          <span>Teknisk løsning og kunnskapsstruktur levert av VCTRA</span>
-          <Link href="/redaksjon" className="hover:text-[#fbf8f2]">
-            Redaksjon
-          </Link>
+        <div className="footer-credentials">
+          <a href={company.approvalUrl} target="_blank" rel="noopener noreferrer">
+            <Image src="/brand/dibk-sentralt-godkjent-invers.png" alt="Sentral godkjenning, DiBK" width={160} height={64} className="h-10 w-auto" />
+          </a>
+          <p>Digitalt i hele Norge.<br />Befaring fra Stryn og Nordfjordeid.</p>
+          <label className="footer-motion-control"><input type="checkbox" /> Pause lyseffekt</label>
+        </div>
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} {company.legalName} · Org.nr {company.orgnr}</span>
+          <span>Teknisk løsning og kunnskapsstruktur levert av <a href="https://www.vctra.no" className="footer-credit-link">VCTRA</a></span>
+          <Link href="/redaksjon">Redaksjon</Link>
         </div>
       </div>
     </footer>
