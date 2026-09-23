@@ -1,5 +1,6 @@
 "use client";
 
+import { contactPrivacyReceipt, privacyAcknowledgement } from "@/lib/contact-privacy";
 import { useRef, useState } from "react";
 import { company } from "@/content/site";
 import { emailConfigured, sendContactEmail } from "@/lib/contact-email";
@@ -28,6 +29,7 @@ export function ContactForm({
   spor?: string;
   hvem?: string;
 }) {
+  const [privacyAcceptedAt, setPrivacyAcceptedAt] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -64,10 +66,12 @@ export function ContactForm({
         if (submitting.current || !configured) return;
         const data = new FormData(e.currentTarget);
         if (data.get("website")) return;
+        if (data.get("privacy") !== "yes" || !privacyAcceptedAt) { setError("Bekreft at du har lest personverninformasjonen før du sender."); return; }
         submitting.current = true;
         setBusy(true); setError("");
         try {
           await sendContactEmail(config, {
+            ...contactPrivacyReceipt(privacyAcceptedAt),
             from_name: String(data.get("navn") ?? ""),
             company: String(data.get("bedrift") ?? ""),
             reply_to: String(data.get("epost") ?? ""),
@@ -171,6 +175,13 @@ export function ContactForm({
       </p>
       </fieldset>
       {configured ? <p className="text-sm text-[#6b645c]">Opplysningene sendes til FLO via EmailJS for å besvare forespørselen. Ikke legg sensitive opplysninger i meldingen.</p> : null}
+      <div className="border-t border-flo-ink/15 pt-5">
+        <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed" htmlFor="privacy">
+          <input id="privacy" name="privacy" type="checkbox" value="yes" required checked={!!privacyAcceptedAt} onChange={e => setPrivacyAcceptedAt(e.target.checked ? new Date().toISOString() : null)} className="mt-1 h-5 w-5 shrink-0 accent-[#a82d34]" />
+          <span>{privacyAcknowledgement} *</span>
+        </label>
+        <a className="mt-2 inline-block text-sm text-flo-red underline" href="#personvern">Les personverninformasjonen</a>
+      </div>
       {error ? <p role="alert" className="text-sm text-[#a51f25]">{error}</p> : null}
       <Button type="submit" disabled={busy || !configured}>{busy ? "Sender …" : "Send saken til FLO ↗"}</Button>
     </form>

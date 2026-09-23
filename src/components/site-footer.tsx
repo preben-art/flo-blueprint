@@ -30,6 +30,7 @@ export function SiteFooter() {
             <ul className="footer-link-list">
               {nav.map(item => <li key={item.href}><Link href={item.href}>{item.label}</Link></li>)}
               <li><Link href="/kontakt">Kontakt</Link></li>
+              <li><Link href="/kontakt#personvern">Personvern i kontaktskjemaet</Link></li>
               <li><Link href="/film">Leveransefilm</Link></li>
             </ul>
           </nav>

@@ -1,3 +1,4 @@
+import { peopleGroups } from "@/content/people-groups";
 import { OfficeMap } from "@/components/office-map";
 import { BlueprintLayout, BlueprintRoom } from "@/components/blueprint";
 import { CtaZone } from "@/components/cta-zone";
@@ -114,22 +115,18 @@ export default function OmFloPage() {
         <div><p className="story-eyebrow">Menneskene i FLO</p><h2 className="mt-4 text-3xl font-normal sm:text-4xl">Fagfolk du kan <span className="text-flo-red">snakke med.</span></h2></div>
         <p className="max-w-2xl text-[16px] leading-relaxed text-[#3d3832]">Bak tegningene, rådene og kontrollene står mennesker som jobber med brannsikkerhet hver dag. Finn din kontakt nedenfor, eller ta kontakt med oss, så hjelper vi deg videre til riktig fagperson.</p>
       </div>
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
-        {people.map((person, i) => (
-          <PersonCard
-            key={person.name}
-            index={i}
-            person={{
-              name: person.name,
-              role: person.role,
-              location: person.location,
-              email: person.email,
-              phone: "phone" in person ? person.phone : undefined,
-              photo: "photo" in person ? person.photo : undefined,
-            }}
-          />
-        ))}
-      </div>
+      <nav aria-label="Finn ansatte etter fagområde" className="mb-10 flex flex-wrap gap-3">
+        {peopleGroups.map(group => <a key={group.id} href={`#${group.id}`} className="rounded-full border border-flo-ink/20 px-4 py-2 text-sm hover:border-flo-red hover:text-flo-red">{group.title}</a>)}
+      </nav>
+      {peopleGroups.map(group => (
+        <section key={group.id} id={group.id} aria-labelledby={`${group.id}-title`} className="mb-14 scroll-mt-32 border-t border-flo-ink/20 pt-8">
+          <h2 id={`${group.id}-title`} className="text-2xl font-normal sm:text-3xl">{group.title}</h2>
+          <p className="mb-6 mt-3 text-base text-flo-muted">{group.intro}</p>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {group.members.map(person => <PersonCard key={person.email} index={people.indexOf(person)} person={person} />)}
+          </div>
+        </section>
+      ))}
 
     </BlueprintLayout>
       <OfficeMap />

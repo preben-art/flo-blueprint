@@ -5,6 +5,13 @@ const nextConfig: NextConfig = {
     turbopackFileSystemCacheForDev: process.env.FLO_LOW_DISK_MODE !== "1",
     turbopackFileSystemCacheForBuild: process.env.FLO_LOW_DISK_MODE !== "1",
   },
+  async headers() {
+    return [{ source: "/sw.js", headers: [
+      { key: "Cache-Control", value: "no-cache, no-store, must-revalidate" },
+      { key: "Content-Type", value: "application/javascript; charset=utf-8" },
+      { key: "Content-Security-Policy", value: "default-src 'self'; script-src 'self'" },
+    ] }];
+  },
   allowedDevOrigins: ["127.0.0.1", "localhost", "cursor", "0.0.0.0"],
   images: {
     qualities: [75, 90, 95],

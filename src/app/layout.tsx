@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import { PwaRegister } from "@/components/pwa-register";
+import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -27,6 +28,8 @@ export const metadata: Metadata = {
   },
   description: defaultDescription,
   applicationName: company.brandName,
+  icons: { apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }] },
+  appleWebApp: { capable: true, title: "FLO", statusBarStyle: "default" },
   authors: [{ name: company.legalName, url: canonicalOrigin }],
   creator: company.legalName,
   publisher: company.legalName,
@@ -40,6 +43,8 @@ export const metadata: Metadata = {
     : { index: false, follow: false },
 };
 
+export const viewport: Viewport = { themeColor: "#161210" };
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="nb" className={`${ibmSans.variable} ${ibmMono.variable} h-full antialiased`}>
@@ -47,6 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <a className="skip-link" href="#innhold">
           Hopp til innhold
         </a>
+        <PwaRegister />
         <SiteHeader />
         <SitePlan />
         <div id="smooth-wrapper" className="w-full">

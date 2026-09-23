@@ -152,3 +152,15 @@ test('guidance uses explicit document choices, never keywords as legal evidence'
   assert.match(getClaimGuidance('vedtak').checks.join(' '), /endrer ikke en fastsatt frist/);
   assert.match(getClaimGuidance('tilbud').description, /alene avgjør ikke/);
 });
+const { contactPrivacyReceipt, privacyAcknowledgement } = require('../src/lib/contact-privacy.ts');
+test('privacy acknowledgement is required and EmailJS receipt records separate UTC times', () => {
+  assert.throws(()=>contactPrivacyReceipt(null), /privacy-required/);
+  assert.throws(()=>contactPrivacyReceipt('invalid'), /privacy-required/);
+  const receipt = contactPrivacyReceipt('2026-09-23T15:00:00.000Z',new Date('2026-09-23T15:01:20.000Z'));
+  assert.equal(receipt.privacy_acknowledged,'yes');
+  assert.equal(receipt.privacy_text,privacyAcknowledgement);
+  assert.equal(receipt.privacy_acknowledged_at,'2026-09-23T15:00:00.000Z');
+  assert.equal(receipt.submitted_at_utc,'2026-09-23T15:01:20.000Z');
+  assert.match(receipt.submitted_at_oslo,/17:01:20/);
+  assert.equal(receipt.timestamp_source,'browser');
+});

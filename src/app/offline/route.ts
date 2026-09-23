@@ -1,0 +1,5 @@
+import { company } from "@/content/site";
+export const dynamic = "force-static";
+export function GET() {
+  return new Response(`<!doctype html><html lang="nb"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Ingen nettforbindelse | FLO</title><style>body{margin:0;background:#f4f1ea;color:#211b18;font:18px/1.6 system-ui,sans-serif}main{max-width:650px;margin:15vh auto;padding:28px}h1{font-weight:400;line-height:1.15}a{color:#a82d34}nav{display:flex;gap:24px;flex-wrap:wrap}</style></head><body><main><p>FLO BRANNSIKRING</p><h1>Du er ikke koblet til nettet.</h1><p>Sidene og skjemaene trenger nettforbindelse. Ingen melding er sendt fra denne siden.</p><nav><a href="/">Prøv igjen</a><a href="tel:${company.switchboard.replace(/\s/g, "")}">Ring ${company.switchboard}</a><a href="mailto:${company.email}">Send e-post</a></nav></main></body></html>`, { headers: { "Content-Type": "text/html; charset=utf-8", "X-Robots-Tag": "noindex, nofollow" } });
+}

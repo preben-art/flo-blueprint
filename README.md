@@ -82,3 +82,20 @@ Nettleserens vanlige scrolling brukes. `MotionLayer` og `PlanCursor` er koblet f
 ## Partnere
 
 `partners` i `src/content/site.ts` har `url` for partnere med verifisert nettsted. Logoer uten `url` rendres uten lenke.
+
+
+### Personvernbekreftelse og tidspunkt i EmailJS
+Avhukingen er ikke forhåndsvalgt. Skjemaet krever avhuking før sending. Det er en bekreftelse på lest informasjon, ikke et markedsføringssamtykke.
+
+Legg disse variablene inn i EmailJS-malen:
+- `{{privacy_acknowledged}}`, `{{privacy_text}}`, `{{privacy_notice_version}}`
+- `{{privacy_acknowledged_at}}` (UTC ved avhuking)
+- `{{submitted_at_utc}}`, `{{submitted_at_oslo}}` (ved sendeforsøk)
+- `{{timestamp_source}}` (browser)
+
+Tidspunktene kommer fra brukerens nettleserklokke og er ikke en signert serverkvittering. EmailJS-/e-postloggens mottakstid er den separate transportkvitteringen. Innsending og faktisk mottak kan først testes etter konfigurasjon. FLO må avklare egne lagringsrutiner og leverandøravtaler før aktivering; denne korte skjemaopplysningen er ikke en full personvernerklæring for alle tjenester på nettstedet.
+
+### Maskinlesbart innhold og PWA
+`publicRoutes()` er felles ruteliste for sitemap og llms.txt. llms-full.txt projiserer offentlige svar og personopplysninger fra de samme innholdsmodulene; private redaksjonsdata er ikke inkludert. Forhåndsvisning forblir noindex med tomt sitemap. Sett NEXT_PUBLIC_SITE_URL til canonical produksjonsdomene ved bygging for lansering.
+
+Manifestet har PNG 192/512, SVG og Apple-ikon. Service worker henter alltid nettsider fra nettet og cacher bare /offline som reserve ved nettverksfeil. Ingen skjemaer, API-svar eller redaksjonssider caches. Nettleserens installasjonsstøtte varierer; pushvarsling er ikke konfigurert.

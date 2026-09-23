@@ -45,7 +45,7 @@ export default function FilmPage() {
       <EdSection id="film" tone="ink" className="film-intro pt-20 sm:pt-28">
         <div className="plan-read-ink plan-float max-w-3xl">
           <EdKicker>Leveransefilm</EdKicker>
-          <EdTitle>Nettstedet, filmet slik det er.</EdTitle>
+          <h1 className="mt-4 max-w-3xl text-3xl font-normal tracking-tight sm:text-5xl">Nettstedet, filmet slik det er.</h1>
           <EdLead>
             Alt av grensesnitt i filmen er det ekte nettstedet, tatt opp bilde for bilde. Kamerabevegelsene mellom
             sidene er laget fra FLO sine egne fotografier. Musikken er original. 1 min 49 s.

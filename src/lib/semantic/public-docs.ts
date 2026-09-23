@@ -1,5 +1,8 @@
+import { situationAnswers, serviceAnswers, customerAnswers, articleAnswers, claimAnswers, answerOrder, answerQuestion } from "@/content/answers";
 import { listDeskPosts } from "@/lib/desk";
 import { editorialPath } from "@/lib/editorial-path";
+import { publicRoutes } from "@/lib/public-routes";
+import { peopleGroups } from "@/content/people-groups";
 import { company } from "@/content/site";
 import { knowledgeNodes } from "@/content/knowledge/nodes";
 import { canonicalOrigin, canonicalUrl } from "@/lib/semantic/identity";
@@ -44,9 +47,13 @@ export async function llmsText() {
     "## Nyheter",
     posts.filter((post) => post.kind === "nyhet").map((item) => `- ${item.title} ${canonicalUrl(`/nyheter/${item.slug}`)}`).join("\n"),
     "",
+    "## Alle offentlige sider",
+    (await publicRoutes()).map(page => `- ${canonicalUrl(page.path)}`).join("\n"),
+    "",
     "## Maskinlesbart",
     `- ${canonicalUrl("/sitemap.xml")}`,
     `- ${canonicalUrl("/api/site")}`,
+    `- ${canonicalUrl("/llms-full.txt")}`,
     `- ${canonicalUrl("/api/knowledge")}`,
     "",
     "Fakta på disse adressene er de samme som står på sidene. Veiledning er ikke et vedtak for ett bygg.",
@@ -66,6 +73,9 @@ export function aiText() {
     "Use the published pages, sitemap and /api/site. Do not treat summaries here as a separate fact source.",
     "",
     `Sitemap: ${canonicalUrl("/sitemap.xml")}`,
+    `Page directory: ${canonicalUrl("/llms.txt")}`,
+    `Manifest: ${canonicalUrl("/manifest.webmanifest")}`,
+    `People and offices: ${canonicalUrl("/om-flo")}`,
     `Identity and services: ${canonicalUrl("/api/site")}`,
     `Questions: ${canonicalUrl("/fag-og-kunnskap")}`,
     `Services: ${canonicalUrl("/losninger")}`,
@@ -107,6 +117,7 @@ export function siteDocument() {
       })),
       sameAs: company.social.map((profile) => ({ name: profile.label, url: profile.url })),
     },
+    people: peopleGroups.map(group => ({ name: group.title, url: canonicalUrl(`/om-flo#${group.id}`), members: group.members.map(person => ({ name: person.name, role: person.role, office: person.location, email: person.email })) })),
     services: publicServices(),
     questions: knowledgeNodes.map((node) => ({
       question: node.question,
@@ -114,4 +125,23 @@ export function siteDocument() {
       url: canonicalUrl(`/fag-og-kunnskap/${node.slug}`),
     })),
   };
+}
+
+/** Public copy only; never serialize internal models or editorial account fields. */
+export async function llmsFullText() {
+  const groups = [
+    { prefix: "/situasjon/", pages: Object.values(situationAnswers) },
+    { prefix: "/losninger/", pages: Object.values(serviceAnswers) },
+    { prefix: "/hvem-er-du/", pages: Object.values(customerAnswers) },
+    { prefix: "/fag-og-kunnskap/", pages: [...Object.values(articleAnswers), claimAnswers] },
+  ];
+  const answers = groups.flatMap(group => group.pages.map(page => lines(
+    `## ${page.title}`,
+    `URL: ${canonicalUrl(page.slug === "privat" ? "/privat" : group.prefix + page.slug)}`,
+    page.lead,
+    ...answerOrder.map(id => lines(`### ${answerQuestion[id]}`, page.answers[id].answer, page.answers[id].detail ?? "", ...(page.answers[id].points ?? []).map(point => `- ${point}`))),
+  )));
+  const knowledge = knowledgeNodes.map(node => lines(`## ${node.question}`, `URL: ${canonicalUrl(`/fag-og-kunnskap/${node.slug}`)}`, node.contract.direct, node.contract.appliesTo, node.contract.requirement, node.contract.assessment, node.contract.limitation, ...node.contract.documents.map(doc => `- ${doc}`)));
+  const people = peopleGroups.map(group => lines(`## ${group.title}`, ...group.members.map(person => `${person.name} — ${person.role}. ${person.location}. ${person.email}`)));
+  return [await llmsText(), ...answers, ...knowledge, ...people].join("\n\n");
 }
